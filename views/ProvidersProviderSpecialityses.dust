@@ -1,0 +1,40 @@
+
+
+<fieldset><legend> Providers Provider Specialityses </legend>
+
+<form method='POST' action='/API/ProvidersProviderSpecialityses'>
+
+
+ <li><label for='ProviderSpeciality_id'>  Provider Speciality</label>
+<select id='ProviderSpeciality_id'>
+{#ProviderSpeciality_id.contents}
+        <option value='{id}'> {value} </option>
+{/ProviderSpeciality_id.contents}
+</select>
+</li>
+
+ 
+
+ <li><label for='Provider_id'>  Provider</label>
+<select id='Provider_id'>
+{#Provider_id.contents}
+        <option value='{id}'> {value} </option>
+{/Provider_id.contents}
+</select>
+</li>
+
+ 
+
+ <li><label for='createdAt'>  created At</label>
+<input type='date' id='createdAt' name='createdAt' value='createdAt'> 
+</li> 
+ 
+
+ <li><label for='updatedAt'>  updated At</label>
+<input type='date' id='updatedAt' name='updatedAt' value='updatedAt'> 
+</li> 
+ 
+
+<input type='submit'>
+</fieldset>
+</form>

@@ -1,0 +1,17 @@
+
+
+<fieldset><legend> taxonomys </legend>
+
+<form method='POST' action='/API/taxonomys'>
+
+
+<input type='hidden'  id='id' name='id' value='id'>
+
+ <li><label for='notused'>  notused</label>
+<input type='number' step='1' id='notused' name='notused' value='notused'>
+</li> 
+ 
+
+<input type='submit'>
+</fieldset>
+</form>

@@ -1,0 +1,52 @@
+
+
+<fieldset><legend> Provider Carriers </legend>
+
+<form method='POST' action='/API/ProviderCarriers'>
+
+
+<input type='hidden'  id='id' name='id' value='id'>
+
+ <li><label for='Provider_id'>  Provider</label>
+<select id='Provider_id'>
+{#Provider_id.contents}
+        <option value='{id}'> {value} </option>
+{/Provider_id.contents}
+</select>
+</li>
+
+ 
+
+ <li><label for='Carrier_id'>  Carrier</label>
+<select id='Carrier_id'>
+{#Carrier_id.contents}
+        <option value='{id}'> {value} </option>
+{/Carrier_id.contents}
+</select>
+</li>
+
+ 
+
+ <li><label for='created_by_User_id'>  created_by_ User</label>
+<select id='created_by_User_id'>
+{#created_by_User_id.contents}
+        <option value='{id}'> {value} </option>
+{/created_by_User_id.contents}
+</select>
+</li>
+
+ 
+
+ <li><label for='modified_by_User_id'>  modified_by_ User</label>
+<select id='modified_by_User_id'>
+{#modified_by_User_id.contents}
+        <option value='{id}'> {value} </option>
+{/modified_by_User_id.contents}
+</select>
+</li>
+
+ 
+
+<input type='submit'>
+</fieldset>
+</form>

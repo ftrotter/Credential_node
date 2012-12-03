@@ -1,0 +1,27 @@
+
+
+<fieldset><legend> Users </legend>
+
+<form method='POST' action='/API/Users'>
+
+
+<input type='hidden'  id='id' name='id' value='id'>
+
+ <li><label for='email'>  email</label>
+<textarea id='email' name='email'> {email} </textarea>
+</li>
+ 
+
+ <li><label for='first_name'>  first_name</label>
+<textarea id='first_name' name='first_name'> {first_name} </textarea>
+</li>
+ 
+
+ <li><label for='last_name'>  last_name</label>
+<textarea id='last_name' name='last_name'> {last_name} </textarea>
+</li>
+ 
+
+<input type='submit'>
+</fieldset>
+</form>

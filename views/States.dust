@@ -1,0 +1,22 @@
+
+
+<fieldset><legend> States </legend>
+
+<form method='POST' action='/API/States'>
+
+
+<input type='hidden'  id='id' name='id' value='id'>
+
+ <li><label for='state_name'>  state_name</label>
+<textarea id='state_name' name='state_name'> {state_name} </textarea>
+</li>
+ 
+
+ <li><label for='state_abbr'>  state_abbr</label>
+<textarea id='state_abbr' name='state_abbr'> {state_abbr} </textarea>
+</li>
+ 
+
+<input type='submit'>
+</fieldset>
+</form>

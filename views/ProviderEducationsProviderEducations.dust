@@ -1,0 +1,35 @@
+
+
+<fieldset><legend> Provider Educations Provider Educations </legend>
+
+<form method='POST' action='/API/ProviderEducationsProviderEducations'>
+
+
+ <li><label for='ProviderEducation_id'>  Provider Education</label>
+<select id='ProviderEducation_id'>
+{#ProviderEducation_id.contents}
+        <option value='{id}'> {value} </option>
+{/ProviderEducation_id.contents}
+</select>
+</li>
+
+ 
+
+ <li><label for='ProviderEducationsId'>  Provider Educations Id</label>
+<input type='number' step='1' id='ProviderEducationsId' name='ProviderEducationsId' value='ProviderEducationsId'>
+</li> 
+ 
+
+ <li><label for='createdAt'>  created At</label>
+<input type='date' id='createdAt' name='createdAt' value='createdAt'> 
+</li> 
+ 
+
+ <li><label for='updatedAt'>  updated At</label>
+<input type='date' id='updatedAt' name='updatedAt' value='updatedAt'> 
+</li> 
+ 
+
+<input type='submit'>
+</fieldset>
+</form>

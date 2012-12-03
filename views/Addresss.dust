@@ -1,0 +1,47 @@
+
+
+<fieldset><legend> Addresss </legend>
+
+<form method='POST' action='/API/Addresss'>
+
+
+<input type='hidden'  id='id' name='id' value='id'>
+
+ <li><label for='line1'>  line1</label>
+<textarea id='line1' name='line1'> {line1} </textarea>
+</li>
+ 
+
+ <li><label for='line2'>  line2</label>
+<input type='number' step='1' id='line2' name='line2' value='line2'>
+</li> 
+ 
+
+ <li><label for='zip'>  zip</label>
+<input type='number' step='1' id='zip' name='zip' value='zip'>
+</li> 
+ 
+
+ <li><label for='State_id'>  State</label>
+<select id='State_id'>
+{#State_id.contents}
+        <option value='{id}'> {value} </option>
+{/State_id.contents}
+</select>
+</li>
+
+ 
+
+ <li><label for='County_id'>  County</label>
+<select id='County_id'>
+{#County_id.contents}
+        <option value='{id}'> {value} </option>
+{/County_id.contents}
+</select>
+</li>
+
+ 
+
+<input type='submit'>
+</fieldset>
+</form>

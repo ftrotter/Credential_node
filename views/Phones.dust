@@ -1,0 +1,17 @@
+
+
+<fieldset><legend> Phones </legend>
+
+<form method='POST' action='/API/Phones'>
+
+
+<input type='hidden'  id='id' name='id' value='id'>
+
+ <li><label for='phone'>  phone</label>
+<input type='number' step='1' id='phone' name='phone' value='phone'>
+</li> 
+ 
+
+<input type='submit'>
+</fieldset>
+</form>

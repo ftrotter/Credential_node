@@ -1,0 +1,227 @@
+
+
+<fieldset><legend> Providers </legend>
+
+<form method='POST' action='/API/Providers'>
+
+
+<input type='hidden'  id='id' name='id' value='id'>
+
+ <li><label for='ProviderStatus_id'>  Provider Status</label>
+<select id='ProviderStatus_id'>
+{#ProviderStatus_id.contents}
+        <option value='{id}'> {value} </option>
+{/ProviderStatus_id.contents}
+</select>
+</li>
+
+ 
+
+ <li><label for='source_name'>  source_name</label>
+<textarea id='source_name' name='source_name'> {source_name} </textarea>
+</li>
+ 
+
+ <li><label for='first_name'>  first_name</label>
+<textarea id='first_name' name='first_name'> {first_name} </textarea>
+</li>
+ 
+
+ <li><label for='last_name'>  last_name</label>
+<textarea id='last_name' name='last_name'> {last_name} </textarea>
+</li>
+ 
+
+ <li><label for='middle_name'>  middle_name</label>
+<textarea id='middle_name' name='middle_name'> {middle_name} </textarea>
+</li>
+ 
+
+ <li><label for='suffix'>  suffix</label>
+<textarea id='suffix' name='suffix'> {suffix} </textarea>
+</li>
+ 
+
+ <li><label for='maiden_name'>  maiden_name</label>
+<textarea id='maiden_name' name='maiden_name'> {maiden_name} </textarea>
+</li>
+ 
+
+ <li><label for='birth_date'>  birth_date</label>
+<input type='date' id='birth_date' name='birth_date' value='birth_date'> 
+</li> 
+ 
+
+ <li><label for='Birth_Address_id'>  Birth_ Address</label>
+<select id='Birth_Address_id'>
+{#Birth_Address_id.contents}
+        <option value='{id}'> {value} </option>
+{/Birth_Address_id.contents}
+</select>
+</li>
+
+ 
+
+ <li><label for='Gender_id'>  Gender</label>
+<select id='Gender_id'>
+{#Gender_id.contents}
+        <option value='{id}'> {value} </option>
+{/Gender_id.contents}
+</select>
+</li>
+
+ 
+
+<li><label for='pcp'>  pcp</label>
+<input type='checkbox' step='1' id='pcp' name='pcp' value='pcp'>
+</li> 
+
+
+<li><label for='specialist'>  specialist</label>
+<input type='checkbox' step='1' id='specialist' name='specialist' value='specialist'>
+</li> 
+
+
+ <li><label for='Home_Phone_id'>  Home_ Phone</label>
+<select id='Home_Phone_id'>
+{#Home_Phone_id.contents}
+        <option value='{id}'> {value} </option>
+{/Home_Phone_id.contents}
+</select>
+</li>
+
+ 
+
+ <li><label for='Home_Address_id'>  Home_ Address</label>
+<select id='Home_Address_id'>
+{#Home_Address_id.contents}
+        <option value='{id}'> {value} </option>
+{/Home_Address_id.contents}
+</select>
+</li>
+
+ 
+
+ <li><label for='Corr_Phone_id'>  Corr_ Phone</label>
+<select id='Corr_Phone_id'>
+{#Corr_Phone_id.contents}
+        <option value='{id}'> {value} </option>
+{/Corr_Phone_id.contents}
+</select>
+</li>
+
+ 
+
+ <li><label for='Corr_Address_id'>  Corr_ Address</label>
+<select id='Corr_Address_id'>
+{#Corr_Address_id.contents}
+        <option value='{id}'> {value} </option>
+{/Corr_Address_id.contents}
+</select>
+</li>
+
+ 
+
+ <li><label for='Corr_Fax_Phone_id'>  Corr_ Fax_ Phone</label>
+<select id='Corr_Fax_Phone_id'>
+{#Corr_Fax_Phone_id.contents}
+        <option value='{id}'> {value} </option>
+{/Corr_Fax_Phone_id.contents}
+</select>
+</li>
+
+ 
+
+ <li><label for='Corr_email'>  Corr_email</label>
+<textarea id='Corr_email' name='Corr_email'> {Corr_email} </textarea>
+</li>
+ 
+
+ <li><label for='comment'>  comment</label>
+<textarea id='comment' name='comment'> {comment} </textarea>
+</li>
+ 
+
+ <li><label for='signature_date'>  signature_date</label>
+<input type='date' id='signature_date' name='signature_date' value='signature_date'> 
+</li> 
+ 
+
+ <li><label for='dea_number'>  dea_number</label>
+<textarea id='dea_number' name='dea_number'> {dea_number} </textarea>
+</li>
+ 
+
+ <li><label for='dea_issue_date'>  dea_issue_date</label>
+<input type='date' id='dea_issue_date' name='dea_issue_date' value='dea_issue_date'> 
+</li> 
+ 
+
+ <li><label for='dea_exp_date'>  dea_exp_date</label>
+<input type='date' id='dea_exp_date' name='dea_exp_date' value='dea_exp_date'> 
+</li> 
+ 
+
+ <li><label for='dps_number'>  dps_number</label>
+<input type='number' step='1' id='dps_number' name='dps_number' value='dps_number'>
+</li> 
+ 
+
+ <li><label for='dps_issue_date'>  dps_issue_date</label>
+<input type='date' id='dps_issue_date' name='dps_issue_date' value='dps_issue_date'> 
+</li> 
+ 
+
+ <li><label for='dps_exp_date'>  dps_exp_date</label>
+<input type='date' id='dps_exp_date' name='dps_exp_date' value='dps_exp_date'> 
+</li> 
+ 
+
+ <li><label for='upin'>  upin</label>
+<input type='number' step='1' id='upin' name='upin' value='upin'>
+</li> 
+ 
+
+ <li><label for='npi'>  npi</label>
+<input type='number' step='1' id='npi' name='npi' value='npi'>
+</li> 
+ 
+
+ <li><label for='pan'>  pan</label>
+<input type='number' step='1' id='pan' name='pan' value='pan'>
+</li> 
+ 
+
+ <li><label for='provider_number'>  provider_number</label>
+<input type='number' step='1' id='provider_number' name='provider_number' value='provider_number'>
+</li> 
+ 
+
+ <li><label for='group_npi'>  group_npi</label>
+<input type='number' step='1' id='group_npi' name='group_npi' value='group_npi'>
+</li> 
+ 
+
+ <li><label for='medicare_number'>  medicare_number</label>
+<input type='number' step='1' id='medicare_number' name='medicare_number' value='medicare_number'>
+</li> 
+ 
+
+ <li><label for='medicare_tpi_number'>  medicare_tpi_number</label>
+<input type='number' step='1' id='medicare_tpi_number' name='medicare_tpi_number' value='medicare_tpi_number'>
+</li> 
+ 
+
+ <li><label for='ecfmg_number'>  ecfmg_number</label>
+<input type='number' step='1' id='ecfmg_number' name='ecfmg_number' value='ecfmg_number'>
+</li> 
+ 
+
+ <li><label for='ecfmg_issue_date'>  ecfmg_issue_date</label>
+<input type='date' id='ecfmg_issue_date' name='ecfmg_issue_date' value='ecfmg_issue_date'> 
+</li> 
+ 
+
+<input type='submit'>
+</fieldset>
+</form>

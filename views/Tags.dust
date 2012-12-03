@@ -1,0 +1,17 @@
+
+
+<fieldset><legend> Tags </legend>
+
+<form method='POST' action='/API/Tags'>
+
+
+<input type='hidden'  id='id' name='id' value='id'>
+
+ <li><label for='tag'>  tag</label>
+<textarea id='tag' name='tag'> {tag} </textarea>
+</li>
+ 
+
+<input type='submit'>
+</fieldset>
+</form>

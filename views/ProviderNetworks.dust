@@ -1,0 +1,52 @@
+
+
+<fieldset><legend> Provider Networks </legend>
+
+<form method='POST' action='/API/ProviderNetworks'>
+
+
+<input type='hidden'  id='id' name='id' value='id'>
+
+ <li><label for='Provider_id'>  Provider</label>
+<select id='Provider_id'>
+{#Provider_id.contents}
+        <option value='{id}'> {value} </option>
+{/Provider_id.contents}
+</select>
+</li>
+
+ 
+
+ <li><label for='Network_id'>  Network</label>
+<select id='Network_id'>
+{#Network_id.contents}
+        <option value='{id}'> {value} </option>
+{/Network_id.contents}
+</select>
+</li>
+
+ 
+
+ <li><label for='created_by_User_id'>  created_by_ User</label>
+<select id='created_by_User_id'>
+{#created_by_User_id.contents}
+        <option value='{id}'> {value} </option>
+{/created_by_User_id.contents}
+</select>
+</li>
+
+ 
+
+ <li><label for='modified_by_User_id'>  modified_by_ User</label>
+<select id='modified_by_User_id'>
+{#modified_by_User_id.contents}
+        <option value='{id}'> {value} </option>
+{/modified_by_User_id.contents}
+</select>
+</li>
+
+ 
+
+<input type='submit'>
+</fieldset>
+</form>

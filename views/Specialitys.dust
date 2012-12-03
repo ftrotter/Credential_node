@@ -1,0 +1,32 @@
+
+
+<fieldset><legend> Specialitys </legend>
+
+<form method='POST' action='/API/Specialitys'>
+
+
+<input type='hidden'  id='id' name='id' value='id'>
+
+ <li><label for='name'>  name</label>
+<textarea id='name' name='name'> {name} </textarea>
+</li>
+ 
+
+ <li><label for='abbreviation'>  abbreviation</label>
+<textarea id='abbreviation' name='abbreviation'> {abbreviation} </textarea>
+</li>
+ 
+
+ <li><label for='taxonomy_id'>  taxonomy</label>
+<select id='taxonomy_id'>
+{#taxonomy_id.contents}
+        <option value='{id}'> {value} </option>
+{/taxonomy_id.contents}
+</select>
+</li>
+
+ 
+
+<input type='submit'>
+</fieldset>
+</form>

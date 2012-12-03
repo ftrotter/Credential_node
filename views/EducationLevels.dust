@@ -1,0 +1,17 @@
+
+
+<fieldset><legend> Education Levels </legend>
+
+<form method='POST' action='/API/EducationLevels'>
+
+
+<input type='hidden'  id='id' name='id' value='id'>
+
+ <li><label for='level'>  level</label>
+<textarea id='level' name='level'> {level} </textarea>
+</li>
+ 
+
+<input type='submit'>
+</fieldset>
+</form>

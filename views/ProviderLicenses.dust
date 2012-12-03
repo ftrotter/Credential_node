@@ -1,0 +1,77 @@
+
+
+<fieldset><legend> Provider Licenses </legend>
+
+<form method='POST' action='/API/ProviderLicenses'>
+
+
+<input type='hidden'  id='id' name='id' value='id'>
+
+ <li><label for='Provider_id'>  Provider</label>
+<select id='Provider_id'>
+{#Provider_id.contents}
+        <option value='{id}'> {value} </option>
+{/Provider_id.contents}
+</select>
+</li>
+
+ 
+
+ <li><label for='ProviderSpeciality_id'>  Provider Speciality</label>
+<select id='ProviderSpeciality_id'>
+{#ProviderSpeciality_id.contents}
+        <option value='{id}'> {value} </option>
+{/ProviderSpeciality_id.contents}
+</select>
+</li>
+
+ 
+
+ <li><label for='license_number'>  license_number</label>
+<textarea id='license_number' name='license_number'> {license_number} </textarea>
+</li>
+ 
+
+ <li><label for='State_id'>  State</label>
+<select id='State_id'>
+{#State_id.contents}
+        <option value='{id}'> {value} </option>
+{/State_id.contents}
+</select>
+</li>
+
+ 
+
+ <li><label for='issue_date'>  issue_date</label>
+<input type='date' id='issue_date' name='issue_date' value='issue_date'> 
+</li> 
+ 
+
+ <li><label for='expiration_date'>  expiration_date</label>
+<input type='date' id='expiration_date' name='expiration_date' value='expiration_date'> 
+</li> 
+ 
+
+ <li><label for='created_by_User_id'>  created_by_ User</label>
+<select id='created_by_User_id'>
+{#created_by_User_id.contents}
+        <option value='{id}'> {value} </option>
+{/created_by_User_id.contents}
+</select>
+</li>
+
+ 
+
+ <li><label for='modified_by_User_id'>  modified_by_ User</label>
+<select id='modified_by_User_id'>
+{#modified_by_User_id.contents}
+        <option value='{id}'> {value} </option>
+{/modified_by_User_id.contents}
+</select>
+</li>
+
+ 
+
+<input type='submit'>
+</fieldset>
+</form>

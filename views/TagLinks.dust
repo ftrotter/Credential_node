@@ -1,0 +1,47 @@
+
+
+<fieldset><legend> Tag Links </legend>
+
+<form method='POST' action='/API/TagLinks'>
+
+
+<input type='hidden'  id='id' name='id' value='id'>
+
+ <li><label for='table'>  table</label>
+<textarea id='table' name='table'> {table} </textarea>
+</li>
+ 
+
+ <li><label for='row_id'>  row</label>
+<select id='row_id'>
+{#row_id.contents}
+        <option value='{id}'> {value} </option>
+{/row_id.contents}
+</select>
+</li>
+
+ 
+
+ <li><label for='Tag_id'>  Tag</label>
+<select id='Tag_id'>
+{#Tag_id.contents}
+        <option value='{id}'> {value} </option>
+{/Tag_id.contents}
+</select>
+</li>
+
+ 
+
+ <li><label for='User_id'>  User</label>
+<select id='User_id'>
+{#User_id.contents}
+        <option value='{id}'> {value} </option>
+{/User_id.contents}
+</select>
+</li>
+
+ 
+
+<input type='submit'>
+</fieldset>
+</form>
