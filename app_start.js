@@ -184,3 +184,30 @@ function buildCache(ORM,select_name){
 ///////////////////////////////////////////////////
 
 
+// change the dirname to where you keep your Sequelize files
+var orm_dir = __dirname + '/orm/';
+
+//init yaml
+require('js-yaml');
+
+config = require(__dirname + '/config.yaml');
+
+
+//initialize Seq
+Sequelize = require('sequelize');
+sequelize = new Sequelize(config.database,config.user,config.password);
+
+app.get('/', ensureAuthenticated, function(req, res){
+        //Create a new object here...
+        res.render('list'); //which loads the index
+});
+
+//initialize Twilio
+var TwilioCapability = require('twilio-client-token');
+var tc = new TwilioCapability(config.TwilioAccountSid, config.TwilioAuthToken);
+tc.allowClientOutgoing('someRandomString');
+var TwilioToken = tc.generate();
+
+
+
+
