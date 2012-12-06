@@ -120,61 +120,6 @@ function ensureAuthenticated(req, res, next) {
 	return next(); // we always say yes for now...
 }
 
-var HTMLCacheGLOBAL = {};
-var ModelCacheGLOBAL = {};
-
-function buildCache(ORM,select_name){
-
-        var object_type;
-        var select_html;
-        var selected_col;
-	var data_cache = [];
-//add code for auto-complete detection engine...
-
-        object_type = ORM.name;
-	//if we passed in a select_name, use it, otherwise use the default
-	select_name = has_default(select_name, object_type + "_id");
-        select_html = "<select name='" + select_name + "'>\n";
-
-	console.log("object_type: " + object_type + "\n");
-	console.log("select_name: " + select_name + "\n");
-
-        ORM.findAll().success(function(things) {
-
-                __.each(things,function(a_thing){
-                        //lets determine what the variable
-                        //from the table should be the label for the
-                        //select box...
-                        if(selected_col === undefined){
-                                selected = a_thing.attributes;
-                                __.each(selected,function(key,value){
-                                if(key.indexOf("name") !== -1){
-                                        //then this is my select variable..
-                                                selected_col = key;
-                //                              console.log("inside key" + key);
-                                        }
-                                });
-                        }
-
-                        select_html = select_html               +
-                                        "<option value='"       +
-                                        a_thing.id              +
-                                        "'>"                    +
-                                a_thing[selected_col] + "</option>\n";
-			my_value = a_thing[selected_col];			
-
-			data_cache.push({
-						id: a_thing.id,
-						value: my_value
-					});
-
-                });
-                select_html = select_html + "</select>\n";
-                HTMLCacheGLOBAL[select_name] = select_html;
-		ModelCacheGLOBAL[select_name] = data_cache;
-        });
-}
-
 
 //initialize Twilio
 var TwilioCapability = require('twilio-client-token');
@@ -196,12 +141,11 @@ sequelize = new Sequelize(config.database,config.user,config.password);
 var ORM = require('./orm'); //will look for /orm/index.js
 
 
-
 /////////////////////////////////////////////////////
 /////////////////// SECTION Routes /////////////////
 ///////////////////////////////////////////////////
 
-/*
+
 
 app.get('/', ensureAuthenticated, function(req, res){
         //Create a new object here...
@@ -213,20 +157,24 @@ app.post('/API/Providers/', ensureAuthenticated, function(req, res){
         res.send('Providers saved <a href='/'>home</a>');
 });
 
-app.get('/API/Providers/', ensureAuthenticated, function(req, res){
-        //Create a new object here...
+
+
+function getORM(my_ORM,ORM_Type,req,res){
 
         var to_template = {};
 
-        to_template.Type = 'Providers';
+        to_template.Type = ORM_Type;
 
-        console.log(ORM.Providers.rawAttributes);
+	my_Model = ORM[ORM_Type];
 
-        __.each(ORM.Providers.rawAttributes,function(this_value,this_key){
-                if( typeof ModelCacheGLOBAL[this_key] != 'undefined'){
+
+        console.log(my_ORM.rawAttributes);
+
+        __.each(my_ORM.rawAttributes,function(this_value,this_key){
+                if( typeof ORM.ModelCache[this_key] != 'undefined'){
                         //then this is a select box
                         //or something...
-                        this_contents = ModelCacheGLOBAL[this_key];
+                        this_contents = ORM.ModelCache[this_key];
                         to_template[this_key] = {
                                 is_array: true,
                                 contents: this_contents
@@ -236,24 +184,58 @@ app.get('/API/Providers/', ensureAuthenticated, function(req, res){
                 }
         });
 
-        ORM.Providers.findAll().success(function (instances) {
+        my_Model.findAll().success(function (instances) {
 
-                to_template['instances'] = instances;
+                var new_instances = [];
+                var this_instance_name = '';
+                __.each(instances, function(this_instance){
+                        this_instance_name = '';
+                        __.each(this_instance,function(this_value,this_key){
+                                if(this_key.indexOf('name') !== -1){//then this field is a "name" of some kind..
+                                        this_instance_name = this_instance_name + " " + this_value;
+                                }
+                        });
+                        this_instance.instance_name = this_instance_name;
+                        new_instances.push(this_instance);
+                });
+                to_template['instances'] = new_instances;
 
                 console.log('Just made this bad boy');
                 prettyJSON(to_template);
                 res.render('html',to_template); //which loads views/Providers.dust using Type
 
-
         });
 
+}
+
+app.get('/API/:ORM_Type/', ensureAuthenticated, function(req, res){
+
+	ORM_Type = req.params.ORM_Type;
+	My_ORM = ORM[ORM_Type];
+	getORM(My_ORM,ORM_Type,req,res);
 
 });
 
-app.get('/API/Providers/:id/', ensureAuthenticated, function(req, res){
-        //LOAD SEQUELIZE HERE using id!!
-        res.render('Providers'); //which loads views/Providers.dust
+app.get('/API/:ORM_Type/:id/', ensureAuthenticated, function(req, res){
+	ORM_Type = req.params.ORM_Type;
+	id = parseInt(req.params.id, 10);
+	My_ORM = ORM[ORM_Type];
+	My_ORM.find(id).success(function (LoadedORM){
+		getORM(LoadedORM,ORM_Type,req,res);
+	});
+
+	
+
 });
 
-*/
+//This what makes express into our webserver....
+http.createServer(app).listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
+});
+
+
+
+console.log("At the end..");
+
+
 

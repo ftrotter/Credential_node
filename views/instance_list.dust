@@ -3,7 +3,10 @@
 
         <ul>
         {#instances}
-                <li> <a href='/API/{Type}/{id}'> {instance_label} </a>
+                <li> <a href='/API/{Type}/{id}'>
+		{instance_name}		
+	
+		  </a>
         {:else}
         No {Type} Yet!
         {/instances}

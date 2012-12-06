@@ -2,6 +2,7 @@
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('Phones', {
     id: { type: Sequelize.INTEGER  ,primaryKey: true },
+    phone_name: { type: Sequelize.STRING },
     phone: { type: Sequelize.INTEGER }
   },
 	{freezeTableName: true}
