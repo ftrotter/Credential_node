@@ -1,8 +1,8 @@
 
 
-<fieldset><legend> Boards </legend>
+<fieldset><legend> Boards_backup </legend>
 
-<form method='POST' action='/API/Boards/'>
+<form method='POST' action='/API/Boards_backup'>
 
 
 <input type='hidden'  id='id' name='id' value='{id}'>
@@ -52,7 +52,7 @@
 </li>
  
 
-<input type='submit' value='Save'>
+<input type='submit'>
 </fieldset>
 </form>
 

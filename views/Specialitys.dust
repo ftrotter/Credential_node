@@ -2,32 +2,45 @@
 
 <fieldset><legend> Specialitys </legend>
 
-<form method='POST' action='/API/Specialitys'>
+<form method='POST' action='/API/Specialitys/'>
 
 
-<input type='hidden'  id='id' name='id' value='{id}'>
+ <li><label for='SpecialtyID'>  Specialty I D</label>
+<input type='number' step='1' id='SpecialtyID' name='SpecialtyID' value='{SpecialtyID}'>
+</li> 
+ 
 
- <li><label for='name'>  name</label>
-<textarea id='name' name='name'> {name} </textarea>
+ <li><label for='SpecialtyAbbreviation'>  Specialty Abbreviation</label>
+<textarea id='SpecialtyAbbreviation' name='SpecialtyAbbreviation'> {SpecialtyAbbreviation} </textarea>
 </li>
  
 
- <li><label for='abbreviation'>  abbreviation</label>
-<textarea id='abbreviation' name='abbreviation'> {abbreviation} </textarea>
+ <li><label for='SpecialtyName'>  Specialty Name</label>
+<textarea id='SpecialtyName' name='SpecialtyName'> {SpecialtyName} </textarea>
 </li>
  
 
- <li><label for='taxonomy_id'>  taxonomy</label>
-<select id='taxonomy_id'>
-{#taxonomy_id.contents}
-        <option value='{id}'> {value} </option>
-{/taxonomy_id.contents}
-</select>
-</li>
-
+ <li><label for='DateCreated'>  Date Created</label>
+<input type='date' id='DateCreated' name='DateCreated' value='{DateCreated}'> 
+</li> 
  
 
-<input type='submit'>
+ <li><label for='CreatedBy'>  Created By</label>
+<textarea id='CreatedBy' name='CreatedBy'> {CreatedBy} </textarea>
+</li>
+ 
+
+ <li><label for='DateModified'>  Date Modified</label>
+<input type='date' id='DateModified' name='DateModified' value='{DateModified}'> 
+</li> 
+ 
+
+ <li><label for='ModifiedBy'>  Modified By</label>
+<textarea id='ModifiedBy' name='ModifiedBy'> {ModifiedBy} </textarea>
+</li>
+ 
+
+<input type='submit' value='Save'>
 </fieldset>
 </form>
 

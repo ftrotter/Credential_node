@@ -63,10 +63,10 @@
         <div class="span3">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-              <li class="nav-header">{Type} List</li>
+              <li class="nav-header">Data Management</li>
 
 <!-- loading instance_list.dust -->
-{>"views/instance_list.dust"/}
+{>"views/list.dust"/}
 <!-- done loading --> 
 
             </ul>
@@ -74,12 +74,11 @@
         </div><!--/span-->
         <div class="span9">
           <div class="hero-unit">
-            <h1>{Type}</h1>
+            <h1>Data Management</h1>
           </div>
           <div class="row-fluid">
             <div class="span9">
 
-{>"views/{Type}.dust"/}
 
             </div><!--/span-->
           </div><!--/row-->

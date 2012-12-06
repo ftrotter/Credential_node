@@ -2,7 +2,7 @@
 
 <fieldset><legend> Addresss </legend>
 
-<form method='POST' action='/API/Addresss'>
+<form method='POST' action='/API/Addresss/'>
 
 
 <input type='hidden'  id='id' name='id' value='{id}'>
@@ -47,7 +47,7 @@
 
  
 
-<input type='submit'>
+<input type='submit' value='Save'>
 </fieldset>
 </form>
 

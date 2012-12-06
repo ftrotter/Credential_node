@@ -28,11 +28,8 @@
 
 	$orm_index_js = "
 
-var HTMLCache = {};
 var ModelCache = {};
 
-exports.HTMLCache = HTMLCache;
-exports.ModelCache = ModelCache;
 
 //Javascript does not allow for default arguments into functions
 //this handles the problem for functions
@@ -90,7 +87,7 @@ function buildCache(ORM,select_name){
 
                 });
                 select_html = select_html + \"</select>\\n\";
-                HTMLCache[select_name] = select_html;
+                //HTMLCache[select_name] = select_html;
                 ModelCache[select_name] = data_cache;
         });
 }
@@ -102,6 +99,7 @@ exports.buildCache = buildCache;
 ";
 
 	$routes_js = "";
+	$links_js = '';
 
 	$other_tables = array(); //lets make sure we have references where we need them...
 	
@@ -147,13 +145,12 @@ module.exports = function(sequelize, DataTypes) {
 
 		$dust_file = "views/$object_name.dust";
 
-		$links_js = '';
 
 		$dust_html = "
 
 <fieldset><legend> $object_label </legend>
 
-<form method='POST' action='/API/$object_name'>
+<form method='POST' action='/API/$object_name/'>
 
 ";
 
@@ -246,7 +243,7 @@ buildCache($other_table"."s,'$col_name');
 			
 				$dust_html .= "
  <li><label for='$col_name'>  $col_label</label>
-<textarea id='$col_name' name='$col_name'> {"."$col_name"."} </textarea>
+<textarea id='$col_name' name='$col_name'>{"."$col_name"."}</textarea>
 </li>
  
 ";
@@ -259,7 +256,7 @@ buildCache($other_table"."s,'$col_name');
 				$fixed = true;
 				$dust_html .= "
  <li><label for='$col_name'>  $col_label</label>
-<textarea id='$col_name' name='$col_name'> {"."$col_name"."} </textarea>
+<textarea id='$col_name' name='$col_name'>{"."$col_name"."}</textarea>
 </li>
  
 ";
@@ -415,7 +412,7 @@ app.get('/API/$object_name/:id/', ensureAuthenticated, function(req, res){
 ";
 		//closeout the dust template
 		$dust_html .= "
-<input type='submit'>
+<input type='submit' value='Save'>
 </fieldset>
 </form>
 
@@ -446,8 +443,17 @@ http.createServer(app).listen(app.get('port'), function(){
 	//orm file...
 	$orm_index_js .= "\n\n //OK we have the objects.. Lets do the associations now.... ";
 	$orm_file = "orm/index.js";
+	$orm_index_js .= $links_js;
+
+	$orm_index_js .= "
+
+//Now that we have content... lets export the Caches we built...
+exports.ModelCache = ModelCache;
+
+
+";
+
 	file_put_contents($orm_file,$orm_index_js);
-	file_put_contents($orm_file,$links_js,FILE_APPEND | LOCK_EX);
 
 	foreach($other_tables as $other_table => $from_table){
 

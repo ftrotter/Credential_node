@@ -141,37 +141,28 @@ sequelize = new Sequelize(config.database,config.user,config.password);
 //now that sequelize exists, we can load the full orm...
 var ORM = require('./orm'); //will look for /orm/index.js
 
+prettyJSON(ORM.ModelCache);
 
 /////////////////////////////////////////////////////
 /////////////////// SECTION Routes /////////////////
 ///////////////////////////////////////////////////
 
 
-
-app.get('/', ensureAuthenticated, function(req, res){
-        //Create a new object here...
-        res.render('list'); //which loads the index
-});
-
-app.post('/API/Providers/', ensureAuthenticated, function(req, res){
-        //Save the object after getting the post from the form...
-        res.send('Providers saved <a href='/'>home</a>');
-});
-
-
-
 function getORM(my_ORM,ORM_Type,req,res){
 
         var to_template = {};
 
-        to_template.Type = ORM_Type;
 
+
+        if( typeof my_ORM['selectedValues'] != 'undefined'){
+		//then this a populated ORM
+		to_template = my_ORM['selectedValues'];	
+	}
+
+        to_template.Type = ORM_Type;
 	my_Model = ORM[ORM_Type];
 
-
-        console.log(my_ORM.rawAttributes);
-
-        __.each(my_ORM.rawAttributes,function(this_value,this_key){
+        __.each(my_Model.rawAttributes,function(this_value,this_key){
                 if( typeof ORM.ModelCache[this_key] != 'undefined'){
                         //then this is a select box
                         //or something...
@@ -184,6 +175,9 @@ function getORM(my_ORM,ORM_Type,req,res){
                         //nothing here... wait for any actual values...
                 }
         });
+
+        console.log('Just made this bad boy');
+        //prettyJSON(to_template);
 
         my_Model.findAll().success(function (instances) {
 
@@ -201,8 +195,6 @@ function getORM(my_ORM,ORM_Type,req,res){
                 });
                 to_template['instances'] = new_instances;
 
-                console.log('Just made this bad boy');
-                prettyJSON(to_template);
                 res.render('html',to_template); //which loads views/Providers.dust using Type
 
         });
@@ -225,9 +217,32 @@ app.get('/API/:ORM_Type/:id/', ensureAuthenticated, function(req, res){
 		getORM(LoadedORM,ORM_Type,req,res);
 	});
 
-	
+
+	//prettyJSON(ORM.ModelCache);
 
 });
+
+app.get('/', ensureAuthenticated, function(req, res){
+        //Create a new object here...
+        res.render('html_list'); //which loads the index
+});
+
+app.post('/API/:ORM_Type/', ensureAuthenticated, function(req, res){
+	ORM_Type = req.params.ORM_Type;
+	My_ORM = ORM[ORM_Type];
+
+	var what_happened = JSON.stringify(req.body, null, "\t");
+	
+
+        //Save the object after getting the post from the form...
+        res.send(ORM_Type + " saved <a href='/'>home</a> <br> OBW here what happened: <br> <pre>"+what_happened+" </pre>");
+});
+
+
+
+
+
+
 
 //This what makes express into our webserver....
 http.createServer(app).listen(app.get('port'), function(){

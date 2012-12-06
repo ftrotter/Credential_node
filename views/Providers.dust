@@ -2,7 +2,7 @@
 
 <fieldset><legend> Providers </legend>
 
-<form method='POST' action='/API/Providers'>
+<form method='POST' action='/API/Providers/'>
 
 
 <input type='hidden'  id='id' name='id' value='{id}'>
@@ -222,7 +222,7 @@
 </li> 
  
 
-<input type='submit'>
+<input type='submit' value='Save'>
 </fieldset>
 </form>
 

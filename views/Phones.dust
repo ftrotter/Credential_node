@@ -2,7 +2,7 @@
 
 <fieldset><legend> Phones </legend>
 
-<form method='POST' action='/API/Phones'>
+<form method='POST' action='/API/Phones/'>
 
 
 <input type='hidden'  id='id' name='id' value='{id}'>
@@ -17,7 +17,7 @@
 </li> 
  
 
-<input type='submit'>
+<input type='submit' value='Save'>
 </fieldset>
 </form>
 

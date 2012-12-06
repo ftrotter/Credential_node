@@ -2,7 +2,7 @@
 
 <fieldset><legend> Notes </legend>
 
-<form method='POST' action='/API/Notes'>
+<form method='POST' action='/API/Notes/'>
 
 
 <input type='hidden'  id='id' name='id' value='{id}'>
@@ -37,7 +37,7 @@
 
  
 
-<input type='submit'>
+<input type='submit' value='Save'>
 </fieldset>
 </form>
 

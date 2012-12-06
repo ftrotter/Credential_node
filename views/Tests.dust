@@ -2,7 +2,7 @@
 
 <fieldset><legend> Tests </legend>
 
-<form method='POST' action='/API/Tests'>
+<form method='POST' action='/API/Tests/'>
 
 
  <li><label for='first_name'>  first_name</label>
@@ -56,7 +56,7 @@
 </li> 
  
 
-<input type='submit'>
+<input type='submit' value='Save'>
 </fieldset>
 </form>
 

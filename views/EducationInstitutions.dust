@@ -2,18 +2,18 @@
 
 <fieldset><legend> Education Institutions </legend>
 
-<form method='POST' action='/API/EducationInstitutions'>
+<form method='POST' action='/API/EducationInstitutions/'>
 
 
 <input type='hidden'  id='id' name='id' value='{id}'>
 
- <li><label for='name'>  name</label>
-<textarea id='name' name='name'> {name} </textarea>
+ <li><label for='code'>  code</label>
+<textarea id='code' name='code'> {code} </textarea>
 </li>
  
 
- <li><label for='code'>  code</label>
-<textarea id='code' name='code'> {code} </textarea>
+ <li><label for='name'>  name</label>
+<textarea id='name' name='name'> {name} </textarea>
 </li>
  
 
@@ -42,7 +42,7 @@
 
  
 
-<input type='submit'>
+<input type='submit' value='Save'>
 </fieldset>
 </form>
 

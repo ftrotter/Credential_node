@@ -1,7 +1,4 @@
 
-<fieldset><legend> {Type} List </legend>
-
-        <ul>
         {#instances}
                 <li> <a href='/API/{Type}/{id}/'>
 		{instance_name}		
@@ -10,7 +7,5 @@
         {:else}
         No {Type} Yet!
         {/instances}
-        </ul>
 
-</fieldset>
 

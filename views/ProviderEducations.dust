@@ -2,7 +2,7 @@
 
 <fieldset><legend> Provider Educations </legend>
 
-<form method='POST' action='/API/ProviderEducations'>
+<form method='POST' action='/API/ProviderEducations/'>
 
 
 <input type='hidden'  id='id' name='id' value='{id}'>
@@ -67,7 +67,7 @@
 
  
 
-<input type='submit'>
+<input type='submit' value='Save'>
 </fieldset>
 </form>
 

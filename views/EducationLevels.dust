@@ -2,7 +2,7 @@
 
 <fieldset><legend> Education Levels </legend>
 
-<form method='POST' action='/API/EducationLevels'>
+<form method='POST' action='/API/EducationLevels/'>
 
 
 <input type='hidden'  id='id' name='id' value='{id}'>
@@ -12,7 +12,7 @@
 </li>
  
 
-<input type='submit'>
+<input type='submit' value='Save'>
 </fieldset>
 </form>
 

@@ -2,7 +2,7 @@
 
 <fieldset><legend> Provider Carriers </legend>
 
-<form method='POST' action='/API/ProviderCarriers'>
+<form method='POST' action='/API/ProviderCarriers/'>
 
 
 <input type='hidden'  id='id' name='id' value='{id}'>
@@ -47,7 +47,7 @@
 
  
 
-<input type='submit'>
+<input type='submit' value='Save'>
 </fieldset>
 </form>
 

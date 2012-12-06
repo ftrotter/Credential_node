@@ -2,7 +2,7 @@
 
 <fieldset><legend> Tag Links </legend>
 
-<form method='POST' action='/API/TagLinks'>
+<form method='POST' action='/API/TagLinks/'>
 
 
 <input type='hidden'  id='id' name='id' value='{id}'>
@@ -42,7 +42,7 @@
 
  
 
-<input type='submit'>
+<input type='submit' value='Save'>
 </fieldset>
 </form>
 
