@@ -3,30 +3,32 @@
 <fieldset><legend> Users </legend>
 
 <form method='POST' action='/API/Users/'>
-
+<table>
 
 <input type='hidden'  id='id' name='id' value='{id}'>
 
- <li><label for='email'>  email</label>
-<textarea id='email' name='email'> {email} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='email'>  email</label>
+</td> <td> <textarea id='email' name='email'>{email}</textarea>
+</td> </tr>
  
 
- <li><label for='first_name'>  first_name</label>
-<textarea id='first_name' name='first_name'> {first_name} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='first_name'>  first_name</label>
+</td> <td> <textarea id='first_name' name='first_name'>{first_name}</textarea>
+</td> </tr>
  
 
- <li><label for='last_name'>  last_name</label>
-<textarea id='last_name' name='last_name'> {last_name} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='last_name'>  last_name</label>
+</td> <td> <textarea id='last_name' name='last_name'>{last_name}</textarea>
+</td> </tr>
  
 
+<tr> <td> </td> <td>
 <input type='submit' value='Save'>
+</td> </tr>
+</table>
 </fieldset>
 </form>
 
 <pre>
-{@contextDump/}
+{! @contextDump/ !}
 </pre>
-

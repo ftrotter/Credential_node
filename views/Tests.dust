@@ -3,64 +3,66 @@
 <fieldset><legend> Tests </legend>
 
 <form method='POST' action='/API/Tests/'>
+<table>
 
-
- <li><label for='first_name'>  first_name</label>
-<textarea id='first_name' name='first_name'> {first_name} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='first_name'>  first_name</label>
+</td> <td> <textarea id='first_name' name='first_name'>{first_name}</textarea>
+</td> </tr>
  
 
- <li><label for='last_name'>  last_name</label>
-<textarea id='last_name' name='last_name'> {last_name} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='last_name'>  last_name</label>
+</td> <td> <textarea id='last_name' name='last_name'>{last_name}</textarea>
+</td> </tr>
  
 
- <li><label for='description'>  description</label>
-<textarea id='description' name='description'> {description} </textarea>
-</li>
+<tr> <td> </td> <td><label for='description'>  description</label>
+</td> <td> <textarea id='description' name='description'>{description}</textarea>
+</td> </tr>
  
 
- <li><label for='somenumber'>  somenumber</label>
-<input type='number' step='1' id='somenumber' name='somenumber' value='{somenumber}'>
-</li> 
+<tr> <td> </td> <td><label for='somenumber'>  somenumber</label>
+</td> <td><input type='number' step='1' id='somenumber' name='somenumber' value='{somenumber}'>
+</td> </tr></li> 
  
 
- <li><label for='somefloat'>  somefloat</label>
-<input type='number' step='1' id='somefloat' name='somefloat' value='{somefloat}'>
-</li> 
+<tr> <td> </td> <td><label for='somefloat'>  somefloat</label>
+</td> <td><input type='number' step='1' id='somefloat' name='somefloat' value='{somefloat}'>
+</td> </tr>
 
-<li><label for='normaltrue'>  normaltrue</label>
-<input type='checkbox' step='1' id='normaltrue' name='normaltrue' value='{normaltrue}'>
-</li> 
-
-
-<li><label for='confusingtrue'>  confusingtrue</label>
-<input type='checkbox' step='1' id='confusingtrue' name='confusingtrue' value='{confusingtrue}'>
-</li> 
+<tr> <td> </td> <td><label for='normaltrue'>  normaltrue</label>
+</td> <td><input type='checkbox' step='1' id='normaltrue' name='normaltrue' value='{normaltrue}'>
+</td> </tr></li> 
 
 
- <li><label for='okdate'>  okdate</label>
-<input type='date' id='okdate' name='okdate' value='{okdate}'> 
-</li> 
+<tr> <td> </td> <td><label for='confusingtrue'>  confusingtrue</label>
+</td> <td><input type='checkbox' step='1' id='confusingtrue' name='confusingtrue' value='{confusingtrue}'>
+</td> </tr></li> 
+
+
+<tr> <td> </td> <td><label for='okdate'>  okdate</label>
+</td> <td><input type='date' id='okdate' name='okdate' value='{okdate}'> 
+</td> </tr></li> 
  
 
 <input type='hidden'  id='id' name='id' value='{id}'>
 
- <li><label for='createdAt'>  created At</label>
-<input type='date' id='createdAt' name='createdAt' value='{createdAt}'> 
-</li> 
+<tr> <td> </td> <td><label for='createdAt'>  created At</label>
+</td> <td><input type='date' id='createdAt' name='createdAt' value='{createdAt}'> 
+</td> </tr></li> 
  
 
- <li><label for='updatedAt'>  updated At</label>
-<input type='date' id='updatedAt' name='updatedAt' value='{updatedAt}'> 
-</li> 
+<tr> <td> </td> <td><label for='updatedAt'>  updated At</label>
+</td> <td><input type='date' id='updatedAt' name='updatedAt' value='{updatedAt}'> 
+</td> </tr></li> 
  
 
+<tr> <td> </td> <td>
 <input type='submit' value='Save'>
+</td> </tr>
+</table>
 </fieldset>
 </form>
 
 <pre>
-{@contextDump/}
+{! @contextDump/ !}
 </pre>
-

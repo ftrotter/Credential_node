@@ -3,20 +3,22 @@
 <fieldset><legend> rows </legend>
 
 <form method='POST' action='/API/rows/'>
-
+<table>
 
 <input type='hidden'  id='id' name='id' value='{id}'>
 
- <li><label for='notused'>  notused</label>
-<input type='number' step='1' id='notused' name='notused' value='{notused}'>
-</li> 
+<tr> <td> </td> <td><label for='notused'>  notused</label>
+</td> <td><input type='number' step='1' id='notused' name='notused' value='{notused}'>
+</td> </tr></li> 
  
 
+<tr> <td> </td> <td>
 <input type='submit' value='Save'>
+</td> </tr>
+</table>
 </fieldset>
 </form>
 
 <pre>
-{@contextDump/}
+{! @contextDump/ !}
 </pre>
-

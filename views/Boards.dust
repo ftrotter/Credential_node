@@ -3,60 +3,83 @@
 <fieldset><legend> Boards </legend>
 
 <form method='POST' action='/API/Boards/'>
-
+<table>
 
 <input type='hidden'  id='id' name='id' value='{id}'>
 
- <li><label for='name'>  name</label>
-<textarea id='name' name='name'> {name} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='name'>  name</label>
+</td> <td> <textarea id='name' name='name'>{name}</textarea>
+</td> </tr>
  
 
- <li><label for='Address_id'>  Address</label>
-<select id='Address_id'>
+<tr> <td>  
+ </td> <td> <label for='Address_id'><a href='/API/Addresss/'>  Address </a></label>  
+</td> <td>
+<select id='Address_id' name='Address_id'>
+        <option value='0'> None </option>
 {#Address_id.contents}
         <option value='{id}'> {value} </option>
 {/Address_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='Phone_id'>  Phone</label>
-<select id='Phone_id'>
+<tr> <td> <br> <div align="center">
+    <input type="button" id="call" value="Start Call"/>
+    <input type="button" id="hangup" value="Disconnect Call" style="display:none;"/>
+    <div id="status">
+        Offline
+    </div>
+</div> 
+ </td> <td> <label for='Phone_id'><a href='/API/Phones/'>  Phone </a></label>  
+</td> <td>
+<select id='Phone_id' name='Phone_id'>
+        <option value='0'> None </option>
 {#Phone_id.contents}
         <option value='{id}'> {value} </option>
 {/Phone_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='Fax_Phone_id'>  Fax_ Phone</label>
-<select id='Fax_Phone_id'>
+<tr> <td> <br> <div align="center">
+    <input type="button" id="call" value="Start Call"/>
+    <input type="button" id="hangup" value="Disconnect Call" style="display:none;"/>
+    <div id="status">
+        Offline
+    </div>
+</div> 
+ </td> <td> <label for='Fax_Phone_id'><a href='/API/Phones/'>  Fax_ Phone </a></label>  
+</td> <td>
+<select id='Fax_Phone_id' name='Fax_Phone_id'>
+        <option value='0'> None </option>
 {#Fax_Phone_id.contents}
         <option value='{id}'> {value} </option>
 {/Fax_Phone_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='website'>  website</label>
-<textarea id='website' name='website'> {website} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='website'>  website</label>
+</td> <td> <textarea id='website' name='website'>{website}</textarea>
+</td> </tr>
  
 
- <li><label for='email'>  email</label>
-<textarea id='email' name='email'> {email} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='email'>  email</label>
+</td> <td> <textarea id='email' name='email'>{email}</textarea>
+</td> </tr>
  
 
+<tr> <td> </td> <td>
 <input type='submit' value='Save'>
+</td> </tr>
+</table>
 </fieldset>
 </form>
 
 <pre>
-{@contextDump/}
+{! @contextDump/ !}
 </pre>
-

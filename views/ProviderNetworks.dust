@@ -3,55 +3,69 @@
 <fieldset><legend> Provider Networks </legend>
 
 <form method='POST' action='/API/ProviderNetworks/'>
-
+<table>
 
 <input type='hidden'  id='id' name='id' value='{id}'>
 
- <li><label for='Provider_id'>  Provider</label>
-<select id='Provider_id'>
+<tr> <td>  
+ </td> <td> <label for='Provider_id'><a href='/API/Providers/'>  Provider </a></label>  
+</td> <td>
+<select id='Provider_id' name='Provider_id'>
+        <option value='0'> None </option>
 {#Provider_id.contents}
         <option value='{id}'> {value} </option>
 {/Provider_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='Network_id'>  Network</label>
-<select id='Network_id'>
+<tr> <td>  
+ </td> <td> <label for='Network_id'><a href='/API/Networks/'>  Network </a></label>  
+</td> <td>
+<select id='Network_id' name='Network_id'>
+        <option value='0'> None </option>
 {#Network_id.contents}
         <option value='{id}'> {value} </option>
 {/Network_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='created_by_User_id'>  created_by_ User</label>
-<select id='created_by_User_id'>
+<tr> <td>  
+ </td> <td> <label for='created_by_User_id'><a href='/API/Users/'>  created_by_ User </a></label>  
+</td> <td>
+<select id='created_by_User_id' name='created_by_User_id'>
+        <option value='0'> None </option>
 {#created_by_User_id.contents}
         <option value='{id}'> {value} </option>
 {/created_by_User_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='modified_by_User_id'>  modified_by_ User</label>
-<select id='modified_by_User_id'>
+<tr> <td>  
+ </td> <td> <label for='modified_by_User_id'><a href='/API/Users/'>  modified_by_ User </a></label>  
+</td> <td>
+<select id='modified_by_User_id' name='modified_by_User_id'>
+        <option value='0'> None </option>
 {#modified_by_User_id.contents}
         <option value='{id}'> {value} </option>
 {/modified_by_User_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
+<tr> <td> </td> <td>
 <input type='submit' value='Save'>
+</td> </tr>
+</table>
 </fieldset>
 </form>
 
 <pre>
-{@contextDump/}
+{! @contextDump/ !}
 </pre>
-

@@ -3,75 +3,92 @@
 <fieldset><legend> Provider Educations </legend>
 
 <form method='POST' action='/API/ProviderEducations/'>
-
+<table>
 
 <input type='hidden'  id='id' name='id' value='{id}'>
 
- <li><label for='Provider_id'>  Provider</label>
-<select id='Provider_id'>
+<tr> <td>  
+ </td> <td> <label for='Provider_id'><a href='/API/Providers/'>  Provider </a></label>  
+</td> <td>
+<select id='Provider_id' name='Provider_id'>
+        <option value='0'> None </option>
 {#Provider_id.contents}
         <option value='{id}'> {value} </option>
 {/Provider_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='ProviderSpeciality_id'>  Provider Speciality</label>
-<select id='ProviderSpeciality_id'>
+<tr> <td>  
+ </td> <td> <label for='ProviderSpeciality_id'><a href='/API/ProviderSpecialitys/'>  Provider Speciality </a></label>  
+</td> <td>
+<select id='ProviderSpeciality_id' name='ProviderSpeciality_id'>
+        <option value='0'> None </option>
 {#ProviderSpeciality_id.contents}
         <option value='{id}'> {value} </option>
 {/ProviderSpeciality_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='attendance_period_start'>  attendance_period_start</label>
-<input type='date' id='attendance_period_start' name='attendance_period_start' value='{attendance_period_start}'> 
-</li> 
+<tr> <td> </td> <td><label for='attendance_period_start'>  attendance_period_start</label>
+</td> <td><input type='date' id='attendance_period_start' name='attendance_period_start' value='{attendance_period_start}'> 
+</td> </tr></li> 
  
 
- <li><label for='attendance_period_end'>  attendance_period_end</label>
-<input type='date' id='attendance_period_end' name='attendance_period_end' value='{attendance_period_end}'> 
-</li> 
+<tr> <td> </td> <td><label for='attendance_period_end'>  attendance_period_end</label>
+</td> <td><input type='date' id='attendance_period_end' name='attendance_period_end' value='{attendance_period_end}'> 
+</td> </tr></li> 
  
 
- <li><label for='EducationInstitution_id'>  Education Institution</label>
-<select id='EducationInstitution_id'>
+<tr> <td>  
+ </td> <td> <label for='EducationInstitution_id'><a href='/API/EducationInstitutions/'>  Education Institution </a></label>  
+</td> <td>
+<select id='EducationInstitution_id' name='EducationInstitution_id'>
+        <option value='0'> None </option>
 {#EducationInstitution_id.contents}
         <option value='{id}'> {value} </option>
 {/EducationInstitution_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='created_by_User_id'>  created_by_ User</label>
-<select id='created_by_User_id'>
+<tr> <td>  
+ </td> <td> <label for='created_by_User_id'><a href='/API/Users/'>  created_by_ User </a></label>  
+</td> <td>
+<select id='created_by_User_id' name='created_by_User_id'>
+        <option value='0'> None </option>
 {#created_by_User_id.contents}
         <option value='{id}'> {value} </option>
 {/created_by_User_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='modified_by_User_id'>  modified_by_ User</label>
-<select id='modified_by_User_id'>
+<tr> <td>  
+ </td> <td> <label for='modified_by_User_id'><a href='/API/Users/'>  modified_by_ User </a></label>  
+</td> <td>
+<select id='modified_by_User_id' name='modified_by_User_id'>
+        <option value='0'> None </option>
 {#modified_by_User_id.contents}
         <option value='{id}'> {value} </option>
 {/modified_by_User_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
+<tr> <td> </td> <td>
 <input type='submit' value='Save'>
+</td> </tr>
+</table>
 </fieldset>
 </form>
 
 <pre>
-{@contextDump/}
+{! @contextDump/ !}
 </pre>
-

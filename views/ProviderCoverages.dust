@@ -3,120 +3,134 @@
 <fieldset><legend> Provider Coverages </legend>
 
 <form method='POST' action='/API/ProviderCoverages/'>
-
+<table>
 
 <input type='hidden'  id='id' name='id' value='{id}'>
 
- <li><label for='Provider_id'>  Provider</label>
-<select id='Provider_id'>
+<tr> <td>  
+ </td> <td> <label for='Provider_id'><a href='/API/Providers/'>  Provider </a></label>  
+</td> <td>
+<select id='Provider_id' name='Provider_id'>
+        <option value='0'> None </option>
 {#Provider_id.contents}
         <option value='{id}'> {value} </option>
 {/Provider_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
-<li><label for='is_self_insured'>  is_self_insured</label>
-<input type='checkbox' step='1' id='is_self_insured' name='is_self_insured' value='{is_self_insured}'>
-</li> 
+<tr> <td> </td> <td><label for='is_self_insured'>  is_self_insured</label>
+</td> <td><input type='checkbox' step='1' id='is_self_insured' name='is_self_insured' value='{is_self_insured}'>
+</td> </tr></li> 
 
 
- <li><label for='name'>  name</label>
-<textarea id='name' name='name'> {name} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='name'>  name</label>
+</td> <td> <textarea id='name' name='name'>{name}</textarea>
+</td> </tr>
  
 
- <li><label for='street'>  street</label>
-<textarea id='street' name='street'> {street} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='street'>  street</label>
+</td> <td> <textarea id='street' name='street'>{street}</textarea>
+</td> </tr>
  
 
- <li><label for='ste_apt_etc'>  ste_apt_etc</label>
-<textarea id='ste_apt_etc' name='ste_apt_etc'> {ste_apt_etc} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='ste_apt_etc'>  ste_apt_etc</label>
+</td> <td> <textarea id='ste_apt_etc' name='ste_apt_etc'>{ste_apt_etc}</textarea>
+</td> </tr>
  
 
- <li><label for='city'>  city</label>
-<textarea id='city' name='city'> {city} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='city'>  city</label>
+</td> <td> <textarea id='city' name='city'>{city}</textarea>
+</td> </tr>
  
 
- <li><label for='State_id'>  State</label>
-<select id='State_id'>
+<tr> <td>  
+ </td> <td> <label for='State_id'><a href='/API/States/'>  State </a></label>  
+</td> <td>
+<select id='State_id' name='State_id'>
+        <option value='0'> None </option>
 {#State_id.contents}
         <option value='{id}'> {value} </option>
 {/State_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='zip_code'>  zip_code</label>
-<input type='number' step='1' id='zip_code' name='zip_code' value='{zip_code}'>
-</li> 
+<tr> <td> </td> <td><label for='zip_code'>  zip_code</label>
+</td> <td><input type='number' step='1' id='zip_code' name='zip_code' value='{zip_code}'>
+</td> </tr></li> 
  
 
- <li><label for='phone'>  phone</label>
-<input type='number' step='1' id='phone' name='phone' value='{phone}'>
-</li> 
+<tr> <td> </td> <td><label for='phone'>  phone</label>
+</td> <td><input type='number' step='1' id='phone' name='phone' value='{phone}'>
+</td> </tr></li> 
  
 
- <li><label for='policy_number'>  policy_number</label>
-<input type='number' step='1' id='policy_number' name='policy_number' value='{policy_number}'>
-</li> 
+<tr> <td> </td> <td><label for='policy_number'>  policy_number</label>
+</td> <td><input type='number' step='1' id='policy_number' name='policy_number' value='{policy_number}'>
+</td> </tr></li> 
  
 
- <li><label for='effective_date'>  effective_date</label>
-<input type='date' id='effective_date' name='effective_date' value='{effective_date}'> 
-</li> 
+<tr> <td> </td> <td><label for='effective_date'>  effective_date</label>
+</td> <td><input type='date' id='effective_date' name='effective_date' value='{effective_date}'> 
+</td> </tr></li> 
  
 
- <li><label for='expiration_date'>  expiration_date</label>
-<input type='date' id='expiration_date' name='expiration_date' value='{expiration_date}'> 
-</li> 
+<tr> <td> </td> <td><label for='expiration_date'>  expiration_date</label>
+</td> <td><input type='date' id='expiration_date' name='expiration_date' value='{expiration_date}'> 
+</td> </tr></li> 
  
 
- <li><label for='occurrence_limit'>  occurrence_limit</label>
-<input type='number' step='1' id='occurrence_limit' name='occurrence_limit' value='{occurrence_limit}'>
-</li> 
+<tr> <td> </td> <td><label for='occurrence_limit'>  occurrence_limit</label>
+</td> <td><input type='number' step='1' id='occurrence_limit' name='occurrence_limit' value='{occurrence_limit}'>
+</td> </tr></li> 
  
 
- <li><label for='aggregate_limit'>  aggregate_limit</label>
-<input type='number' step='1' id='aggregate_limit' name='aggregate_limit' value='{aggregate_limit}'>
-</li> 
+<tr> <td> </td> <td><label for='aggregate_limit'>  aggregate_limit</label>
+</td> <td><input type='number' step='1' id='aggregate_limit' name='aggregate_limit' value='{aggregate_limit}'>
+</td> </tr></li> 
  
 
- <li><label for='coverage'>  coverage</label>
-<textarea id='coverage' name='coverage'> {coverage} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='coverage'>  coverage</label>
+</td> <td> <textarea id='coverage' name='coverage'>{coverage}</textarea>
+</td> </tr>
  
 
- <li><label for='created_by_User_id'>  created_by_ User</label>
-<select id='created_by_User_id'>
+<tr> <td>  
+ </td> <td> <label for='created_by_User_id'><a href='/API/Users/'>  created_by_ User </a></label>  
+</td> <td>
+<select id='created_by_User_id' name='created_by_User_id'>
+        <option value='0'> None </option>
 {#created_by_User_id.contents}
         <option value='{id}'> {value} </option>
 {/created_by_User_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='modified_by_User_id'>  modified_by_ User</label>
-<select id='modified_by_User_id'>
+<tr> <td>  
+ </td> <td> <label for='modified_by_User_id'><a href='/API/Users/'>  modified_by_ User </a></label>  
+</td> <td>
+<select id='modified_by_User_id' name='modified_by_User_id'>
+        <option value='0'> None </option>
 {#modified_by_User_id.contents}
         <option value='{id}'> {value} </option>
 {/modified_by_User_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
+<tr> <td> </td> <td>
 <input type='submit' value='Save'>
+</td> </tr>
+</table>
 </fieldset>
 </form>
 
 <pre>
-{@contextDump/}
+{! @contextDump/ !}
 </pre>
-

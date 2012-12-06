@@ -3,48 +3,50 @@
 <fieldset><legend> Specialitys </legend>
 
 <form method='POST' action='/API/Specialitys/'>
+<table>
 
-
- <li><label for='SpecialtyID'>  Specialty I D</label>
-<input type='number' step='1' id='SpecialtyID' name='SpecialtyID' value='{SpecialtyID}'>
-</li> 
+<tr> <td> </td> <td><label for='SpecialtyID'>  Specialty I D</label>
+</td> <td><input type='number' step='1' id='SpecialtyID' name='SpecialtyID' value='{SpecialtyID}'>
+</td> </tr></li> 
  
 
- <li><label for='SpecialtyAbbreviation'>  Specialty Abbreviation</label>
-<textarea id='SpecialtyAbbreviation' name='SpecialtyAbbreviation'> {SpecialtyAbbreviation} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='SpecialtyAbbreviation'>  Specialty Abbreviation</label>
+</td> <td> <textarea id='SpecialtyAbbreviation' name='SpecialtyAbbreviation'>{SpecialtyAbbreviation}</textarea>
+</td> </tr>
  
 
- <li><label for='SpecialtyName'>  Specialty Name</label>
-<textarea id='SpecialtyName' name='SpecialtyName'> {SpecialtyName} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='SpecialtyName'>  Specialty Name</label>
+</td> <td> <textarea id='SpecialtyName' name='SpecialtyName'>{SpecialtyName}</textarea>
+</td> </tr>
  
 
- <li><label for='DateCreated'>  Date Created</label>
-<input type='date' id='DateCreated' name='DateCreated' value='{DateCreated}'> 
-</li> 
+<tr> <td> </td> <td><label for='DateCreated'>  Date Created</label>
+</td> <td><input type='date' id='DateCreated' name='DateCreated' value='{DateCreated}'> 
+</td> </tr></li> 
  
 
- <li><label for='CreatedBy'>  Created By</label>
-<textarea id='CreatedBy' name='CreatedBy'> {CreatedBy} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='CreatedBy'>  Created By</label>
+</td> <td> <textarea id='CreatedBy' name='CreatedBy'>{CreatedBy}</textarea>
+</td> </tr>
  
 
- <li><label for='DateModified'>  Date Modified</label>
-<input type='date' id='DateModified' name='DateModified' value='{DateModified}'> 
-</li> 
+<tr> <td> </td> <td><label for='DateModified'>  Date Modified</label>
+</td> <td><input type='date' id='DateModified' name='DateModified' value='{DateModified}'> 
+</td> </tr></li> 
  
 
- <li><label for='ModifiedBy'>  Modified By</label>
-<textarea id='ModifiedBy' name='ModifiedBy'> {ModifiedBy} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='ModifiedBy'>  Modified By</label>
+</td> <td> <textarea id='ModifiedBy' name='ModifiedBy'>{ModifiedBy}</textarea>
+</td> </tr>
  
 
+<tr> <td> </td> <td>
 <input type='submit' value='Save'>
+</td> </tr>
+</table>
 </fieldset>
 </form>
 
 <pre>
-{@contextDump/}
+{! @contextDump/ !}
 </pre>
-

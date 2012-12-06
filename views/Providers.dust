@@ -3,230 +3,274 @@
 <fieldset><legend> Providers </legend>
 
 <form method='POST' action='/API/Providers/'>
-
+<table>
 
 <input type='hidden'  id='id' name='id' value='{id}'>
 
- <li><label for='ProviderStatus_id'>  Provider Status</label>
-<select id='ProviderStatus_id'>
+<tr> <td>  
+ </td> <td> <label for='ProviderStatus_id'><a href='/API/ProviderStatuss/'>  Provider Status </a></label>  
+</td> <td>
+<select id='ProviderStatus_id' name='ProviderStatus_id'>
+        <option value='0'> None </option>
 {#ProviderStatus_id.contents}
         <option value='{id}'> {value} </option>
 {/ProviderStatus_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='last_name'>  last_name</label>
-<textarea id='last_name' name='last_name'> {last_name} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='last_name'>  last_name</label>
+</td> <td> <textarea id='last_name' name='last_name'>{last_name}</textarea>
+</td> </tr>
  
 
- <li><label for='first_name'>  first_name</label>
-<textarea id='first_name' name='first_name'> {first_name} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='first_name'>  first_name</label>
+</td> <td> <textarea id='first_name' name='first_name'>{first_name}</textarea>
+</td> </tr>
  
 
- <li><label for='middle_name'>  middle_name</label>
-<textarea id='middle_name' name='middle_name'> {middle_name} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='middle_name'>  middle_name</label>
+</td> <td> <textarea id='middle_name' name='middle_name'>{middle_name}</textarea>
+</td> </tr>
  
 
- <li><label for='suffix'>  suffix</label>
-<textarea id='suffix' name='suffix'> {suffix} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='suffix'>  suffix</label>
+</td> <td> <textarea id='suffix' name='suffix'>{suffix}</textarea>
+</td> </tr>
  
 
- <li><label for='maiden_name'>  maiden_name</label>
-<textarea id='maiden_name' name='maiden_name'> {maiden_name} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='maiden_name'>  maiden_name</label>
+</td> <td> <textarea id='maiden_name' name='maiden_name'>{maiden_name}</textarea>
+</td> </tr>
  
 
- <li><label for='source_name'>  source_name</label>
-<textarea id='source_name' name='source_name'> {source_name} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='source_name'>  source_name</label>
+</td> <td> <textarea id='source_name' name='source_name'>{source_name}</textarea>
+</td> </tr>
  
 
- <li><label for='birth_date'>  birth_date</label>
-<input type='date' id='birth_date' name='birth_date' value='{birth_date}'> 
-</li> 
+<tr> <td> </td> <td><label for='birth_date'>  birth_date</label>
+</td> <td><input type='date' id='birth_date' name='birth_date' value='{birth_date}'> 
+</td> </tr></li> 
  
 
- <li><label for='Birth_Address_id'>  Birth_ Address</label>
-<select id='Birth_Address_id'>
+<tr> <td>  
+ </td> <td> <label for='Birth_Address_id'><a href='/API/Addresss/'>  Birth_ Address </a></label>  
+</td> <td>
+<select id='Birth_Address_id' name='Birth_Address_id'>
+        <option value='0'> None </option>
 {#Birth_Address_id.contents}
         <option value='{id}'> {value} </option>
 {/Birth_Address_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='Gender_id'>  Gender</label>
-<select id='Gender_id'>
+<tr> <td>  
+ </td> <td> <label for='Gender_id'><a href='/API/Genders/'>  Gender </a></label>  
+</td> <td>
+<select id='Gender_id' name='Gender_id'>
+        <option value='0'> None </option>
 {#Gender_id.contents}
         <option value='{id}'> {value} </option>
 {/Gender_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
-<li><label for='pcp'>  pcp</label>
-<input type='checkbox' step='1' id='pcp' name='pcp' value='{pcp}'>
-</li> 
+<tr> <td> </td> <td><label for='pcp'>  pcp</label>
+</td> <td><input type='checkbox' step='1' id='pcp' name='pcp' value='{pcp}'>
+</td> </tr></li> 
 
 
-<li><label for='specialist'>  specialist</label>
-<input type='checkbox' step='1' id='specialist' name='specialist' value='{specialist}'>
-</li> 
+<tr> <td> </td> <td><label for='specialist'>  specialist</label>
+</td> <td><input type='checkbox' step='1' id='specialist' name='specialist' value='{specialist}'>
+</td> </tr></li> 
 
 
- <li><label for='Home_Phone_id'>  Home_ Phone</label>
-<select id='Home_Phone_id'>
+<tr> <td> <br> <div align="center">
+    <input type="button" id="call" value="Start Call"/>
+    <input type="button" id="hangup" value="Disconnect Call" style="display:none;"/>
+    <div id="status">
+        Offline
+    </div>
+</div> 
+ </td> <td> <label for='Home_Phone_id'><a href='/API/Phones/'>  Home_ Phone </a></label>  
+</td> <td>
+<select id='Home_Phone_id' name='Home_Phone_id'>
+        <option value='0'> None </option>
 {#Home_Phone_id.contents}
         <option value='{id}'> {value} </option>
 {/Home_Phone_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='Home_Address_id'>  Home_ Address</label>
-<select id='Home_Address_id'>
+<tr> <td>  
+ </td> <td> <label for='Home_Address_id'><a href='/API/Addresss/'>  Home_ Address </a></label>  
+</td> <td>
+<select id='Home_Address_id' name='Home_Address_id'>
+        <option value='0'> None </option>
 {#Home_Address_id.contents}
         <option value='{id}'> {value} </option>
 {/Home_Address_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='Corr_Phone_id'>  Corr_ Phone</label>
-<select id='Corr_Phone_id'>
+<tr> <td> <br> <div align="center">
+    <input type="button" id="call" value="Start Call"/>
+    <input type="button" id="hangup" value="Disconnect Call" style="display:none;"/>
+    <div id="status">
+        Offline
+    </div>
+</div> 
+ </td> <td> <label for='Corr_Phone_id'><a href='/API/Phones/'>  Corr_ Phone </a></label>  
+</td> <td>
+<select id='Corr_Phone_id' name='Corr_Phone_id'>
+        <option value='0'> None </option>
 {#Corr_Phone_id.contents}
         <option value='{id}'> {value} </option>
 {/Corr_Phone_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='Corr_Address_id'>  Corr_ Address</label>
-<select id='Corr_Address_id'>
+<tr> <td>  
+ </td> <td> <label for='Corr_Address_id'><a href='/API/Addresss/'>  Corr_ Address </a></label>  
+</td> <td>
+<select id='Corr_Address_id' name='Corr_Address_id'>
+        <option value='0'> None </option>
 {#Corr_Address_id.contents}
         <option value='{id}'> {value} </option>
 {/Corr_Address_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='Corr_Fax_Phone_id'>  Corr_ Fax_ Phone</label>
-<select id='Corr_Fax_Phone_id'>
+<tr> <td> <br> <div align="center">
+    <input type="button" id="call" value="Start Call"/>
+    <input type="button" id="hangup" value="Disconnect Call" style="display:none;"/>
+    <div id="status">
+        Offline
+    </div>
+</div> 
+ </td> <td> <label for='Corr_Fax_Phone_id'><a href='/API/Phones/'>  Corr_ Fax_ Phone </a></label>  
+</td> <td>
+<select id='Corr_Fax_Phone_id' name='Corr_Fax_Phone_id'>
+        <option value='0'> None </option>
 {#Corr_Fax_Phone_id.contents}
         <option value='{id}'> {value} </option>
 {/Corr_Fax_Phone_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='Corr_email'>  Corr_email</label>
-<textarea id='Corr_email' name='Corr_email'> {Corr_email} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='Corr_email'>  Corr_email</label>
+</td> <td> <textarea id='Corr_email' name='Corr_email'>{Corr_email}</textarea>
+</td> </tr>
  
 
- <li><label for='comment'>  comment</label>
-<textarea id='comment' name='comment'> {comment} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='comment'>  comment</label>
+</td> <td> <textarea id='comment' name='comment'>{comment}</textarea>
+</td> </tr>
  
 
- <li><label for='signature_date'>  signature_date</label>
-<input type='date' id='signature_date' name='signature_date' value='{signature_date}'> 
-</li> 
+<tr> <td> </td> <td><label for='signature_date'>  signature_date</label>
+</td> <td><input type='date' id='signature_date' name='signature_date' value='{signature_date}'> 
+</td> </tr></li> 
  
 
- <li><label for='dea_number'>  dea_number</label>
-<textarea id='dea_number' name='dea_number'> {dea_number} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='dea_number'>  dea_number</label>
+</td> <td> <textarea id='dea_number' name='dea_number'>{dea_number}</textarea>
+</td> </tr>
  
 
- <li><label for='dea_issue_date'>  dea_issue_date</label>
-<input type='date' id='dea_issue_date' name='dea_issue_date' value='{dea_issue_date}'> 
-</li> 
+<tr> <td> </td> <td><label for='dea_issue_date'>  dea_issue_date</label>
+</td> <td><input type='date' id='dea_issue_date' name='dea_issue_date' value='{dea_issue_date}'> 
+</td> </tr></li> 
  
 
- <li><label for='dea_exp_date'>  dea_exp_date</label>
-<input type='date' id='dea_exp_date' name='dea_exp_date' value='{dea_exp_date}'> 
-</li> 
+<tr> <td> </td> <td><label for='dea_exp_date'>  dea_exp_date</label>
+</td> <td><input type='date' id='dea_exp_date' name='dea_exp_date' value='{dea_exp_date}'> 
+</td> </tr></li> 
  
 
- <li><label for='dps_number'>  dps_number</label>
-<input type='number' step='1' id='dps_number' name='dps_number' value='{dps_number}'>
-</li> 
+<tr> <td> </td> <td><label for='dps_number'>  dps_number</label>
+</td> <td><input type='number' step='1' id='dps_number' name='dps_number' value='{dps_number}'>
+</td> </tr></li> 
  
 
- <li><label for='dps_issue_date'>  dps_issue_date</label>
-<input type='date' id='dps_issue_date' name='dps_issue_date' value='{dps_issue_date}'> 
-</li> 
+<tr> <td> </td> <td><label for='dps_issue_date'>  dps_issue_date</label>
+</td> <td><input type='date' id='dps_issue_date' name='dps_issue_date' value='{dps_issue_date}'> 
+</td> </tr></li> 
  
 
- <li><label for='dps_exp_date'>  dps_exp_date</label>
-<input type='date' id='dps_exp_date' name='dps_exp_date' value='{dps_exp_date}'> 
-</li> 
+<tr> <td> </td> <td><label for='dps_exp_date'>  dps_exp_date</label>
+</td> <td><input type='date' id='dps_exp_date' name='dps_exp_date' value='{dps_exp_date}'> 
+</td> </tr></li> 
  
 
- <li><label for='upin'>  upin</label>
-<input type='number' step='1' id='upin' name='upin' value='{upin}'>
-</li> 
+<tr> <td> </td> <td><label for='upin'>  upin</label>
+</td> <td><input type='number' step='1' id='upin' name='upin' value='{upin}'>
+</td> </tr></li> 
  
 
- <li><label for='npi'>  npi</label>
-<input type='number' step='1' id='npi' name='npi' value='{npi}'>
-</li> 
+<tr> <td> </td> <td><label for='npi'>  npi</label>
+</td> <td><input type='number' step='1' id='npi' name='npi' value='{npi}'>
+</td> </tr></li> 
  
 
- <li><label for='pan'>  pan</label>
-<input type='number' step='1' id='pan' name='pan' value='{pan}'>
-</li> 
+<tr> <td> </td> <td><label for='pan'>  pan</label>
+</td> <td><input type='number' step='1' id='pan' name='pan' value='{pan}'>
+</td> </tr></li> 
  
 
- <li><label for='provider_number'>  provider_number</label>
-<input type='number' step='1' id='provider_number' name='provider_number' value='{provider_number}'>
-</li> 
+<tr> <td> </td> <td><label for='provider_number'>  provider_number</label>
+</td> <td><input type='number' step='1' id='provider_number' name='provider_number' value='{provider_number}'>
+</td> </tr></li> 
  
 
- <li><label for='group_npi'>  group_npi</label>
-<input type='number' step='1' id='group_npi' name='group_npi' value='{group_npi}'>
-</li> 
+<tr> <td> </td> <td><label for='group_npi'>  group_npi</label>
+</td> <td><input type='number' step='1' id='group_npi' name='group_npi' value='{group_npi}'>
+</td> </tr></li> 
  
 
- <li><label for='medicare_number'>  medicare_number</label>
-<input type='number' step='1' id='medicare_number' name='medicare_number' value='{medicare_number}'>
-</li> 
+<tr> <td> </td> <td><label for='medicare_number'>  medicare_number</label>
+</td> <td><input type='number' step='1' id='medicare_number' name='medicare_number' value='{medicare_number}'>
+</td> </tr></li> 
  
 
- <li><label for='medicare_tpi_number'>  medicare_tpi_number</label>
-<input type='number' step='1' id='medicare_tpi_number' name='medicare_tpi_number' value='{medicare_tpi_number}'>
-</li> 
+<tr> <td> </td> <td><label for='medicare_tpi_number'>  medicare_tpi_number</label>
+</td> <td><input type='number' step='1' id='medicare_tpi_number' name='medicare_tpi_number' value='{medicare_tpi_number}'>
+</td> </tr></li> 
  
 
- <li><label for='ecfmg_number'>  ecfmg_number</label>
-<input type='number' step='1' id='ecfmg_number' name='ecfmg_number' value='{ecfmg_number}'>
-</li> 
+<tr> <td> </td> <td><label for='ecfmg_number'>  ecfmg_number</label>
+</td> <td><input type='number' step='1' id='ecfmg_number' name='ecfmg_number' value='{ecfmg_number}'>
+</td> </tr></li> 
  
 
- <li><label for='ecfmg_issue_date'>  ecfmg_issue_date</label>
-<input type='date' id='ecfmg_issue_date' name='ecfmg_issue_date' value='{ecfmg_issue_date}'> 
-</li> 
+<tr> <td> </td> <td><label for='ecfmg_issue_date'>  ecfmg_issue_date</label>
+</td> <td><input type='date' id='ecfmg_issue_date' name='ecfmg_issue_date' value='{ecfmg_issue_date}'> 
+</td> </tr></li> 
  
 
+<tr> <td> </td> <td>
 <input type='submit' value='Save'>
+</td> </tr>
+</table>
 </fieldset>
 </form>
 
 <pre>
-{@contextDump/}
+{! @contextDump/ !}
 </pre>
-

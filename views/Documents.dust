@@ -1,0 +1,85 @@
+
+
+<fieldset><legend> Documents </legend>
+
+<form method='POST' action='/API/Documents/'>
+<table>
+
+<input type='hidden'  id='id' name='id' value='{id}'>
+
+<tr> <td>  
+ </td> <td> <label for='Provider_id'><a href='/API/Providers/'>  Provider </a></label>  
+</td> <td>
+<select id='Provider_id' name='Provider_id'>
+        <option value='0'> None </option>
+{#Provider_id.contents}
+        <option value='{id}'> {value} </option>
+{/Provider_id.contents}
+</select>
+</td> </tr>
+
+ 
+
+<tr> <td>  
+ </td> <td> <label for='DocumentType_id'><a href='/API/DocumentTypes/'>  Document Type </a></label>  
+</td> <td>
+<select id='DocumentType_id' name='DocumentType_id'>
+        <option value='0'> None </option>
+{#DocumentType_id.contents}
+        <option value='{id}'> {value} </option>
+{/DocumentType_id.contents}
+</select>
+</td> </tr>
+
+ 
+
+ <tr> <td> </td> <td><label for='documentURL'>  document U R L</label>
+</td> <td> <textarea id='documentURL' name='documentURL'>{documentURL}</textarea>
+</td> </tr>
+ 
+
+ <tr> <td> </td> <td><label for='imageURL'>  image U R L</label>
+</td> <td> <textarea id='imageURL' name='imageURL'>{imageURL}</textarea>
+</td> </tr>
+ 
+
+ <tr> <td> </td> <td><label for='container'>  container</label>
+</td> <td> <textarea id='container' name='container'>{container}</textarea>
+</td> </tr>
+ 
+
+ <tr> <td> </td> <td><label for='filename'>  filename</label>
+</td> <td> <textarea id='filename' name='filename'>{filename}</textarea>
+</td> </tr>
+ 
+
+ <tr> <td> </td> <td><label for='token'>  token</label>
+</td> <td> <textarea id='token' name='token'>{token}</textarea>
+</td> </tr>
+ 
+
+<tr> <td> </td> <td><label for='expiration_date'>  expiration_date</label>
+</td> <td><input type='date' id='expiration_date' name='expiration_date' value='{expiration_date}'> 
+</td> </tr></li> 
+ 
+
+<tr> <td> </td> <td><label for='createdAt'>  created At</label>
+</td> <td><input type='date' id='createdAt' name='createdAt' value='{createdAt}'> 
+</td> </tr></li> 
+ 
+
+<tr> <td> </td> <td><label for='updatedAt'>  updated At</label>
+</td> <td><input type='date' id='updatedAt' name='updatedAt' value='{updatedAt}'> 
+</td> </tr></li> 
+ 
+
+<tr> <td> </td> <td>
+<input type='submit' value='Save'>
+</td> </tr>
+</table>
+</fieldset>
+</form>
+
+<pre>
+{! @contextDump/ !}
+</pre>

@@ -94,6 +94,16 @@ exports.Countys = Countys;
 var CredentialOrganizations = sequelize.import(__dirname + '/CredentialOrganizations.orm.js');
 exports.CredentialOrganizations = CredentialOrganizations;
 
+//importing DocumentTypes from table cred:DocumentTypes
+var DocumentTypes = sequelize.import(__dirname + '/DocumentTypes.orm.js');
+exports.DocumentTypes = DocumentTypes;
+
+//importing Documents from table cred:Documents
+var Documents = sequelize.import(__dirname + '/Documents.orm.js');
+exports.Documents = Documents;
+// Provider_id looks like an association
+// DocumentType_id looks like an association
+
 //importing EducationInstitutions from table cred:EducationInstitutions
 var EducationInstitutions = sequelize.import(__dirname + '/EducationInstitutions.orm.js');
 exports.EducationInstitutions = EducationInstitutions;
@@ -320,6 +330,30 @@ Phones.hasMany(
 		);
 
 buildCache(Phones,'Fax_Phone_id');
+
+
+//Providers.hasOne(
+Providers.hasMany(
+		Documents,
+		{
+//			as: 		'Provider_id', 
+			foreignKey: 	'Provider_id'
+		}
+		);
+
+buildCache(Providers,'Provider_id');
+
+
+//DocumentTypes.hasOne(
+DocumentTypes.hasMany(
+		Documents,
+		{
+//			as: 		'DocumentType_id', 
+			foreignKey: 	'DocumentType_id'
+		}
+		);
+
+buildCache(DocumentTypes,'DocumentType_id');
 
 
 //Addresss.hasOne(

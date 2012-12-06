@@ -3,130 +3,144 @@
 <fieldset><legend> Provider Hospitals </legend>
 
 <form method='POST' action='/API/ProviderHospitals/'>
-
+<table>
 
 <input type='hidden'  id='id' name='id' value='{id}'>
 
- <li><label for='Provider_id'>  Provider</label>
-<select id='Provider_id'>
+<tr> <td>  
+ </td> <td> <label for='Provider_id'><a href='/API/Providers/'>  Provider </a></label>  
+</td> <td>
+<select id='Provider_id' name='Provider_id'>
+        <option value='0'> None </option>
 {#Provider_id.contents}
         <option value='{id}'> {value} </option>
 {/Provider_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
-<li><label for='is_primary'>  is_primary</label>
-<input type='checkbox' step='1' id='is_primary' name='is_primary' value='{is_primary}'>
-</li> 
+<tr> <td> </td> <td><label for='is_primary'>  is_primary</label>
+</td> <td><input type='checkbox' step='1' id='is_primary' name='is_primary' value='{is_primary}'>
+</td> </tr></li> 
 
 
-<li><label for='has_hospital_privaleges'>  has_hospital_privaleges</label>
-<input type='checkbox' step='1' id='has_hospital_privaleges' name='has_hospital_privaleges' value='{has_hospital_privaleges}'>
-</li> 
+<tr> <td> </td> <td><label for='has_hospital_privaleges'>  has_hospital_privaleges</label>
+</td> <td><input type='checkbox' step='1' id='has_hospital_privaleges' name='has_hospital_privaleges' value='{has_hospital_privaleges}'>
+</td> </tr></li> 
 
 
- <li><label for='Hospital_npi'>  Hospital_npi</label>
-<input type='number' step='1' id='Hospital_npi' name='Hospital_npi' value='{Hospital_npi}'>
-</li> 
+<tr> <td> </td> <td><label for='Hospital_npi'>  Hospital_npi</label>
+</td> <td><input type='number' step='1' id='Hospital_npi' name='Hospital_npi' value='{Hospital_npi}'>
+</td> </tr></li> 
  
 
- <li><label for='name'>  name</label>
-<textarea id='name' name='name'> {name} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='name'>  name</label>
+</td> <td> <textarea id='name' name='name'>{name}</textarea>
+</td> </tr>
  
 
- <li><label for='start_date'>  start_date</label>
-<input type='date' id='start_date' name='start_date' value='{start_date}'> 
-</li> 
+<tr> <td> </td> <td><label for='start_date'>  start_date</label>
+</td> <td><input type='date' id='start_date' name='start_date' value='{start_date}'> 
+</td> </tr></li> 
  
 
- <li><label for='street'>  street</label>
-<textarea id='street' name='street'> {street} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='street'>  street</label>
+</td> <td> <textarea id='street' name='street'>{street}</textarea>
+</td> </tr>
  
 
- <li><label for='ste_apt_etc'>  ste_apt_etc</label>
-<textarea id='ste_apt_etc' name='ste_apt_etc'> {ste_apt_etc} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='ste_apt_etc'>  ste_apt_etc</label>
+</td> <td> <textarea id='ste_apt_etc' name='ste_apt_etc'>{ste_apt_etc}</textarea>
+</td> </tr>
  
 
- <li><label for='city'>  city</label>
-<textarea id='city' name='city'> {city} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='city'>  city</label>
+</td> <td> <textarea id='city' name='city'>{city}</textarea>
+</td> </tr>
  
 
- <li><label for='State_id'>  State</label>
-<select id='State_id'>
+<tr> <td>  
+ </td> <td> <label for='State_id'><a href='/API/States/'>  State </a></label>  
+</td> <td>
+<select id='State_id' name='State_id'>
+        <option value='0'> None </option>
 {#State_id.contents}
         <option value='{id}'> {value} </option>
 {/State_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='zip_code'>  zip_code</label>
-<input type='number' step='1' id='zip_code' name='zip_code' value='{zip_code}'>
-</li> 
+<tr> <td> </td> <td><label for='zip_code'>  zip_code</label>
+</td> <td><input type='number' step='1' id='zip_code' name='zip_code' value='{zip_code}'>
+</td> </tr></li> 
  
 
- <li><label for='phone'>  phone</label>
-<input type='number' step='1' id='phone' name='phone' value='{phone}'>
-</li> 
+<tr> <td> </td> <td><label for='phone'>  phone</label>
+</td> <td><input type='number' step='1' id='phone' name='phone' value='{phone}'>
+</td> </tr></li> 
  
 
- <li><label for='fax'>  fax</label>
-<input type='number' step='1' id='fax' name='fax' value='{fax}'>
-</li> 
+<tr> <td> </td> <td><label for='fax'>  fax</label>
+</td> <td><input type='number' step='1' id='fax' name='fax' value='{fax}'>
+</td> </tr></li> 
  
 
- <li><label for='email_address'>  email_address</label>
-<textarea id='email_address' name='email_address'> {email_address} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='email_address'>  email_address</label>
+</td> <td> <textarea id='email_address' name='email_address'>{email_address}</textarea>
+</td> </tr>
  
 
-<li><label for='is_unrestricted_privileges'>  is_unrestricted_privileges</label>
-<input type='checkbox' step='1' id='is_unrestricted_privileges' name='is_unrestricted_privileges' value='{is_unrestricted_privileges}'>
-</li> 
+<tr> <td> </td> <td><label for='is_unrestricted_privileges'>  is_unrestricted_privileges</label>
+</td> <td><input type='checkbox' step='1' id='is_unrestricted_privileges' name='is_unrestricted_privileges' value='{is_unrestricted_privileges}'>
+</td> </tr></li> 
 
 
- <li><label for='privileges_type'>  privileges_type</label>
-<textarea id='privileges_type' name='privileges_type'> {privileges_type} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='privileges_type'>  privileges_type</label>
+</td> <td> <textarea id='privileges_type' name='privileges_type'>{privileges_type}</textarea>
+</td> </tr>
  
 
-<li><label for='is_privileges_temp'>  is_privileges_temp</label>
-<input type='checkbox' step='1' id='is_privileges_temp' name='is_privileges_temp' value='{is_privileges_temp}'>
-</li> 
+<tr> <td> </td> <td><label for='is_privileges_temp'>  is_privileges_temp</label>
+</td> <td><input type='checkbox' step='1' id='is_privileges_temp' name='is_privileges_temp' value='{is_privileges_temp}'>
+</td> </tr></li> 
 
 
- <li><label for='created_by_User_id'>  created_by_ User</label>
-<select id='created_by_User_id'>
+<tr> <td>  
+ </td> <td> <label for='created_by_User_id'><a href='/API/Users/'>  created_by_ User </a></label>  
+</td> <td>
+<select id='created_by_User_id' name='created_by_User_id'>
+        <option value='0'> None </option>
 {#created_by_User_id.contents}
         <option value='{id}'> {value} </option>
 {/created_by_User_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='modified_by_User_id'>  modified_by_ User</label>
-<select id='modified_by_User_id'>
+<tr> <td>  
+ </td> <td> <label for='modified_by_User_id'><a href='/API/Users/'>  modified_by_ User </a></label>  
+</td> <td>
+<select id='modified_by_User_id' name='modified_by_User_id'>
+        <option value='0'> None </option>
 {#modified_by_User_id.contents}
         <option value='{id}'> {value} </option>
 {/modified_by_User_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
+<tr> <td> </td> <td>
 <input type='submit' value='Save'>
+</td> </tr>
+</table>
 </fieldset>
 </form>
 
 <pre>
-{@contextDump/}
+{! @contextDump/ !}
 </pre>
-

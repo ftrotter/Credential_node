@@ -3,25 +3,27 @@
 <fieldset><legend> States </legend>
 
 <form method='POST' action='/API/States/'>
-
+<table>
 
 <input type='hidden'  id='id' name='id' value='{id}'>
 
- <li><label for='state_name'>  state_name</label>
-<textarea id='state_name' name='state_name'> {state_name} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='state_name'>  state_name</label>
+</td> <td> <textarea id='state_name' name='state_name'>{state_name}</textarea>
+</td> </tr>
  
 
- <li><label for='state_abbr'>  state_abbr</label>
-<textarea id='state_abbr' name='state_abbr'> {state_abbr} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='state_abbr'>  state_abbr</label>
+</td> <td> <textarea id='state_abbr' name='state_abbr'>{state_abbr}</textarea>
+</td> </tr>
  
 
+<tr> <td> </td> <td>
 <input type='submit' value='Save'>
+</td> </tr>
+</table>
 </fieldset>
 </form>
 
 <pre>
-{@contextDump/}
+{! @contextDump/ !}
 </pre>
-

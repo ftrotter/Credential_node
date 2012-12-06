@@ -5,6 +5,33 @@
 	//https://github.com/sdepold/sequelize/blob/master/LICENSE
 
 
+	$table_layout = array(
+		'layout_start' => '<table>',
+		'layout_end' => '</table>',
+		'line_start' => '<tr> <td>',
+		'line_split' => '</td> <td>',
+		'line_end' => '</td> </tr>'
+		);
+
+	$ul_layout = array(
+		'layout_start' => '<ul>',
+		'layout_end' => '</ul>',
+		'line_start' => '<li>',
+		'line_split' => '',
+		'line_end' => '</li>'
+		);
+
+	$my_layout = $table_layout;
+
+	$s = $my_layout['line_start'];
+	$m = $my_layout['line_split'];
+	$e = $my_layout['line_end'];
+
+	$S = $my_layout['layout_start'];
+	$E = $my_layout['layout_end'];
+	
+
+
 	$debug = false;
 
 	$config = yaml_parse_file('config.yaml');
@@ -13,6 +40,16 @@
 	$database = $config['database'];
 	mysql_connect($config['host'],$user,$password);
 	mysql_select_db($database);
+
+
+	include('TwilioPHP/Capability.php');
+//TwilioAccountSid
+//TwilioAuthToken: 
+ 
+$capability = new Services_Twilio_Capability($config['TwilioAccountSid'],$config['TwilioAuthToken']);
+$capability->allowClientOutgoing('KnowingGrin');
+
+$twilio_token = $capability->generateToken();
 
 	$tables_sql = "SHOW TABLES";
 
@@ -144,6 +181,7 @@ module.exports = function(sequelize, DataTypes) {
 		$orm_index_js .= "exports.$object_name = $object_name;\n";
 
 		$dust_file = "views/$object_name.dust";
+		$dust_extended_file = "views/$object_name.extended.dust";
 
 
 		$dust_html = "
@@ -151,7 +189,7 @@ module.exports = function(sequelize, DataTypes) {
 <fieldset><legend> $object_label </legend>
 
 <form method='POST' action='/API/$object_name/'>
-
+$S
 ";
 
 	
@@ -194,15 +232,31 @@ buildCache($other_table"."s,'$col_name');
 
 ";
 
+
+				if(strcmp('phone',strtolower($other_table)) == 0){
+					//then we make special twilio pone magic...
+					$phone_html = '<br> <div align="center">
+    <input type="button" id="call" value="Start Call"/>
+    <input type="button" id="hangup" value="Disconnect Call" style="display:none;"/>
+    <div id="status">
+        Offline
+    </div>
+</div>';	
+				}else{
+					$phone_html = '';
+				}
 					$dust_html .= 
 "
- <li><label for='$col_name'>  $col_label</label>
-<select id='$col_name'>
+$s $phone_html 
+ $m <label for='$col_name'><a href='/API/$other_table"."s/'>  $col_label </a></label>  
+$m
+<select id='$col_name' name='$col_name'>
+        <option value='0'> None </option>
 {#$col_name.contents}
         <option value='{id}'> {value} </option>
 {/$col_name.contents}
 </select>
-</li>
+$e
 
  
 ";
@@ -242,9 +296,9 @@ buildCache($other_table"."s,'$col_name');
 
 			
 				$dust_html .= "
- <li><label for='$col_name'>  $col_label</label>
-<textarea id='$col_name' name='$col_name'>{"."$col_name"."}</textarea>
-</li>
+ $s $m<label for='$col_name'>  $col_label</label>
+$m <textarea id='$col_name' name='$col_name'>{"."$col_name"."}</textarea>
+$e
  
 ";
 
@@ -255,9 +309,9 @@ buildCache($other_table"."s,'$col_name');
 				$JS_ORM .= "$c    $col_name: { type: Sequelize.TEXT }";
 				$fixed = true;
 				$dust_html .= "
- <li><label for='$col_name'>  $col_label</label>
-<textarea id='$col_name' name='$col_name'>{"."$col_name"."}</textarea>
-</li>
+$s $m<label for='$col_name'>  $col_label</label>
+$m <textarea id='$col_name' name='$col_name'>{"."$col_name"."}</textarea>
+$e
  
 ";
 			}
@@ -286,9 +340,9 @@ buildCache($other_table"."s,'$col_name');
 			//then this is an int that just wants to be a number
 
 					$dust_html .= "
- <li><label for='$col_name'>  $col_label</label>
-<input type='number' step='1' id='$col_name' name='$col_name' value='{".$col_name."}'>
-</li> 
+$s $m<label for='$col_name'>  $col_label</label>
+$m<input type='number' step='1' id='$col_name' name='$col_name' value='{".$col_name."}'>
+$e</li> 
  
 ";
 
@@ -303,9 +357,9 @@ buildCache($other_table"."s,'$col_name');
 				$fixed = true;
 
 					$dust_html .= "
- <li><label for='$col_name'>  $col_label</label>
-<input type='date' id='$col_name' name='$col_name' value='{".$col_name."}'> 
-</li> 
+$s $m<label for='$col_name'>  $col_label</label>
+$m<input type='date' id='$col_name' name='$col_name' value='{".$col_name."}'> 
+$e</li> 
  
 ";
 			}
@@ -321,9 +375,9 @@ buildCache($other_table"."s,'$col_name');
 
 
 					$dust_html .= "
-<li><label for='$col_name'>  $col_label</label>
-<input type='checkbox' step='1' id='$col_name' name='$col_name' value='{".$col_name."}'>
-</li> 
+$s $m<label for='$col_name'>  $col_label</label>
+$m<input type='checkbox' step='1' id='$col_name' name='$col_name' value='{".$col_name."}'>
+$e</li> 
 
 ";
 
@@ -333,9 +387,9 @@ buildCache($other_table"."s,'$col_name');
 				$JS_ORM .= "$c    $col_name: { type: Sequelize.FLOAT }";
 				$fixed = true;
 				$dust_html .= "
- <li><label for='$col_name'>  $col_label</label>
-<input type='number' step='1' id='$col_name' name='$col_name' value='{".$col_name."}'>
-</li> 
+$s $m<label for='$col_name'>  $col_label</label>
+$m<input type='number' step='1' id='$col_name' name='$col_name' value='{".$col_name."}'>
+$e
 ";
 			}
 
@@ -412,19 +466,23 @@ app.get('/API/$object_name/:id/', ensureAuthenticated, function(req, res){
 ";
 		//closeout the dust template
 		$dust_html .= "
+$s $m
 <input type='submit' value='Save'>
+$e
+$E
 </fieldset>
 </form>
 
 <pre>
-{@contextDump/}
+{! @contextDump/ !}
 </pre>
-
 ";
 
 		//echo $JS_ORM;
 		file_put_contents($project_file,$JS_ORM);
 		file_put_contents($dust_file,$dust_html);
+		//we do not want to overwrite the extended templates, but they need to exist...
+		touch($dust_extended_file);
 
 	}
 
@@ -469,13 +527,13 @@ exports.ModelCache = ModelCache;
 	}
 
 
-	$index_html = '<ul>';
+	$index_html = $ul_layout['layout_start'];
 	foreach($object_names as $object_name){
 
-		$index_html .= "<li> <a href='/API/$object_name/'>Manage $object_name</a>\n";
+		$index_html .= $ul_layout['line_start'] ." <a href='/API/$object_name/'>Manage $object_name</a>\n" .$ul_layout['line_end'];
 	}
 
-	$index_html .= "</ul>";
+	$index_html .= $ul_layout['layout_end'];
 
 	file_put_contents('views/list.dust',$index_html);
 

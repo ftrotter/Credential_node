@@ -3,100 +3,117 @@
 <fieldset><legend> Provider Specialitys </legend>
 
 <form method='POST' action='/API/ProviderSpecialitys/'>
-
+<table>
 
 <input type='hidden'  id='id' name='id' value='{id}'>
 
- <li><label for='Provider_id'>  Provider</label>
-<select id='Provider_id'>
+<tr> <td>  
+ </td> <td> <label for='Provider_id'><a href='/API/Providers/'>  Provider </a></label>  
+</td> <td>
+<select id='Provider_id' name='Provider_id'>
+        <option value='0'> None </option>
 {#Provider_id.contents}
         <option value='{id}'> {value} </option>
 {/Provider_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
-<li><label for='is_primary'>  is_primary</label>
-<input type='checkbox' step='1' id='is_primary' name='is_primary' value='{is_primary}'>
-</li> 
+<tr> <td> </td> <td><label for='is_primary'>  is_primary</label>
+</td> <td><input type='checkbox' step='1' id='is_primary' name='is_primary' value='{is_primary}'>
+</td> </tr></li> 
 
 
- <li><label for='Speciality_id'>  Speciality</label>
-<select id='Speciality_id'>
+<tr> <td>  
+ </td> <td> <label for='Speciality_id'><a href='/API/Specialitys/'>  Speciality </a></label>  
+</td> <td>
+<select id='Speciality_id' name='Speciality_id'>
+        <option value='0'> None </option>
 {#Speciality_id.contents}
         <option value='{id}'> {value} </option>
 {/Speciality_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='created_by_User_id'>  created_by_ User</label>
-<select id='created_by_User_id'>
+<tr> <td>  
+ </td> <td> <label for='created_by_User_id'><a href='/API/Users/'>  created_by_ User </a></label>  
+</td> <td>
+<select id='created_by_User_id' name='created_by_User_id'>
+        <option value='0'> None </option>
 {#created_by_User_id.contents}
         <option value='{id}'> {value} </option>
 {/created_by_User_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='modified_by_User_id'>  modified_by_ User</label>
-<select id='modified_by_User_id'>
+<tr> <td>  
+ </td> <td> <label for='modified_by_User_id'><a href='/API/Users/'>  modified_by_ User </a></label>  
+</td> <td>
+<select id='modified_by_User_id' name='modified_by_User_id'>
+        <option value='0'> None </option>
 {#modified_by_User_id.contents}
         <option value='{id}'> {value} </option>
 {/modified_by_User_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='Board_id'>  Board</label>
-<select id='Board_id'>
+<tr> <td>  
+ </td> <td> <label for='Board_id'><a href='/API/Boards/'>  Board </a></label>  
+</td> <td>
+<select id='Board_id' name='Board_id'>
+        <option value='0'> None </option>
 {#Board_id.contents}
         <option value='{id}'> {value} </option>
 {/Board_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='initial_cert_date'>  initial_cert_date</label>
-<input type='date' id='initial_cert_date' name='initial_cert_date' value='{initial_cert_date}'> 
-</li> 
+<tr> <td> </td> <td><label for='initial_cert_date'>  initial_cert_date</label>
+</td> <td><input type='date' id='initial_cert_date' name='initial_cert_date' value='{initial_cert_date}'> 
+</td> </tr></li> 
  
 
- <li><label for='recertification_date'>  recertification_date</label>
-<input type='date' id='recertification_date' name='recertification_date' value='{recertification_date}'> 
-</li> 
+<tr> <td> </td> <td><label for='recertification_date'>  recertification_date</label>
+</td> <td><input type='date' id='recertification_date' name='recertification_date' value='{recertification_date}'> 
+</td> </tr></li> 
  
 
- <li><label for='expiration_date'>  expiration_date</label>
-<input type='date' id='expiration_date' name='expiration_date' value='{expiration_date}'> 
-</li> 
+<tr> <td> </td> <td><label for='expiration_date'>  expiration_date</label>
+</td> <td><input type='date' id='expiration_date' name='expiration_date' value='{expiration_date}'> 
+</td> </tr></li> 
  
 
-<li><label for='hmo'>  hmo</label>
-<input type='checkbox' step='1' id='hmo' name='hmo' value='{hmo}'>
-</li> 
+<tr> <td> </td> <td><label for='hmo'>  hmo</label>
+</td> <td><input type='checkbox' step='1' id='hmo' name='hmo' value='{hmo}'>
+</td> </tr></li> 
 
 
-<li><label for='ppo'>  ppo</label>
-<input type='checkbox' step='1' id='ppo' name='ppo' value='{ppo}'>
-</li> 
+<tr> <td> </td> <td><label for='ppo'>  ppo</label>
+</td> <td><input type='checkbox' step='1' id='ppo' name='ppo' value='{ppo}'>
+</td> </tr></li> 
 
 
-<li><label for='pos'>  pos</label>
-<input type='checkbox' step='1' id='pos' name='pos' value='{pos}'>
-</li> 
+<tr> <td> </td> <td><label for='pos'>  pos</label>
+</td> <td><input type='checkbox' step='1' id='pos' name='pos' value='{pos}'>
+</td> </tr></li> 
 
 
+<tr> <td> </td> <td>
 <input type='submit' value='Save'>
+</td> </tr>
+</table>
 </fieldset>
 </form>
 
 <pre>
-{@contextDump/}
+{! @contextDump/ !}
 </pre>
-

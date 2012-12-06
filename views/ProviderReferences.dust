@@ -3,55 +3,66 @@
 <fieldset><legend> Provider References </legend>
 
 <form method='POST' action='/API/ProviderReferences/'>
-
+<table>
 
 <input type='hidden'  id='id' name='id' value='{id}'>
 
- <li><label for='Provider_id'>  Provider</label>
-<select id='Provider_id'>
+<tr> <td>  
+ </td> <td> <label for='Provider_id'><a href='/API/Providers/'>  Provider </a></label>  
+</td> <td>
+<select id='Provider_id' name='Provider_id'>
+        <option value='0'> None </option>
 {#Provider_id.contents}
         <option value='{id}'> {value} </option>
 {/Provider_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='ReferenceNPI'>  Reference N P I</label>
-<input type='number' step='1' id='ReferenceNPI' name='ReferenceNPI' value='{ReferenceNPI}'>
-</li> 
+<tr> <td> </td> <td><label for='ReferenceNPI'>  Reference N P I</label>
+</td> <td><input type='number' step='1' id='ReferenceNPI' name='ReferenceNPI' value='{ReferenceNPI}'>
+</td> </tr></li> 
  
 
- <li><label for='phone'>  phone</label>
-<input type='number' step='1' id='phone' name='phone' value='{phone}'>
-</li> 
+<tr> <td> </td> <td><label for='phone'>  phone</label>
+</td> <td><input type='number' step='1' id='phone' name='phone' value='{phone}'>
+</td> </tr></li> 
  
 
- <li><label for='created_by_User_id'>  created_by_ User</label>
-<select id='created_by_User_id'>
+<tr> <td>  
+ </td> <td> <label for='created_by_User_id'><a href='/API/Users/'>  created_by_ User </a></label>  
+</td> <td>
+<select id='created_by_User_id' name='created_by_User_id'>
+        <option value='0'> None </option>
 {#created_by_User_id.contents}
         <option value='{id}'> {value} </option>
 {/created_by_User_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='modified_by_User_id'>  modified_by_ User</label>
-<select id='modified_by_User_id'>
+<tr> <td>  
+ </td> <td> <label for='modified_by_User_id'><a href='/API/Users/'>  modified_by_ User </a></label>  
+</td> <td>
+<select id='modified_by_User_id' name='modified_by_User_id'>
+        <option value='0'> None </option>
 {#modified_by_User_id.contents}
         <option value='{id}'> {value} </option>
 {/modified_by_User_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
+<tr> <td> </td> <td>
 <input type='submit' value='Save'>
+</td> </tr>
+</table>
 </fieldset>
 </form>
 
 <pre>
-{@contextDump/}
+{! @contextDump/ !}
 </pre>
-

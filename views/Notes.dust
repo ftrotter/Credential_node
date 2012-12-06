@@ -3,45 +3,53 @@
 <fieldset><legend> Notes </legend>
 
 <form method='POST' action='/API/Notes/'>
-
+<table>
 
 <input type='hidden'  id='id' name='id' value='{id}'>
 
- <li><label for='table'>  table</label>
-<textarea id='table' name='table'> {table} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='table'>  table</label>
+</td> <td> <textarea id='table' name='table'>{table}</textarea>
+</td> </tr>
  
 
- <li><label for='row_id'>  row</label>
-<select id='row_id'>
+<tr> <td>  
+ </td> <td> <label for='row_id'><a href='/API/rows/'>  row </a></label>  
+</td> <td>
+<select id='row_id' name='row_id'>
+        <option value='0'> None </option>
 {#row_id.contents}
         <option value='{id}'> {value} </option>
 {/row_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='note'>  note</label>
-<textarea id='note' name='note'> {note} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='note'>  note</label>
+</td> <td> <textarea id='note' name='note'>{note}</textarea>
+</td> </tr>
  
 
- <li><label for='User_id'>  User</label>
-<select id='User_id'>
+<tr> <td>  
+ </td> <td> <label for='User_id'><a href='/API/Users/'>  User </a></label>  
+</td> <td>
+<select id='User_id' name='User_id'>
+        <option value='0'> None </option>
 {#User_id.contents}
         <option value='{id}'> {value} </option>
 {/User_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
+<tr> <td> </td> <td>
 <input type='submit' value='Save'>
+</td> </tr>
+</table>
 </fieldset>
 </form>
 
 <pre>
-{@contextDump/}
+{! @contextDump/ !}
 </pre>
-

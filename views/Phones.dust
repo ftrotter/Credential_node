@@ -3,25 +3,27 @@
 <fieldset><legend> Phones </legend>
 
 <form method='POST' action='/API/Phones/'>
-
+<table>
 
 <input type='hidden'  id='id' name='id' value='{id}'>
 
- <li><label for='phone_name'>  phone_name</label>
-<textarea id='phone_name' name='phone_name'> {phone_name} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='phone_name'>  phone_name</label>
+</td> <td> <textarea id='phone_name' name='phone_name'>{phone_name}</textarea>
+</td> </tr>
  
 
- <li><label for='phone'>  phone</label>
-<input type='number' step='1' id='phone' name='phone' value='{phone}'>
-</li> 
+<tr> <td> </td> <td><label for='phone'>  phone</label>
+</td> <td><input type='number' step='1' id='phone' name='phone' value='{phone}'>
+</td> </tr></li> 
  
 
+<tr> <td> </td> <td>
 <input type='submit' value='Save'>
+</td> </tr>
+</table>
 </fieldset>
 </form>
 
 <pre>
-{@contextDump/}
+{! @contextDump/ !}
 </pre>
-

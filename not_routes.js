@@ -250,6 +250,106 @@ app.get('/API/CredentialOrganizations/:id/', ensureAuthenticated, function(req, 
 
 
 
+app.post('/API/DocumentTypes/', ensureAuthenticated, function(req, res){
+	//Save the object after getting the post from the form...
+	res.send('DocumentTypes saved <a href='/'>home</a>');
+});
+
+app.get('/API/DocumentTypes/', ensureAuthenticated, function(req, res){
+	//Create a new object here...
+
+	var to_template = {};
+
+	to_template.Type = 'DocumentTypes';
+
+	console.log(DocumentTypes.rawAttributes);
+
+	__.each(DocumentTypes.rawAttributes,function(this_value,this_key){
+		if( typeof ModelCacheGLOBAL[this_key] != 'undefined'){
+			//then this is a select box
+			//or something...
+			this_contents = ModelCacheGLOBAL[this_key];
+			to_template[this_key] = {			
+				is_array: true,
+				contents: this_contents
+			};
+		}else{
+			//nothing here... wait for any actual values...
+		}
+	});
+
+        DocumentTypes.findAll().success(function (instances) {
+
+                to_template['instances'] = instances;
+
+                console.log('Just made this bad boy');
+                prettyJSON(to_template);
+                res.render('html',to_template); //which loads views/DocumentTypes.dust using Type
+
+
+        });
+
+
+});
+
+app.get('/API/DocumentTypes/:id/', ensureAuthenticated, function(req, res){
+	//LOAD SEQUELIZE HERE using id!!
+  	res.render('DocumentTypes'); //which loads views/DocumentTypes.dust
+});
+
+
+
+
+app.post('/API/Documents/', ensureAuthenticated, function(req, res){
+	//Save the object after getting the post from the form...
+	res.send('Documents saved <a href='/'>home</a>');
+});
+
+app.get('/API/Documents/', ensureAuthenticated, function(req, res){
+	//Create a new object here...
+
+	var to_template = {};
+
+	to_template.Type = 'Documents';
+
+	console.log(Documents.rawAttributes);
+
+	__.each(Documents.rawAttributes,function(this_value,this_key){
+		if( typeof ModelCacheGLOBAL[this_key] != 'undefined'){
+			//then this is a select box
+			//or something...
+			this_contents = ModelCacheGLOBAL[this_key];
+			to_template[this_key] = {			
+				is_array: true,
+				contents: this_contents
+			};
+		}else{
+			//nothing here... wait for any actual values...
+		}
+	});
+
+        Documents.findAll().success(function (instances) {
+
+                to_template['instances'] = instances;
+
+                console.log('Just made this bad boy');
+                prettyJSON(to_template);
+                res.render('html',to_template); //which loads views/Documents.dust using Type
+
+
+        });
+
+
+});
+
+app.get('/API/Documents/:id/', ensureAuthenticated, function(req, res){
+	//LOAD SEQUELIZE HERE using id!!
+  	res.render('Documents'); //which loads views/Documents.dust
+});
+
+
+
+
 app.post('/API/EducationInstitutions/', ensureAuthenticated, function(req, res){
 	//Save the object after getting the post from the form...
 	res.send('EducationInstitutions saved <a href='/'>home</a>');

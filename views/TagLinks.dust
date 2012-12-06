@@ -3,50 +3,61 @@
 <fieldset><legend> Tag Links </legend>
 
 <form method='POST' action='/API/TagLinks/'>
-
+<table>
 
 <input type='hidden'  id='id' name='id' value='{id}'>
 
- <li><label for='table'>  table</label>
-<textarea id='table' name='table'> {table} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='table'>  table</label>
+</td> <td> <textarea id='table' name='table'>{table}</textarea>
+</td> </tr>
  
 
- <li><label for='row_id'>  row</label>
-<select id='row_id'>
+<tr> <td>  
+ </td> <td> <label for='row_id'><a href='/API/rows/'>  row </a></label>  
+</td> <td>
+<select id='row_id' name='row_id'>
+        <option value='0'> None </option>
 {#row_id.contents}
         <option value='{id}'> {value} </option>
 {/row_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='Tag_id'>  Tag</label>
-<select id='Tag_id'>
+<tr> <td>  
+ </td> <td> <label for='Tag_id'><a href='/API/Tags/'>  Tag </a></label>  
+</td> <td>
+<select id='Tag_id' name='Tag_id'>
+        <option value='0'> None </option>
 {#Tag_id.contents}
         <option value='{id}'> {value} </option>
 {/Tag_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='User_id'>  User</label>
-<select id='User_id'>
+<tr> <td>  
+ </td> <td> <label for='User_id'><a href='/API/Users/'>  User </a></label>  
+</td> <td>
+<select id='User_id' name='User_id'>
+        <option value='0'> None </option>
 {#User_id.contents}
         <option value='{id}'> {value} </option>
 {/User_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
+<tr> <td> </td> <td>
 <input type='submit' value='Save'>
+</td> </tr>
+</table>
 </fieldset>
 </form>
 
 <pre>
-{@contextDump/}
+{! @contextDump/ !}
 </pre>
-

@@ -3,38 +3,43 @@
 <fieldset><legend> Provider Educations Provider Educations </legend>
 
 <form method='POST' action='/API/ProviderEducationsProviderEducations/'>
+<table>
 
-
- <li><label for='ProviderEducation_id'>  Provider Education</label>
-<select id='ProviderEducation_id'>
+<tr> <td>  
+ </td> <td> <label for='ProviderEducation_id'><a href='/API/ProviderEducations/'>  Provider Education </a></label>  
+</td> <td>
+<select id='ProviderEducation_id' name='ProviderEducation_id'>
+        <option value='0'> None </option>
 {#ProviderEducation_id.contents}
         <option value='{id}'> {value} </option>
 {/ProviderEducation_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='ProviderEducationsId'>  Provider Educations Id</label>
-<input type='number' step='1' id='ProviderEducationsId' name='ProviderEducationsId' value='{ProviderEducationsId}'>
-</li> 
+<tr> <td> </td> <td><label for='ProviderEducationsId'>  Provider Educations Id</label>
+</td> <td><input type='number' step='1' id='ProviderEducationsId' name='ProviderEducationsId' value='{ProviderEducationsId}'>
+</td> </tr></li> 
  
 
- <li><label for='createdAt'>  created At</label>
-<input type='date' id='createdAt' name='createdAt' value='{createdAt}'> 
-</li> 
+<tr> <td> </td> <td><label for='createdAt'>  created At</label>
+</td> <td><input type='date' id='createdAt' name='createdAt' value='{createdAt}'> 
+</td> </tr></li> 
  
 
- <li><label for='updatedAt'>  updated At</label>
-<input type='date' id='updatedAt' name='updatedAt' value='{updatedAt}'> 
-</li> 
+<tr> <td> </td> <td><label for='updatedAt'>  updated At</label>
+</td> <td><input type='date' id='updatedAt' name='updatedAt' value='{updatedAt}'> 
+</td> </tr></li> 
  
 
+<tr> <td> </td> <td>
 <input type='submit' value='Save'>
+</td> </tr>
+</table>
 </fieldset>
 </form>
 
 <pre>
-{@contextDump/}
+{! @contextDump/ !}
 </pre>
-

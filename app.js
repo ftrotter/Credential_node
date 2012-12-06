@@ -195,10 +195,25 @@ function getORM(my_ORM,ORM_Type,req,res){
                 });
                 to_template['instances'] = new_instances;
 
-                res.render('html',to_template); //which loads views/Providers.dust using Type
+		alwaysLoadDocs(to_template,req,res);
+                //res.render('html',to_template); //which loads views/{Type}.dust 
 
         });
 
+}
+
+
+
+function alwaysLoadDocs(to_template,req,res){
+	//no matter what, lets load all of the documents...
+	
+        ORM.Documents.findAll().success(function (all_documents) {
+
+		to_template['Documents'] = all_documents;
+	
+		res.render('html',to_template); //which loads the html container...
+
+	});
 }
 
 app.get('/API/:ORM_Type/', ensureAuthenticated, function(req, res){
@@ -238,10 +253,32 @@ app.post('/API/:ORM_Type/', ensureAuthenticated, function(req, res){
         res.send(ORM_Type + " saved <a href='/'>home</a> <br> OBW here what happened: <br> <pre>"+what_happened+" </pre>");
 });
 
+app.post('/DocumentNotification/',ensureAuthenticated, function(req, res){
+	
+	//lets see what we get...
+	var result = JSON.parse(req.body.transloadit);
+
+	prettyJSON(result);
 
 
+	var thumb_url = result.results.thumb[0].ssl_url;
+	var doc_url = result.results[':original'][0].ssl_url;
+
+	ORM.Documents.create({
+		'Provider_id': 1,
+		'DocumentType_id': 1,
+		'documentURL': doc_url,
+		'imageURL': thumb_url,
+		'container': 'wrangler',
+		'filename': 'notsure',
+		'token': 'itspublicfornow',
+		'expiration_date': '2012-12-06 00:00:00'	
+	}).error(function (err) {});
+
+	res.send(200); //thanks!!	
 
 
+});
 
 
 //This what makes express into our webserver....

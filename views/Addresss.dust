@@ -3,55 +3,63 @@
 <fieldset><legend> Addresss </legend>
 
 <form method='POST' action='/API/Addresss/'>
-
+<table>
 
 <input type='hidden'  id='id' name='id' value='{id}'>
 
- <li><label for='address_name'>  address_name</label>
-<textarea id='address_name' name='address_name'> {address_name} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='address_name'>  address_name</label>
+</td> <td> <textarea id='address_name' name='address_name'>{address_name}</textarea>
+</td> </tr>
  
 
- <li><label for='line1'>  line1</label>
-<textarea id='line1' name='line1'> {line1} </textarea>
-</li>
+ <tr> <td> </td> <td><label for='line1'>  line1</label>
+</td> <td> <textarea id='line1' name='line1'>{line1}</textarea>
+</td> </tr>
  
 
- <li><label for='line2'>  line2</label>
-<input type='number' step='1' id='line2' name='line2' value='{line2}'>
-</li> 
+<tr> <td> </td> <td><label for='line2'>  line2</label>
+</td> <td><input type='number' step='1' id='line2' name='line2' value='{line2}'>
+</td> </tr></li> 
  
 
- <li><label for='zip'>  zip</label>
-<input type='number' step='1' id='zip' name='zip' value='{zip}'>
-</li> 
+<tr> <td> </td> <td><label for='zip'>  zip</label>
+</td> <td><input type='number' step='1' id='zip' name='zip' value='{zip}'>
+</td> </tr></li> 
  
 
- <li><label for='State_id'>  State</label>
-<select id='State_id'>
+<tr> <td>  
+ </td> <td> <label for='State_id'><a href='/API/States/'>  State </a></label>  
+</td> <td>
+<select id='State_id' name='State_id'>
+        <option value='0'> None </option>
 {#State_id.contents}
         <option value='{id}'> {value} </option>
 {/State_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
- <li><label for='County_id'>  County</label>
-<select id='County_id'>
+<tr> <td>  
+ </td> <td> <label for='County_id'><a href='/API/Countys/'>  County </a></label>  
+</td> <td>
+<select id='County_id' name='County_id'>
+        <option value='0'> None </option>
 {#County_id.contents}
         <option value='{id}'> {value} </option>
 {/County_id.contents}
 </select>
-</li>
+</td> </tr>
 
  
 
+<tr> <td> </td> <td>
 <input type='submit' value='Save'>
+</td> </tr>
+</table>
 </fieldset>
 </form>
 
 <pre>
-{@contextDump/}
+{! @contextDump/ !}
 </pre>
-

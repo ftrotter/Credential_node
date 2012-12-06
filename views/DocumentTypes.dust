@@ -1,0 +1,24 @@
+
+
+<fieldset><legend> Document Types </legend>
+
+<form method='POST' action='/API/DocumentTypes/'>
+<table>
+
+<input type='hidden'  id='id' name='id' value='{id}'>
+
+ <tr> <td> </td> <td><label for='name'>  name</label>
+</td> <td> <textarea id='name' name='name'>{name}</textarea>
+</td> </tr>
+ 
+
+<tr> <td> </td> <td>
+<input type='submit' value='Save'>
+</td> </tr>
+</table>
+</fieldset>
+</form>
+
+<pre>
+{! @contextDump/ !}
+</pre>

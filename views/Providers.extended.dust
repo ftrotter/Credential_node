@@ -1,0 +1,41 @@
+
+{#id}
+<fieldset><legend>Upload Documents</legend>
+
+	<form 	
+	id="DocumentForm" 
+	class="" 
+	enctype="multipart/form-data" 
+	method="get" 
+	action="https://api2.transloadit.com/assemblies" 
+	accept-charset="utf-8"
+	>
+	<input type="hidden" name="_method" value="POST" />
+	<input type="hidden" name="params" 
+		value="{&quot;auth&quot;:{&quot;key&quot;:&quot;170cb47bb71442b1ae47cb883eab7aeb&quot;},&quot;template_id&quot;:&quot;7e23fb10bc224ca3937c3e7fe3f5a9f6&quot;,&quot;redirect_url&quot;:&quot;http:\/\/cred.ft1.us:8010\/API\/Providers\/{id}\/&quot;,&quot;notify_url&quot;:&quot;http:\/\/cred.ft1.us:8010\/DocumentNotification\/&quot;}"
+	>
+	<input type="file" name="UploadFile" multiple="multiple" id="UploadFile" />
+<br>
+	<input type="submit" value="Upload  Document" />
+<br>
+	<input type="hidden" name='Provider_id' value='{id}'
+	</form>
+
+</fieldset>
+
+<fieldset><legend> Current Documents </legend>
+
+<ul class="thumbnails">
+ 
+		{#Documents}
+ <li class="span4">
+    <a href="{documentURL}" class="thumbnail">
+      <img src="{imageURL}" alt="">
+    </a>
+  </li>
+		{/Documents}
+</ul>
+
+
+</fieldset>
+{/id}
