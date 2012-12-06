@@ -5,13 +5,18 @@
 <form method='POST' action='/API/EducationLevels'>
 
 
-<input type='hidden'  id='id' name='id' value='id'>
+<input type='hidden'  id='id' name='id' value='{id}'>
 
- <li><label for='level'>  level</label>
-<textarea id='level' name='level'> {level} </textarea>
+ <li><label for='level_name'>  level_name</label>
+<textarea id='level_name' name='level_name'> {level_name} </textarea>
 </li>
  
 
 <input type='submit'>
 </fieldset>
 </form>
+
+<pre>
+{@contextDump/}
+</pre>
+

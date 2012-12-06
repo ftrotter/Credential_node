@@ -5,7 +5,7 @@
 <form method='POST' action='/API/ProviderHospitals'>
 
 
-<input type='hidden'  id='id' name='id' value='id'>
+<input type='hidden'  id='id' name='id' value='{id}'>
 
  <li><label for='Provider_id'>  Provider</label>
 <select id='Provider_id'>
@@ -18,17 +18,17 @@
  
 
 <li><label for='is_primary'>  is_primary</label>
-<input type='checkbox' step='1' id='is_primary' name='is_primary' value='is_primary'>
+<input type='checkbox' step='1' id='is_primary' name='is_primary' value='{is_primary}'>
 </li> 
 
 
 <li><label for='has_hospital_privaleges'>  has_hospital_privaleges</label>
-<input type='checkbox' step='1' id='has_hospital_privaleges' name='has_hospital_privaleges' value='has_hospital_privaleges'>
+<input type='checkbox' step='1' id='has_hospital_privaleges' name='has_hospital_privaleges' value='{has_hospital_privaleges}'>
 </li> 
 
 
  <li><label for='Hospital_npi'>  Hospital_npi</label>
-<input type='number' step='1' id='Hospital_npi' name='Hospital_npi' value='Hospital_npi'>
+<input type='number' step='1' id='Hospital_npi' name='Hospital_npi' value='{Hospital_npi}'>
 </li> 
  
 
@@ -38,7 +38,7 @@
  
 
  <li><label for='start_date'>  start_date</label>
-<input type='date' id='start_date' name='start_date' value='start_date'> 
+<input type='date' id='start_date' name='start_date' value='{start_date}'> 
 </li> 
  
 
@@ -68,17 +68,17 @@
  
 
  <li><label for='zip_code'>  zip_code</label>
-<input type='number' step='1' id='zip_code' name='zip_code' value='zip_code'>
+<input type='number' step='1' id='zip_code' name='zip_code' value='{zip_code}'>
 </li> 
  
 
  <li><label for='phone'>  phone</label>
-<input type='number' step='1' id='phone' name='phone' value='phone'>
+<input type='number' step='1' id='phone' name='phone' value='{phone}'>
 </li> 
  
 
  <li><label for='fax'>  fax</label>
-<input type='number' step='1' id='fax' name='fax' value='fax'>
+<input type='number' step='1' id='fax' name='fax' value='{fax}'>
 </li> 
  
 
@@ -88,7 +88,7 @@
  
 
 <li><label for='is_unrestricted_privileges'>  is_unrestricted_privileges</label>
-<input type='checkbox' step='1' id='is_unrestricted_privileges' name='is_unrestricted_privileges' value='is_unrestricted_privileges'>
+<input type='checkbox' step='1' id='is_unrestricted_privileges' name='is_unrestricted_privileges' value='{is_unrestricted_privileges}'>
 </li> 
 
 
@@ -98,7 +98,7 @@
  
 
 <li><label for='is_privileges_temp'>  is_privileges_temp</label>
-<input type='checkbox' step='1' id='is_privileges_temp' name='is_privileges_temp' value='is_privileges_temp'>
+<input type='checkbox' step='1' id='is_privileges_temp' name='is_privileges_temp' value='{is_privileges_temp}'>
 </li> 
 
 
@@ -125,3 +125,8 @@
 <input type='submit'>
 </fieldset>
 </form>
+
+<pre>
+{@contextDump/}
+</pre>
+

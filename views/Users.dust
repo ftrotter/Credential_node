@@ -5,7 +5,7 @@
 <form method='POST' action='/API/Users'>
 
 
-<input type='hidden'  id='id' name='id' value='id'>
+<input type='hidden'  id='id' name='id' value='{id}'>
 
  <li><label for='email'>  email</label>
 <textarea id='email' name='email'> {email} </textarea>
@@ -25,3 +25,8 @@
 <input type='submit'>
 </fieldset>
 </form>
+
+<pre>
+{@contextDump/}
+</pre>
+

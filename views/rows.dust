@@ -5,13 +5,18 @@
 <form method='POST' action='/API/rows'>
 
 
-<input type='hidden'  id='id' name='id' value='id'>
+<input type='hidden'  id='id' name='id' value='{id}'>
 
  <li><label for='notused'>  notused</label>
-<input type='number' step='1' id='notused' name='notused' value='notused'>
+<input type='number' step='1' id='notused' name='notused' value='{notused}'>
 </li> 
  
 
 <input type='submit'>
 </fieldset>
 </form>
+
+<pre>
+{@contextDump/}
+</pre>
+

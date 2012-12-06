@@ -5,7 +5,7 @@
 <form method='POST' action='/API/ProviderReferences'>
 
 
-<input type='hidden'  id='id' name='id' value='id'>
+<input type='hidden'  id='id' name='id' value='{id}'>
 
  <li><label for='Provider_id'>  Provider</label>
 <select id='Provider_id'>
@@ -18,12 +18,12 @@
  
 
  <li><label for='ReferenceNPI'>  Reference N P I</label>
-<input type='number' step='1' id='ReferenceNPI' name='ReferenceNPI' value='ReferenceNPI'>
+<input type='number' step='1' id='ReferenceNPI' name='ReferenceNPI' value='{ReferenceNPI}'>
 </li> 
  
 
  <li><label for='phone'>  phone</label>
-<input type='number' step='1' id='phone' name='phone' value='phone'>
+<input type='number' step='1' id='phone' name='phone' value='{phone}'>
 </li> 
  
 
@@ -50,3 +50,8 @@
 <input type='submit'>
 </fieldset>
 </form>
+
+<pre>
+{@contextDump/}
+</pre>
+

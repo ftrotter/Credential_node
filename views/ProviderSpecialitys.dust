@@ -5,7 +5,7 @@
 <form method='POST' action='/API/ProviderSpecialitys'>
 
 
-<input type='hidden'  id='id' name='id' value='id'>
+<input type='hidden'  id='id' name='id' value='{id}'>
 
  <li><label for='Provider_id'>  Provider</label>
 <select id='Provider_id'>
@@ -18,7 +18,7 @@
  
 
 <li><label for='is_primary'>  is_primary</label>
-<input type='checkbox' step='1' id='is_primary' name='is_primary' value='is_primary'>
+<input type='checkbox' step='1' id='is_primary' name='is_primary' value='{is_primary}'>
 </li> 
 
 
@@ -63,35 +63,40 @@
  
 
  <li><label for='initial_cert_date'>  initial_cert_date</label>
-<input type='date' id='initial_cert_date' name='initial_cert_date' value='initial_cert_date'> 
+<input type='date' id='initial_cert_date' name='initial_cert_date' value='{initial_cert_date}'> 
 </li> 
  
 
  <li><label for='recertification_date'>  recertification_date</label>
-<input type='date' id='recertification_date' name='recertification_date' value='recertification_date'> 
+<input type='date' id='recertification_date' name='recertification_date' value='{recertification_date}'> 
 </li> 
  
 
  <li><label for='expiration_date'>  expiration_date</label>
-<input type='date' id='expiration_date' name='expiration_date' value='expiration_date'> 
+<input type='date' id='expiration_date' name='expiration_date' value='{expiration_date}'> 
 </li> 
  
 
 <li><label for='hmo'>  hmo</label>
-<input type='checkbox' step='1' id='hmo' name='hmo' value='hmo'>
+<input type='checkbox' step='1' id='hmo' name='hmo' value='{hmo}'>
 </li> 
 
 
 <li><label for='ppo'>  ppo</label>
-<input type='checkbox' step='1' id='ppo' name='ppo' value='ppo'>
+<input type='checkbox' step='1' id='ppo' name='ppo' value='{ppo}'>
 </li> 
 
 
 <li><label for='pos'>  pos</label>
-<input type='checkbox' step='1' id='pos' name='pos' value='pos'>
+<input type='checkbox' step='1' id='pos' name='pos' value='{pos}'>
 </li> 
 
 
 <input type='submit'>
 </fieldset>
 </form>
+
+<pre>
+{@contextDump/}
+</pre>
+

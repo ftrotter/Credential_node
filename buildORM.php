@@ -147,6 +147,8 @@ module.exports = function(sequelize, DataTypes) {
 
 		$dust_file = "views/$object_name.dust";
 
+		$links_js = '';
+
 		$dust_html = "
 
 <fieldset><legend> $object_label </legend>
@@ -278,7 +280,7 @@ buildCache($other_table"."s,'$col_name');
 					$foreign_key = true; //well, not technically
 								//but it keeps us from editing it directly...
 					$dust_html .= "
-<input type='hidden'  id='$col_name' name='$col_name' value='{$col_name}'>
+<input type='hidden'  id='$col_name' name='$col_name' value='{".$col_name."}'>
 ";
 			
 				}
@@ -288,7 +290,7 @@ buildCache($other_table"."s,'$col_name');
 
 					$dust_html .= "
  <li><label for='$col_name'>  $col_label</label>
-<input type='number' step='1' id='$col_name' name='$col_name' value='{$col_name}'>
+<input type='number' step='1' id='$col_name' name='$col_name' value='{".$col_name."}'>
 </li> 
  
 ";
@@ -305,7 +307,7 @@ buildCache($other_table"."s,'$col_name');
 
 					$dust_html .= "
  <li><label for='$col_name'>  $col_label</label>
-<input type='date' id='$col_name' name='$col_name' value='{$col_name}'> 
+<input type='date' id='$col_name' name='$col_name' value='{".$col_name."}'> 
 </li> 
  
 ";
@@ -323,7 +325,7 @@ buildCache($other_table"."s,'$col_name');
 
 					$dust_html .= "
 <li><label for='$col_name'>  $col_label</label>
-<input type='checkbox' step='1' id='$col_name' name='$col_name' value='{$col_name}'>
+<input type='checkbox' step='1' id='$col_name' name='$col_name' value='{".$col_name."}'>
 </li> 
 
 ";
@@ -335,7 +337,7 @@ buildCache($other_table"."s,'$col_name');
 				$fixed = true;
 				$dust_html .= "
  <li><label for='$col_name'>  $col_label</label>
-<input type='number' step='1' id='$col_name' name='$col_name' value='{$col_name}'>
+<input type='number' step='1' id='$col_name' name='$col_name' value='{".$col_name."}'>
 </li> 
 ";
 			}
@@ -415,7 +417,13 @@ app.get('/API/$object_name/:id/', ensureAuthenticated, function(req, res){
 		$dust_html .= "
 <input type='submit'>
 </fieldset>
-</form>\n";
+</form>
+
+<pre>
+{@contextDump/}
+</pre>
+
+";
 
 		//echo $JS_ORM;
 		file_put_contents($project_file,$JS_ORM);

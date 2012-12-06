@@ -3,7 +3,7 @@
 
         <ul>
         {#instances}
-                <li> <a href='/API/{Type}/{id}'>
+                <li> <a href='/API/{Type}/{id}/'>
 		{instance_name}		
 	
 		  </a>

@@ -5,7 +5,12 @@
 <form method='POST' action='/API/Addresss'>
 
 
-<input type='hidden'  id='id' name='id' value='id'>
+<input type='hidden'  id='id' name='id' value='{id}'>
+
+ <li><label for='address_name'>  address_name</label>
+<textarea id='address_name' name='address_name'> {address_name} </textarea>
+</li>
+ 
 
  <li><label for='line1'>  line1</label>
 <textarea id='line1' name='line1'> {line1} </textarea>
@@ -13,12 +18,12 @@
  
 
  <li><label for='line2'>  line2</label>
-<input type='number' step='1' id='line2' name='line2' value='line2'>
+<input type='number' step='1' id='line2' name='line2' value='{line2}'>
 </li> 
  
 
  <li><label for='zip'>  zip</label>
-<input type='number' step='1' id='zip' name='zip' value='zip'>
+<input type='number' step='1' id='zip' name='zip' value='{zip}'>
 </li> 
  
 
@@ -45,3 +50,8 @@
 <input type='submit'>
 </fieldset>
 </form>
+
+<pre>
+{@contextDump/}
+</pre>
+

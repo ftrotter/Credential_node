@@ -5,7 +5,7 @@
 <form method='POST' action='/API/Genders'>
 
 
-<input type='hidden'  id='id' name='id' value='id'>
+<input type='hidden'  id='id' name='id' value='{id}'>
 
  <li><label for='gender_name'>  gender_name</label>
 <textarea id='gender_name' name='gender_name'> {gender_name} </textarea>
@@ -15,3 +15,8 @@
 <input type='submit'>
 </fieldset>
 </form>
+
+<pre>
+{@contextDump/}
+</pre>
+

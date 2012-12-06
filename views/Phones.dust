@@ -5,7 +5,7 @@
 <form method='POST' action='/API/Phones'>
 
 
-<input type='hidden'  id='id' name='id' value='id'>
+<input type='hidden'  id='id' name='id' value='{id}'>
 
  <li><label for='phone_name'>  phone_name</label>
 <textarea id='phone_name' name='phone_name'> {phone_name} </textarea>
@@ -13,10 +13,15 @@
  
 
  <li><label for='phone'>  phone</label>
-<input type='number' step='1' id='phone' name='phone' value='phone'>
+<input type='number' step='1' id='phone' name='phone' value='{phone}'>
 </li> 
  
 
 <input type='submit'>
 </fieldset>
 </form>
+
+<pre>
+{@contextDump/}
+</pre>
+

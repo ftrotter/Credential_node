@@ -5,7 +5,7 @@
 <form method='POST' action='/API/Tags'>
 
 
-<input type='hidden'  id='id' name='id' value='id'>
+<input type='hidden'  id='id' name='id' value='{id}'>
 
  <li><label for='tag'>  tag</label>
 <textarea id='tag' name='tag'> {tag} </textarea>
@@ -15,3 +15,8 @@
 <input type='submit'>
 </fieldset>
 </form>
+
+<pre>
+{@contextDump/}
+</pre>
+

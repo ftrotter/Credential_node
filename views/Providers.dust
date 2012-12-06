@@ -5,7 +5,7 @@
 <form method='POST' action='/API/Providers'>
 
 
-<input type='hidden'  id='id' name='id' value='id'>
+<input type='hidden'  id='id' name='id' value='{id}'>
 
  <li><label for='ProviderStatus_id'>  Provider Status</label>
 <select id='ProviderStatus_id'>
@@ -48,7 +48,7 @@
  
 
  <li><label for='birth_date'>  birth_date</label>
-<input type='date' id='birth_date' name='birth_date' value='birth_date'> 
+<input type='date' id='birth_date' name='birth_date' value='{birth_date}'> 
 </li> 
  
 
@@ -73,12 +73,12 @@
  
 
 <li><label for='pcp'>  pcp</label>
-<input type='checkbox' step='1' id='pcp' name='pcp' value='pcp'>
+<input type='checkbox' step='1' id='pcp' name='pcp' value='{pcp}'>
 </li> 
 
 
 <li><label for='specialist'>  specialist</label>
-<input type='checkbox' step='1' id='specialist' name='specialist' value='specialist'>
+<input type='checkbox' step='1' id='specialist' name='specialist' value='{specialist}'>
 </li> 
 
 
@@ -143,7 +143,7 @@
  
 
  <li><label for='signature_date'>  signature_date</label>
-<input type='date' id='signature_date' name='signature_date' value='signature_date'> 
+<input type='date' id='signature_date' name='signature_date' value='{signature_date}'> 
 </li> 
  
 
@@ -153,75 +153,80 @@
  
 
  <li><label for='dea_issue_date'>  dea_issue_date</label>
-<input type='date' id='dea_issue_date' name='dea_issue_date' value='dea_issue_date'> 
+<input type='date' id='dea_issue_date' name='dea_issue_date' value='{dea_issue_date}'> 
 </li> 
  
 
  <li><label for='dea_exp_date'>  dea_exp_date</label>
-<input type='date' id='dea_exp_date' name='dea_exp_date' value='dea_exp_date'> 
+<input type='date' id='dea_exp_date' name='dea_exp_date' value='{dea_exp_date}'> 
 </li> 
  
 
  <li><label for='dps_number'>  dps_number</label>
-<input type='number' step='1' id='dps_number' name='dps_number' value='dps_number'>
+<input type='number' step='1' id='dps_number' name='dps_number' value='{dps_number}'>
 </li> 
  
 
  <li><label for='dps_issue_date'>  dps_issue_date</label>
-<input type='date' id='dps_issue_date' name='dps_issue_date' value='dps_issue_date'> 
+<input type='date' id='dps_issue_date' name='dps_issue_date' value='{dps_issue_date}'> 
 </li> 
  
 
  <li><label for='dps_exp_date'>  dps_exp_date</label>
-<input type='date' id='dps_exp_date' name='dps_exp_date' value='dps_exp_date'> 
+<input type='date' id='dps_exp_date' name='dps_exp_date' value='{dps_exp_date}'> 
 </li> 
  
 
  <li><label for='upin'>  upin</label>
-<input type='number' step='1' id='upin' name='upin' value='upin'>
+<input type='number' step='1' id='upin' name='upin' value='{upin}'>
 </li> 
  
 
  <li><label for='npi'>  npi</label>
-<input type='number' step='1' id='npi' name='npi' value='npi'>
+<input type='number' step='1' id='npi' name='npi' value='{npi}'>
 </li> 
  
 
  <li><label for='pan'>  pan</label>
-<input type='number' step='1' id='pan' name='pan' value='pan'>
+<input type='number' step='1' id='pan' name='pan' value='{pan}'>
 </li> 
  
 
  <li><label for='provider_number'>  provider_number</label>
-<input type='number' step='1' id='provider_number' name='provider_number' value='provider_number'>
+<input type='number' step='1' id='provider_number' name='provider_number' value='{provider_number}'>
 </li> 
  
 
  <li><label for='group_npi'>  group_npi</label>
-<input type='number' step='1' id='group_npi' name='group_npi' value='group_npi'>
+<input type='number' step='1' id='group_npi' name='group_npi' value='{group_npi}'>
 </li> 
  
 
  <li><label for='medicare_number'>  medicare_number</label>
-<input type='number' step='1' id='medicare_number' name='medicare_number' value='medicare_number'>
+<input type='number' step='1' id='medicare_number' name='medicare_number' value='{medicare_number}'>
 </li> 
  
 
  <li><label for='medicare_tpi_number'>  medicare_tpi_number</label>
-<input type='number' step='1' id='medicare_tpi_number' name='medicare_tpi_number' value='medicare_tpi_number'>
+<input type='number' step='1' id='medicare_tpi_number' name='medicare_tpi_number' value='{medicare_tpi_number}'>
 </li> 
  
 
  <li><label for='ecfmg_number'>  ecfmg_number</label>
-<input type='number' step='1' id='ecfmg_number' name='ecfmg_number' value='ecfmg_number'>
+<input type='number' step='1' id='ecfmg_number' name='ecfmg_number' value='{ecfmg_number}'>
 </li> 
  
 
  <li><label for='ecfmg_issue_date'>  ecfmg_issue_date</label>
-<input type='date' id='ecfmg_issue_date' name='ecfmg_issue_date' value='ecfmg_issue_date'> 
+<input type='date' id='ecfmg_issue_date' name='ecfmg_issue_date' value='{ecfmg_issue_date}'> 
 </li> 
  
 
 <input type='submit'>
 </fieldset>
 </form>
+
+<pre>
+{@contextDump/}
+</pre>
+

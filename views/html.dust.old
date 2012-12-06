@@ -1,0 +1,18 @@
+<html>
+<head>
+
+
+
+</head>
+<body>
+
+<h1> {Type} </h1>
+
+<h2> List </h2>
+{>"views/instance_list.dust"/}
+<h2> Instance </h2>
+{>"views/{Type}.dust"/}
+
+
+</body>
+</html>

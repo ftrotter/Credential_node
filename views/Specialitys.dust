@@ -5,7 +5,7 @@
 <form method='POST' action='/API/Specialitys'>
 
 
-<input type='hidden'  id='id' name='id' value='id'>
+<input type='hidden'  id='id' name='id' value='{id}'>
 
  <li><label for='name'>  name</label>
 <textarea id='name' name='name'> {name} </textarea>
@@ -30,3 +30,8 @@
 <input type='submit'>
 </fieldset>
 </form>
+
+<pre>
+{@contextDump/}
+</pre>
+

@@ -26,15 +26,20 @@
  
 
  <li><label for='createdAt'>  created At</label>
-<input type='date' id='createdAt' name='createdAt' value='createdAt'> 
+<input type='date' id='createdAt' name='createdAt' value='{createdAt}'> 
 </li> 
  
 
  <li><label for='updatedAt'>  updated At</label>
-<input type='date' id='updatedAt' name='updatedAt' value='updatedAt'> 
+<input type='date' id='updatedAt' name='updatedAt' value='{updatedAt}'> 
 </li> 
  
 
 <input type='submit'>
 </fieldset>
 </form>
+
+<pre>
+{@contextDump/}
+</pre>
+

@@ -5,7 +5,7 @@
 <form method='POST' action='/API/ProviderLicenses'>
 
 
-<input type='hidden'  id='id' name='id' value='id'>
+<input type='hidden'  id='id' name='id' value='{id}'>
 
  <li><label for='Provider_id'>  Provider</label>
 <select id='Provider_id'>
@@ -43,12 +43,12 @@
  
 
  <li><label for='issue_date'>  issue_date</label>
-<input type='date' id='issue_date' name='issue_date' value='issue_date'> 
+<input type='date' id='issue_date' name='issue_date' value='{issue_date}'> 
 </li> 
  
 
  <li><label for='expiration_date'>  expiration_date</label>
-<input type='date' id='expiration_date' name='expiration_date' value='expiration_date'> 
+<input type='date' id='expiration_date' name='expiration_date' value='{expiration_date}'> 
 </li> 
  
 
@@ -75,3 +75,8 @@
 <input type='submit'>
 </fieldset>
 </form>
+
+<pre>
+{@contextDump/}
+</pre>
+

@@ -14,6 +14,7 @@ config = require(__dirname + '/config.yaml');
  var http = require('http'); //the native http methods for node http://nodejs.org/api/http.html
  var path = require('path'); //native code to work with file paths
  var dust = require('dustjs-linkedin'); //We use the dust templating engine that is now supported by linkedin
+ dust.helper = require('dustjs-helpers'); //We use the dust templating engine that is now supported by linkedin
  var cons = require('consolidate'); //A standard way to work with templating languages https://github.com/visionmedia/consolidate.js
  var passport = require('passport');// An authentication engine that works with express
  var flash = require('connect-flash');//not really sure what this is for, but it handles passport errors... 

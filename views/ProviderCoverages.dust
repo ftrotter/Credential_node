@@ -5,7 +5,7 @@
 <form method='POST' action='/API/ProviderCoverages'>
 
 
-<input type='hidden'  id='id' name='id' value='id'>
+<input type='hidden'  id='id' name='id' value='{id}'>
 
  <li><label for='Provider_id'>  Provider</label>
 <select id='Provider_id'>
@@ -18,7 +18,7 @@
  
 
 <li><label for='is_self_insured'>  is_self_insured</label>
-<input type='checkbox' step='1' id='is_self_insured' name='is_self_insured' value='is_self_insured'>
+<input type='checkbox' step='1' id='is_self_insured' name='is_self_insured' value='{is_self_insured}'>
 </li> 
 
 
@@ -53,37 +53,37 @@
  
 
  <li><label for='zip_code'>  zip_code</label>
-<input type='number' step='1' id='zip_code' name='zip_code' value='zip_code'>
+<input type='number' step='1' id='zip_code' name='zip_code' value='{zip_code}'>
 </li> 
  
 
  <li><label for='phone'>  phone</label>
-<input type='number' step='1' id='phone' name='phone' value='phone'>
+<input type='number' step='1' id='phone' name='phone' value='{phone}'>
 </li> 
  
 
  <li><label for='policy_number'>  policy_number</label>
-<input type='number' step='1' id='policy_number' name='policy_number' value='policy_number'>
+<input type='number' step='1' id='policy_number' name='policy_number' value='{policy_number}'>
 </li> 
  
 
  <li><label for='effective_date'>  effective_date</label>
-<input type='date' id='effective_date' name='effective_date' value='effective_date'> 
+<input type='date' id='effective_date' name='effective_date' value='{effective_date}'> 
 </li> 
  
 
  <li><label for='expiration_date'>  expiration_date</label>
-<input type='date' id='expiration_date' name='expiration_date' value='expiration_date'> 
+<input type='date' id='expiration_date' name='expiration_date' value='{expiration_date}'> 
 </li> 
  
 
  <li><label for='occurrence_limit'>  occurrence_limit</label>
-<input type='number' step='1' id='occurrence_limit' name='occurrence_limit' value='occurrence_limit'>
+<input type='number' step='1' id='occurrence_limit' name='occurrence_limit' value='{occurrence_limit}'>
 </li> 
  
 
  <li><label for='aggregate_limit'>  aggregate_limit</label>
-<input type='number' step='1' id='aggregate_limit' name='aggregate_limit' value='aggregate_limit'>
+<input type='number' step='1' id='aggregate_limit' name='aggregate_limit' value='{aggregate_limit}'>
 </li> 
  
 
@@ -115,3 +115,8 @@
 <input type='submit'>
 </fieldset>
 </form>
+
+<pre>
+{@contextDump/}
+</pre>
+

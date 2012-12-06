@@ -5,7 +5,7 @@
 <form method='POST' action='/API/ProviderEducations'>
 
 
-<input type='hidden'  id='id' name='id' value='id'>
+<input type='hidden'  id='id' name='id' value='{id}'>
 
  <li><label for='Provider_id'>  Provider</label>
 <select id='Provider_id'>
@@ -28,12 +28,12 @@
  
 
  <li><label for='attendance_period_start'>  attendance_period_start</label>
-<input type='date' id='attendance_period_start' name='attendance_period_start' value='attendance_period_start'> 
+<input type='date' id='attendance_period_start' name='attendance_period_start' value='{attendance_period_start}'> 
 </li> 
  
 
  <li><label for='attendance_period_end'>  attendance_period_end</label>
-<input type='date' id='attendance_period_end' name='attendance_period_end' value='attendance_period_end'> 
+<input type='date' id='attendance_period_end' name='attendance_period_end' value='{attendance_period_end}'> 
 </li> 
  
 
@@ -70,3 +70,8 @@
 <input type='submit'>
 </fieldset>
 </form>
+
+<pre>
+{@contextDump/}
+</pre>
+

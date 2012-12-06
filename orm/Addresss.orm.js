@@ -2,6 +2,7 @@
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('Addresss', {
     id: { type: Sequelize.INTEGER  ,primaryKey: true },
+    address_name: { type: Sequelize.STRING },
     line1: { type: Sequelize.STRING },
     line2: { type: Sequelize.INTEGER },
     zip: { type: Sequelize.INTEGER },

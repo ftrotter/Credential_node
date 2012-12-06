@@ -2,7 +2,7 @@
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('EducationLevels', {
     id: { type: Sequelize.INTEGER  ,primaryKey: true },
-    level: { type: Sequelize.STRING }
+    level_name: { type: Sequelize.STRING }
   },
 	{freezeTableName: true}
 )

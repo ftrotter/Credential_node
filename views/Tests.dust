@@ -21,41 +21,46 @@
  
 
  <li><label for='somenumber'>  somenumber</label>
-<input type='number' step='1' id='somenumber' name='somenumber' value='somenumber'>
+<input type='number' step='1' id='somenumber' name='somenumber' value='{somenumber}'>
 </li> 
  
 
  <li><label for='somefloat'>  somefloat</label>
-<input type='number' step='1' id='somefloat' name='somefloat' value='somefloat'>
+<input type='number' step='1' id='somefloat' name='somefloat' value='{somefloat}'>
 </li> 
 
 <li><label for='normaltrue'>  normaltrue</label>
-<input type='checkbox' step='1' id='normaltrue' name='normaltrue' value='normaltrue'>
+<input type='checkbox' step='1' id='normaltrue' name='normaltrue' value='{normaltrue}'>
 </li> 
 
 
 <li><label for='confusingtrue'>  confusingtrue</label>
-<input type='checkbox' step='1' id='confusingtrue' name='confusingtrue' value='confusingtrue'>
+<input type='checkbox' step='1' id='confusingtrue' name='confusingtrue' value='{confusingtrue}'>
 </li> 
 
 
  <li><label for='okdate'>  okdate</label>
-<input type='date' id='okdate' name='okdate' value='okdate'> 
+<input type='date' id='okdate' name='okdate' value='{okdate}'> 
 </li> 
  
 
-<input type='hidden'  id='id' name='id' value='id'>
+<input type='hidden'  id='id' name='id' value='{id}'>
 
  <li><label for='createdAt'>  created At</label>
-<input type='date' id='createdAt' name='createdAt' value='createdAt'> 
+<input type='date' id='createdAt' name='createdAt' value='{createdAt}'> 
 </li> 
  
 
  <li><label for='updatedAt'>  updated At</label>
-<input type='date' id='updatedAt' name='updatedAt' value='updatedAt'> 
+<input type='date' id='updatedAt' name='updatedAt' value='{updatedAt}'> 
 </li> 
  
 
 <input type='submit'>
 </fieldset>
 </form>
+
+<pre>
+{@contextDump/}
+</pre>
+
