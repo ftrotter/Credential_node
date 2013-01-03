@@ -9,7 +9,9 @@ module.exports = function(sequelize, DataTypes) {
     issue_date: { type: Sequelize.DATE },
     expiration_date: { type: Sequelize.DATE },
     created_by_User_id: { type: Sequelize.INTEGER },
-    modified_by_User_id: { type: Sequelize.INTEGER }
+    modified_by_User_id: { type: Sequelize.INTEGER },
+    createdAt: { type: Sequelize.DATE },
+    updatedAt: { type: Sequelize.DATE }
   },
 	{freezeTableName: true}
 )

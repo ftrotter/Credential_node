@@ -3,6 +3,7 @@ module.exports = function(sequelize, DataTypes) {
   return sequelize.define('Providers', {
     id: { type: Sequelize.INTEGER  ,primaryKey: true },
     ProviderStatus_id: { type: Sequelize.INTEGER },
+    select_name: { type: Sequelize.STRING },
     last_name: { type: Sequelize.STRING },
     first_name: { type: Sequelize.STRING },
     middle_name: { type: Sequelize.STRING },
@@ -36,7 +37,11 @@ module.exports = function(sequelize, DataTypes) {
     medicare_number: { type: Sequelize.INTEGER },
     medicare_tpi_number: { type: Sequelize.INTEGER },
     ecfmg_number: { type: Sequelize.INTEGER },
-    ecfmg_issue_date: { type: Sequelize.DATE }
+    ecfmg_issue_date: { type: Sequelize.DATE },
+    created_by_User_id: { type: Sequelize.INTEGER },
+    modified_by_User_id: { type: Sequelize.INTEGER },
+    createdAt: { type: Sequelize.DATE },
+    updatedAt: { type: Sequelize.DATE }
   },
 	{freezeTableName: true}
 )

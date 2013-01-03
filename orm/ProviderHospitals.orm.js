@@ -20,7 +20,9 @@ module.exports = function(sequelize, DataTypes) {
     privileges_type: { type: Sequelize.STRING },
     is_privileges_temp: { type: Sequelize.BOOLEAN },
     created_by_User_id: { type: Sequelize.INTEGER },
-    modified_by_User_id: { type: Sequelize.INTEGER }
+    modified_by_User_id: { type: Sequelize.INTEGER },
+    createdAt: { type: Sequelize.DATE },
+    updatedAt: { type: Sequelize.DATE }
   },
 	{freezeTableName: true}
 )

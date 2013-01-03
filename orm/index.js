@@ -1,7 +1,7 @@
 
 
 var ModelCache = {};
-
+var columnToObjectMap = {};
 
 //Javascript does not allow for default arguments into functions
 //this handles the problem for functions
@@ -11,46 +11,58 @@ function has_default(arg, def) {
 }
 
 
+//select_name is now required!!
+function buildCache(select_name){
 
-function buildCache(ORM,select_name){
-
+	var ORM;
         var object_type;
-        var select_html;
         var selected_col;
         var data_cache = [];
 //add code for auto-complete detection engine...
 
+	//we use the column name to figure out which of the ORMs
+	//we are going to use... this makes rebuilding trivial!!
+
+	ORM = columnToObjectMap[select_name];
+
         object_type = ORM.name;
         //if we passed in a select_name, use it, otherwise use the default
-        select_name = has_default(select_name, object_type + "_id");
-        select_html = "<select name='" + select_name + "'>\n";
-
-        console.log("object_type: " + object_type + "\n");
-        console.log("select_name: " + select_name + "\n");
 
         ORM.findAll().success(function(things) {
 
                 __.each(things,function(a_thing){
-                        //lets determine what the variable
-                        //from the table should be the label for the
-                        //select box...
-                        if(selected_col === undefined){
-                                selected = a_thing.attributes;
-                                __.each(selected,function(key,value){
-                                if(key.indexOf("name") !== -1){
-                                        //then this is my select variable..
-                                                selected_col = key;
-                //                              console.log("inside key" + key);
+
+	 		if(selected_col === undefined){
+
+				//the default is just the id...
+				selected_col = 'id';	
+
+				selected = a_thing.attributes;
+				__.each(selected,function(key,value){
+					//choose which column to use as the select 
+					//value for connecting objects...
+					//any field with 'name' at the end... or not... you never know.. 
+					//then choose the last 'name' in the list...
+                                        if(key.indexOf("name") !== -1){
+                                             selected_col = key;
                                         }
                                 });
-                        }
+				//now we should have the last colum with 
+				//'name' in it... but is that what we really want?
+				//sometimes we want to be able to specify
+				//so we look around for 'select_name'...
+                                __.each(selected,function(key,value){
+                                        //choose which column to use as the select 
+                                        //value for connecting objects...
+                                        //any field with 'name' at the end... or not... you never know.. 
+                                        //then choose the last 'name' in the list...
+                                        if(key.indexOf("select_name") !== -1){
+                                             selected_col = key;
+                                        }
+                                });
+			}
 
-                        select_html = select_html               +
-                                        "<option value='"       +
-                                        a_thing.id              +
-                                        "'>"                    +
-                                a_thing[selected_col] + "</option>\n";
-                        my_value = a_thing[selected_col];
+			my_value = a_thing[selected_col];
 
                         data_cache.push({
                                                 id: a_thing.id,
@@ -58,9 +70,9 @@ function buildCache(ORM,select_name){
                                         });
 
                 });
-                select_html = select_html + "</select>\n";
-                //HTMLCache[select_name] = select_html;
+
                 ModelCache[select_name] = data_cache;
+		//console.log(data_cache);
         });
 }
 
@@ -74,6 +86,8 @@ var Addresss = sequelize.import(__dirname + '/Addresss.orm.js');
 exports.Addresss = Addresss;
 // State_id looks like an association
 // County_id looks like an association
+// created_by_User_id looks like an association
+// modified_by_User_id looks like an association
 
 //importing Boards from table cred:Boards
 var Boards = sequelize.import(__dirname + '/Boards.orm.js');
@@ -81,34 +95,48 @@ exports.Boards = Boards;
 // Address_id looks like an association
 // Phone_id looks like an association
 // Fax_Phone_id looks like an association
+// created_by_User_id looks like an association
+// modified_by_User_id looks like an association
 
 //importing Carriers from table cred:Carriers
 var Carriers = sequelize.import(__dirname + '/Carriers.orm.js');
 exports.Carriers = Carriers;
+// created_by_User_id looks like an association
+// modified_by_User_id looks like an association
 
 //importing Countys from table cred:Countys
 var Countys = sequelize.import(__dirname + '/Countys.orm.js');
 exports.Countys = Countys;
+// created_by_User_id looks like an association
+// modified_by_User_id looks like an association
 
 //importing CredentialOrganizations from table cred:CredentialOrganizations
 var CredentialOrganizations = sequelize.import(__dirname + '/CredentialOrganizations.orm.js');
 exports.CredentialOrganizations = CredentialOrganizations;
+// created_by_User_id looks like an association
+// modified_by_User_id looks like an association
 
 //importing DocumentTypes from table cred:DocumentTypes
 var DocumentTypes = sequelize.import(__dirname + '/DocumentTypes.orm.js');
 exports.DocumentTypes = DocumentTypes;
+// created_by_User_id looks like an association
+// modified_by_User_id looks like an association
 
 //importing Documents from table cred:Documents
 var Documents = sequelize.import(__dirname + '/Documents.orm.js');
 exports.Documents = Documents;
 // Provider_id looks like an association
 // DocumentType_id looks like an association
+// created_by_User_id looks like an association
+// modified_by_User_id looks like an association
 
 //importing EducationInstitutions from table cred:EducationInstitutions
 var EducationInstitutions = sequelize.import(__dirname + '/EducationInstitutions.orm.js');
 exports.EducationInstitutions = EducationInstitutions;
 // Address_id looks like an association
 // Phone_id looks like an association
+// created_by_User_id looks like an association
+// modified_by_User_id looks like an association
 
 //importing EducationLevels from table cred:EducationLevels
 var EducationLevels = sequelize.import(__dirname + '/EducationLevels.orm.js');
@@ -117,10 +145,14 @@ exports.EducationLevels = EducationLevels;
 //importing Genders from table cred:Genders
 var Genders = sequelize.import(__dirname + '/Genders.orm.js');
 exports.Genders = Genders;
+// created_by_User_id looks like an association
+// modified_by_User_id looks like an association
 
 //importing Networks from table cred:Networks
 var Networks = sequelize.import(__dirname + '/Networks.orm.js');
 exports.Networks = Networks;
+// created_by_User_id looks like an association
+// modified_by_User_id looks like an association
 
 //importing Notes from table cred:Notes
 var Notes = sequelize.import(__dirname + '/Notes.orm.js');
@@ -131,6 +163,8 @@ exports.Notes = Notes;
 //importing Phones from table cred:Phones
 var Phones = sequelize.import(__dirname + '/Phones.orm.js');
 exports.Phones = Phones;
+// created_by_User_id looks like an association
+// modified_by_User_id looks like an association
 
 //importing ProviderCarriers from table cred:ProviderCarriers
 var ProviderCarriers = sequelize.import(__dirname + '/ProviderCarriers.orm.js');
@@ -214,6 +248,8 @@ exports.ProviderSpecialitys = ProviderSpecialitys;
 //importing ProviderStatuss from table cred:ProviderStatuss
 var ProviderStatuss = sequelize.import(__dirname + '/ProviderStatuss.orm.js');
 exports.ProviderStatuss = ProviderStatuss;
+// created_by_User_id looks like an association
+// modified_by_User_id looks like an association
 
 //importing Providers from table cred:Providers
 var Providers = sequelize.import(__dirname + '/Providers.orm.js');
@@ -226,6 +262,8 @@ exports.Providers = Providers;
 // Corr_Phone_id looks like an association
 // Corr_Address_id looks like an association
 // Corr_Fax_Phone_id looks like an association
+// created_by_User_id looks like an association
+// modified_by_User_id looks like an association
 
 //importing ProvidersProviderSpecialityses from table cred:ProvidersProviderSpecialityses
 var ProvidersProviderSpecialityses = sequelize.import(__dirname + '/ProvidersProviderSpecialityses.orm.js');
@@ -236,6 +274,8 @@ exports.ProvidersProviderSpecialityses = ProvidersProviderSpecialityses;
 //importing Specialitys from table cred:Specialitys
 var Specialitys = sequelize.import(__dirname + '/Specialitys.orm.js');
 exports.Specialitys = Specialitys;
+// created_by_User_id looks like an association
+// modified_by_User_id looks like an association
 
 //importing States from table cred:States
 var States = sequelize.import(__dirname + '/States.orm.js');
@@ -255,8 +295,6 @@ exports.Tags = Tags;
 //importing Tests from table cred:Tests
 var Tests = sequelize.import(__dirname + '/Tests.orm.js');
 exports.Tests = Tests;
-//I did not understand what to do with confusingdate
-//I did not understand what to do with confusingenum
 
 //importing Users from table cred:Users
 var Users = sequelize.import(__dirname + '/Users.orm.js');
@@ -281,7 +319,8 @@ States.hasMany(
 		}
 		);
 
-buildCache(States,'State_id');
+columnToObjectMap['State_id'] = States;
+buildCache('State_id');
 
 
 //Countys.hasOne(
@@ -293,7 +332,34 @@ Countys.hasMany(
 		}
 		);
 
-buildCache(Countys,'County_id');
+columnToObjectMap['County_id'] = Countys;
+buildCache('County_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		Addresss,
+		{
+//			as: 		'created_by_User_id', 
+			foreignKey: 	'created_by_User_id'
+		}
+		);
+
+columnToObjectMap['created_by_User_id'] = Users;
+buildCache('created_by_User_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		Addresss,
+		{
+//			as: 		'modified_by_User_id', 
+			foreignKey: 	'modified_by_User_id'
+		}
+		);
+
+columnToObjectMap['modified_by_User_id'] = Users;
+buildCache('modified_by_User_id');
 
 
 //Addresss.hasOne(
@@ -305,7 +371,8 @@ Addresss.hasMany(
 		}
 		);
 
-buildCache(Addresss,'Address_id');
+columnToObjectMap['Address_id'] = Addresss;
+buildCache('Address_id');
 
 
 //Phones.hasOne(
@@ -317,7 +384,8 @@ Phones.hasMany(
 		}
 		);
 
-buildCache(Phones,'Phone_id');
+columnToObjectMap['Phone_id'] = Phones;
+buildCache('Phone_id');
 
 
 //Phones.hasOne(
@@ -329,7 +397,138 @@ Phones.hasMany(
 		}
 		);
 
-buildCache(Phones,'Fax_Phone_id');
+columnToObjectMap['Fax_Phone_id'] = Phones;
+buildCache('Fax_Phone_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		Boards,
+		{
+//			as: 		'created_by_User_id', 
+			foreignKey: 	'created_by_User_id'
+		}
+		);
+
+columnToObjectMap['created_by_User_id'] = Users;
+buildCache('created_by_User_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		Boards,
+		{
+//			as: 		'modified_by_User_id', 
+			foreignKey: 	'modified_by_User_id'
+		}
+		);
+
+columnToObjectMap['modified_by_User_id'] = Users;
+buildCache('modified_by_User_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		Carriers,
+		{
+//			as: 		'created_by_User_id', 
+			foreignKey: 	'created_by_User_id'
+		}
+		);
+
+columnToObjectMap['created_by_User_id'] = Users;
+buildCache('created_by_User_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		Carriers,
+		{
+//			as: 		'modified_by_User_id', 
+			foreignKey: 	'modified_by_User_id'
+		}
+		);
+
+columnToObjectMap['modified_by_User_id'] = Users;
+buildCache('modified_by_User_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		Countys,
+		{
+//			as: 		'created_by_User_id', 
+			foreignKey: 	'created_by_User_id'
+		}
+		);
+
+columnToObjectMap['created_by_User_id'] = Users;
+buildCache('created_by_User_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		Countys,
+		{
+//			as: 		'modified_by_User_id', 
+			foreignKey: 	'modified_by_User_id'
+		}
+		);
+
+columnToObjectMap['modified_by_User_id'] = Users;
+buildCache('modified_by_User_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		CredentialOrganizations,
+		{
+//			as: 		'created_by_User_id', 
+			foreignKey: 	'created_by_User_id'
+		}
+		);
+
+columnToObjectMap['created_by_User_id'] = Users;
+buildCache('created_by_User_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		CredentialOrganizations,
+		{
+//			as: 		'modified_by_User_id', 
+			foreignKey: 	'modified_by_User_id'
+		}
+		);
+
+columnToObjectMap['modified_by_User_id'] = Users;
+buildCache('modified_by_User_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		DocumentTypes,
+		{
+//			as: 		'created_by_User_id', 
+			foreignKey: 	'created_by_User_id'
+		}
+		);
+
+columnToObjectMap['created_by_User_id'] = Users;
+buildCache('created_by_User_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		DocumentTypes,
+		{
+//			as: 		'modified_by_User_id', 
+			foreignKey: 	'modified_by_User_id'
+		}
+		);
+
+columnToObjectMap['modified_by_User_id'] = Users;
+buildCache('modified_by_User_id');
 
 
 //Providers.hasOne(
@@ -341,7 +540,8 @@ Providers.hasMany(
 		}
 		);
 
-buildCache(Providers,'Provider_id');
+columnToObjectMap['Provider_id'] = Providers;
+buildCache('Provider_id');
 
 
 //DocumentTypes.hasOne(
@@ -353,7 +553,34 @@ DocumentTypes.hasMany(
 		}
 		);
 
-buildCache(DocumentTypes,'DocumentType_id');
+columnToObjectMap['DocumentType_id'] = DocumentTypes;
+buildCache('DocumentType_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		Documents,
+		{
+//			as: 		'created_by_User_id', 
+			foreignKey: 	'created_by_User_id'
+		}
+		);
+
+columnToObjectMap['created_by_User_id'] = Users;
+buildCache('created_by_User_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		Documents,
+		{
+//			as: 		'modified_by_User_id', 
+			foreignKey: 	'modified_by_User_id'
+		}
+		);
+
+columnToObjectMap['modified_by_User_id'] = Users;
+buildCache('modified_by_User_id');
 
 
 //Addresss.hasOne(
@@ -365,7 +592,8 @@ Addresss.hasMany(
 		}
 		);
 
-buildCache(Addresss,'Address_id');
+columnToObjectMap['Address_id'] = Addresss;
+buildCache('Address_id');
 
 
 //Phones.hasOne(
@@ -377,7 +605,86 @@ Phones.hasMany(
 		}
 		);
 
-buildCache(Phones,'Phone_id');
+columnToObjectMap['Phone_id'] = Phones;
+buildCache('Phone_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		EducationInstitutions,
+		{
+//			as: 		'created_by_User_id', 
+			foreignKey: 	'created_by_User_id'
+		}
+		);
+
+columnToObjectMap['created_by_User_id'] = Users;
+buildCache('created_by_User_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		EducationInstitutions,
+		{
+//			as: 		'modified_by_User_id', 
+			foreignKey: 	'modified_by_User_id'
+		}
+		);
+
+columnToObjectMap['modified_by_User_id'] = Users;
+buildCache('modified_by_User_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		Genders,
+		{
+//			as: 		'created_by_User_id', 
+			foreignKey: 	'created_by_User_id'
+		}
+		);
+
+columnToObjectMap['created_by_User_id'] = Users;
+buildCache('created_by_User_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		Genders,
+		{
+//			as: 		'modified_by_User_id', 
+			foreignKey: 	'modified_by_User_id'
+		}
+		);
+
+columnToObjectMap['modified_by_User_id'] = Users;
+buildCache('modified_by_User_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		Networks,
+		{
+//			as: 		'created_by_User_id', 
+			foreignKey: 	'created_by_User_id'
+		}
+		);
+
+columnToObjectMap['created_by_User_id'] = Users;
+buildCache('created_by_User_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		Networks,
+		{
+//			as: 		'modified_by_User_id', 
+			foreignKey: 	'modified_by_User_id'
+		}
+		);
+
+columnToObjectMap['modified_by_User_id'] = Users;
+buildCache('modified_by_User_id');
 
 
 //rows.hasOne(
@@ -389,7 +696,8 @@ rows.hasMany(
 		}
 		);
 
-buildCache(rows,'row_id');
+columnToObjectMap['row_id'] = rows;
+buildCache('row_id');
 
 
 //Users.hasOne(
@@ -401,7 +709,34 @@ Users.hasMany(
 		}
 		);
 
-buildCache(Users,'User_id');
+columnToObjectMap['User_id'] = Users;
+buildCache('User_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		Phones,
+		{
+//			as: 		'created_by_User_id', 
+			foreignKey: 	'created_by_User_id'
+		}
+		);
+
+columnToObjectMap['created_by_User_id'] = Users;
+buildCache('created_by_User_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		Phones,
+		{
+//			as: 		'modified_by_User_id', 
+			foreignKey: 	'modified_by_User_id'
+		}
+		);
+
+columnToObjectMap['modified_by_User_id'] = Users;
+buildCache('modified_by_User_id');
 
 
 //Providers.hasOne(
@@ -413,7 +748,8 @@ Providers.hasMany(
 		}
 		);
 
-buildCache(Providers,'Provider_id');
+columnToObjectMap['Provider_id'] = Providers;
+buildCache('Provider_id');
 
 
 //Carriers.hasOne(
@@ -425,7 +761,8 @@ Carriers.hasMany(
 		}
 		);
 
-buildCache(Carriers,'Carrier_id');
+columnToObjectMap['Carrier_id'] = Carriers;
+buildCache('Carrier_id');
 
 
 //Users.hasOne(
@@ -437,7 +774,8 @@ Users.hasMany(
 		}
 		);
 
-buildCache(Users,'created_by_User_id');
+columnToObjectMap['created_by_User_id'] = Users;
+buildCache('created_by_User_id');
 
 
 //Users.hasOne(
@@ -449,7 +787,8 @@ Users.hasMany(
 		}
 		);
 
-buildCache(Users,'modified_by_User_id');
+columnToObjectMap['modified_by_User_id'] = Users;
+buildCache('modified_by_User_id');
 
 
 //Providers.hasOne(
@@ -461,7 +800,8 @@ Providers.hasMany(
 		}
 		);
 
-buildCache(Providers,'Provider_id');
+columnToObjectMap['Provider_id'] = Providers;
+buildCache('Provider_id');
 
 
 //States.hasOne(
@@ -473,7 +813,8 @@ States.hasMany(
 		}
 		);
 
-buildCache(States,'State_id');
+columnToObjectMap['State_id'] = States;
+buildCache('State_id');
 
 
 //Users.hasOne(
@@ -485,7 +826,8 @@ Users.hasMany(
 		}
 		);
 
-buildCache(Users,'created_by_User_id');
+columnToObjectMap['created_by_User_id'] = Users;
+buildCache('created_by_User_id');
 
 
 //Users.hasOne(
@@ -497,7 +839,8 @@ Users.hasMany(
 		}
 		);
 
-buildCache(Users,'modified_by_User_id');
+columnToObjectMap['modified_by_User_id'] = Users;
+buildCache('modified_by_User_id');
 
 
 //Providers.hasOne(
@@ -509,7 +852,8 @@ Providers.hasMany(
 		}
 		);
 
-buildCache(Providers,'Provider_id');
+columnToObjectMap['Provider_id'] = Providers;
+buildCache('Provider_id');
 
 
 //CredentialOrganizations.hasOne(
@@ -521,7 +865,8 @@ CredentialOrganizations.hasMany(
 		}
 		);
 
-buildCache(CredentialOrganizations,'CredentialOrganization_id');
+columnToObjectMap['CredentialOrganization_id'] = CredentialOrganizations;
+buildCache('CredentialOrganization_id');
 
 
 //Users.hasOne(
@@ -533,7 +878,8 @@ Users.hasMany(
 		}
 		);
 
-buildCache(Users,'created_by_User_id');
+columnToObjectMap['created_by_User_id'] = Users;
+buildCache('created_by_User_id');
 
 
 //Users.hasOne(
@@ -545,7 +891,8 @@ Users.hasMany(
 		}
 		);
 
-buildCache(Users,'modified_by_User_id');
+columnToObjectMap['modified_by_User_id'] = Users;
+buildCache('modified_by_User_id');
 
 
 //Providers.hasOne(
@@ -557,7 +904,8 @@ Providers.hasMany(
 		}
 		);
 
-buildCache(Providers,'Provider_id');
+columnToObjectMap['Provider_id'] = Providers;
+buildCache('Provider_id');
 
 
 //ProviderSpecialitys.hasOne(
@@ -569,7 +917,8 @@ ProviderSpecialitys.hasMany(
 		}
 		);
 
-buildCache(ProviderSpecialitys,'ProviderSpeciality_id');
+columnToObjectMap['ProviderSpeciality_id'] = ProviderSpecialitys;
+buildCache('ProviderSpeciality_id');
 
 
 //EducationInstitutions.hasOne(
@@ -581,7 +930,8 @@ EducationInstitutions.hasMany(
 		}
 		);
 
-buildCache(EducationInstitutions,'EducationInstitution_id');
+columnToObjectMap['EducationInstitution_id'] = EducationInstitutions;
+buildCache('EducationInstitution_id');
 
 
 //Users.hasOne(
@@ -593,7 +943,8 @@ Users.hasMany(
 		}
 		);
 
-buildCache(Users,'created_by_User_id');
+columnToObjectMap['created_by_User_id'] = Users;
+buildCache('created_by_User_id');
 
 
 //Users.hasOne(
@@ -605,7 +956,8 @@ Users.hasMany(
 		}
 		);
 
-buildCache(Users,'modified_by_User_id');
+columnToObjectMap['modified_by_User_id'] = Users;
+buildCache('modified_by_User_id');
 
 
 //ProviderEducations.hasOne(
@@ -617,7 +969,8 @@ ProviderEducations.hasMany(
 		}
 		);
 
-buildCache(ProviderEducations,'ProviderEducation_id');
+columnToObjectMap['ProviderEducation_id'] = ProviderEducations;
+buildCache('ProviderEducation_id');
 
 
 //Providers.hasOne(
@@ -629,7 +982,8 @@ Providers.hasMany(
 		}
 		);
 
-buildCache(Providers,'Provider_id');
+columnToObjectMap['Provider_id'] = Providers;
+buildCache('Provider_id');
 
 
 //States.hasOne(
@@ -641,7 +995,8 @@ States.hasMany(
 		}
 		);
 
-buildCache(States,'State_id');
+columnToObjectMap['State_id'] = States;
+buildCache('State_id');
 
 
 //Users.hasOne(
@@ -653,7 +1008,8 @@ Users.hasMany(
 		}
 		);
 
-buildCache(Users,'created_by_User_id');
+columnToObjectMap['created_by_User_id'] = Users;
+buildCache('created_by_User_id');
 
 
 //Users.hasOne(
@@ -665,7 +1021,8 @@ Users.hasMany(
 		}
 		);
 
-buildCache(Users,'modified_by_User_id');
+columnToObjectMap['modified_by_User_id'] = Users;
+buildCache('modified_by_User_id');
 
 
 //Providers.hasOne(
@@ -677,7 +1034,8 @@ Providers.hasMany(
 		}
 		);
 
-buildCache(Providers,'Provider_id');
+columnToObjectMap['Provider_id'] = Providers;
+buildCache('Provider_id');
 
 
 //ProviderSpecialitys.hasOne(
@@ -689,7 +1047,8 @@ ProviderSpecialitys.hasMany(
 		}
 		);
 
-buildCache(ProviderSpecialitys,'ProviderSpeciality_id');
+columnToObjectMap['ProviderSpeciality_id'] = ProviderSpecialitys;
+buildCache('ProviderSpeciality_id');
 
 
 //States.hasOne(
@@ -701,7 +1060,8 @@ States.hasMany(
 		}
 		);
 
-buildCache(States,'State_id');
+columnToObjectMap['State_id'] = States;
+buildCache('State_id');
 
 
 //Users.hasOne(
@@ -713,7 +1073,8 @@ Users.hasMany(
 		}
 		);
 
-buildCache(Users,'created_by_User_id');
+columnToObjectMap['created_by_User_id'] = Users;
+buildCache('created_by_User_id');
 
 
 //Users.hasOne(
@@ -725,7 +1086,8 @@ Users.hasMany(
 		}
 		);
 
-buildCache(Users,'modified_by_User_id');
+columnToObjectMap['modified_by_User_id'] = Users;
+buildCache('modified_by_User_id');
 
 
 //Providers.hasOne(
@@ -737,7 +1099,8 @@ Providers.hasMany(
 		}
 		);
 
-buildCache(Providers,'Provider_id');
+columnToObjectMap['Provider_id'] = Providers;
+buildCache('Provider_id');
 
 
 //Networks.hasOne(
@@ -749,7 +1112,8 @@ Networks.hasMany(
 		}
 		);
 
-buildCache(Networks,'Network_id');
+columnToObjectMap['Network_id'] = Networks;
+buildCache('Network_id');
 
 
 //Users.hasOne(
@@ -761,7 +1125,8 @@ Users.hasMany(
 		}
 		);
 
-buildCache(Users,'created_by_User_id');
+columnToObjectMap['created_by_User_id'] = Users;
+buildCache('created_by_User_id');
 
 
 //Users.hasOne(
@@ -773,7 +1138,8 @@ Users.hasMany(
 		}
 		);
 
-buildCache(Users,'modified_by_User_id');
+columnToObjectMap['modified_by_User_id'] = Users;
+buildCache('modified_by_User_id');
 
 
 //Providers.hasOne(
@@ -785,7 +1151,8 @@ Providers.hasMany(
 		}
 		);
 
-buildCache(Providers,'Provider_id');
+columnToObjectMap['Provider_id'] = Providers;
+buildCache('Provider_id');
 
 
 //Users.hasOne(
@@ -797,7 +1164,8 @@ Users.hasMany(
 		}
 		);
 
-buildCache(Users,'created_by_User_id');
+columnToObjectMap['created_by_User_id'] = Users;
+buildCache('created_by_User_id');
 
 
 //Users.hasOne(
@@ -809,7 +1177,8 @@ Users.hasMany(
 		}
 		);
 
-buildCache(Users,'modified_by_User_id');
+columnToObjectMap['modified_by_User_id'] = Users;
+buildCache('modified_by_User_id');
 
 
 //Providers.hasOne(
@@ -821,7 +1190,8 @@ Providers.hasMany(
 		}
 		);
 
-buildCache(Providers,'Provider_id');
+columnToObjectMap['Provider_id'] = Providers;
+buildCache('Provider_id');
 
 
 //Specialitys.hasOne(
@@ -833,7 +1203,8 @@ Specialitys.hasMany(
 		}
 		);
 
-buildCache(Specialitys,'Speciality_id');
+columnToObjectMap['Speciality_id'] = Specialitys;
+buildCache('Speciality_id');
 
 
 //Users.hasOne(
@@ -845,7 +1216,8 @@ Users.hasMany(
 		}
 		);
 
-buildCache(Users,'created_by_User_id');
+columnToObjectMap['created_by_User_id'] = Users;
+buildCache('created_by_User_id');
 
 
 //Users.hasOne(
@@ -857,7 +1229,8 @@ Users.hasMany(
 		}
 		);
 
-buildCache(Users,'modified_by_User_id');
+columnToObjectMap['modified_by_User_id'] = Users;
+buildCache('modified_by_User_id');
 
 
 //Boards.hasOne(
@@ -869,7 +1242,34 @@ Boards.hasMany(
 		}
 		);
 
-buildCache(Boards,'Board_id');
+columnToObjectMap['Board_id'] = Boards;
+buildCache('Board_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		ProviderStatuss,
+		{
+//			as: 		'created_by_User_id', 
+			foreignKey: 	'created_by_User_id'
+		}
+		);
+
+columnToObjectMap['created_by_User_id'] = Users;
+buildCache('created_by_User_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		ProviderStatuss,
+		{
+//			as: 		'modified_by_User_id', 
+			foreignKey: 	'modified_by_User_id'
+		}
+		);
+
+columnToObjectMap['modified_by_User_id'] = Users;
+buildCache('modified_by_User_id');
 
 
 //ProviderStatuss.hasOne(
@@ -881,7 +1281,8 @@ ProviderStatuss.hasMany(
 		}
 		);
 
-buildCache(ProviderStatuss,'ProviderStatus_id');
+columnToObjectMap['ProviderStatus_id'] = ProviderStatuss;
+buildCache('ProviderStatus_id');
 
 
 //Addresss.hasOne(
@@ -893,7 +1294,8 @@ Addresss.hasMany(
 		}
 		);
 
-buildCache(Addresss,'Birth_Address_id');
+columnToObjectMap['Birth_Address_id'] = Addresss;
+buildCache('Birth_Address_id');
 
 
 //Genders.hasOne(
@@ -905,7 +1307,8 @@ Genders.hasMany(
 		}
 		);
 
-buildCache(Genders,'Gender_id');
+columnToObjectMap['Gender_id'] = Genders;
+buildCache('Gender_id');
 
 
 //Phones.hasOne(
@@ -917,7 +1320,8 @@ Phones.hasMany(
 		}
 		);
 
-buildCache(Phones,'Home_Phone_id');
+columnToObjectMap['Home_Phone_id'] = Phones;
+buildCache('Home_Phone_id');
 
 
 //Addresss.hasOne(
@@ -929,7 +1333,8 @@ Addresss.hasMany(
 		}
 		);
 
-buildCache(Addresss,'Home_Address_id');
+columnToObjectMap['Home_Address_id'] = Addresss;
+buildCache('Home_Address_id');
 
 
 //Phones.hasOne(
@@ -941,7 +1346,8 @@ Phones.hasMany(
 		}
 		);
 
-buildCache(Phones,'Corr_Phone_id');
+columnToObjectMap['Corr_Phone_id'] = Phones;
+buildCache('Corr_Phone_id');
 
 
 //Addresss.hasOne(
@@ -953,7 +1359,8 @@ Addresss.hasMany(
 		}
 		);
 
-buildCache(Addresss,'Corr_Address_id');
+columnToObjectMap['Corr_Address_id'] = Addresss;
+buildCache('Corr_Address_id');
 
 
 //Phones.hasOne(
@@ -965,7 +1372,34 @@ Phones.hasMany(
 		}
 		);
 
-buildCache(Phones,'Corr_Fax_Phone_id');
+columnToObjectMap['Corr_Fax_Phone_id'] = Phones;
+buildCache('Corr_Fax_Phone_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		Providers,
+		{
+//			as: 		'created_by_User_id', 
+			foreignKey: 	'created_by_User_id'
+		}
+		);
+
+columnToObjectMap['created_by_User_id'] = Users;
+buildCache('created_by_User_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		Providers,
+		{
+//			as: 		'modified_by_User_id', 
+			foreignKey: 	'modified_by_User_id'
+		}
+		);
+
+columnToObjectMap['modified_by_User_id'] = Users;
+buildCache('modified_by_User_id');
 
 
 //ProviderSpecialitys.hasOne(
@@ -977,7 +1411,8 @@ ProviderSpecialitys.hasMany(
 		}
 		);
 
-buildCache(ProviderSpecialitys,'ProviderSpeciality_id');
+columnToObjectMap['ProviderSpeciality_id'] = ProviderSpecialitys;
+buildCache('ProviderSpeciality_id');
 
 
 //Providers.hasOne(
@@ -989,7 +1424,34 @@ Providers.hasMany(
 		}
 		);
 
-buildCache(Providers,'Provider_id');
+columnToObjectMap['Provider_id'] = Providers;
+buildCache('Provider_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		Specialitys,
+		{
+//			as: 		'created_by_User_id', 
+			foreignKey: 	'created_by_User_id'
+		}
+		);
+
+columnToObjectMap['created_by_User_id'] = Users;
+buildCache('created_by_User_id');
+
+
+//Users.hasOne(
+Users.hasMany(
+		Specialitys,
+		{
+//			as: 		'modified_by_User_id', 
+			foreignKey: 	'modified_by_User_id'
+		}
+		);
+
+columnToObjectMap['modified_by_User_id'] = Users;
+buildCache('modified_by_User_id');
 
 
 //rows.hasOne(
@@ -1001,7 +1463,8 @@ rows.hasMany(
 		}
 		);
 
-buildCache(rows,'row_id');
+columnToObjectMap['row_id'] = rows;
+buildCache('row_id');
 
 
 //Tags.hasOne(
@@ -1013,7 +1476,8 @@ Tags.hasMany(
 		}
 		);
 
-buildCache(Tags,'Tag_id');
+columnToObjectMap['Tag_id'] = Tags;
+buildCache('Tag_id');
 
 
 //Users.hasOne(
@@ -1025,7 +1489,8 @@ Users.hasMany(
 		}
 		);
 
-buildCache(Users,'User_id');
+columnToObjectMap['User_id'] = Users;
+buildCache('User_id');
 
 
 

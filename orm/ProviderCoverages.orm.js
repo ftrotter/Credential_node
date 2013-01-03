@@ -18,7 +18,9 @@ module.exports = function(sequelize, DataTypes) {
     aggregate_limit: { type: Sequelize.INTEGER },
     coverage: { type: Sequelize.STRING },
     created_by_User_id: { type: Sequelize.INTEGER },
-    modified_by_User_id: { type: Sequelize.INTEGER }
+    modified_by_User_id: { type: Sequelize.INTEGER },
+    createdAt: { type: Sequelize.DATE },
+    updatedAt: { type: Sequelize.DATE }
   },
 	{freezeTableName: true}
 )

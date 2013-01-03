@@ -2,8 +2,10 @@
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('States', {
     id: { type: Sequelize.INTEGER  ,primaryKey: true },
-    state_name: { type: Sequelize.STRING },
-    state_abbr: { type: Sequelize.STRING }
+    name: { type: Sequelize.STRING },
+    state_abbr: { type: Sequelize.STRING },
+    createdAt: { type: Sequelize.DATE },
+    updatedAt: { type: Sequelize.DATE }
   },
 	{freezeTableName: true}
 )

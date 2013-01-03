@@ -2,7 +2,11 @@
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('Carriers', {
     id: { type: Sequelize.INTEGER  ,primaryKey: true },
-    name: { type: Sequelize.STRING }
+    name: { type: Sequelize.STRING },
+    created_by_User_id: { type: Sequelize.INTEGER },
+    modified_by_User_id: { type: Sequelize.INTEGER },
+    createdAt: { type: Sequelize.DATE },
+    updatedAt: { type: Sequelize.DATE }
   },
 	{freezeTableName: true}
 )

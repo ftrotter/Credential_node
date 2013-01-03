@@ -13,7 +13,9 @@ module.exports = function(sequelize, DataTypes) {
     expiration_date: { type: Sequelize.DATE },
     hmo: { type: Sequelize.BOOLEAN },
     ppo: { type: Sequelize.BOOLEAN },
-    pos: { type: Sequelize.BOOLEAN }
+    pos: { type: Sequelize.BOOLEAN },
+    createdAt: { type: Sequelize.DATE },
+    updatedAt: { type: Sequelize.DATE }
   },
 	{freezeTableName: true}
 )

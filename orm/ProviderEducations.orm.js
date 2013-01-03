@@ -8,7 +8,9 @@ module.exports = function(sequelize, DataTypes) {
     attendance_period_end: { type: Sequelize.DATE },
     EducationInstitution_id: { type: Sequelize.INTEGER },
     created_by_User_id: { type: Sequelize.INTEGER },
-    modified_by_User_id: { type: Sequelize.INTEGER }
+    modified_by_User_id: { type: Sequelize.INTEGER },
+    createdAt: { type: Sequelize.DATE },
+    updatedAt: { type: Sequelize.DATE }
   },
 	{freezeTableName: true}
 )

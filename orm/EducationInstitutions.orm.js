@@ -6,7 +6,11 @@ module.exports = function(sequelize, DataTypes) {
     name: { type: Sequelize.STRING },
     url: { type: Sequelize.STRING },
     Address_id: { type: Sequelize.INTEGER },
-    Phone_id: { type: Sequelize.INTEGER }
+    Phone_id: { type: Sequelize.INTEGER },
+    created_by_User_id: { type: Sequelize.INTEGER },
+    modified_by_User_id: { type: Sequelize.INTEGER },
+    createdAt: { type: Sequelize.DATE },
+    updatedAt: { type: Sequelize.DATE }
   },
 	{freezeTableName: true}
 )

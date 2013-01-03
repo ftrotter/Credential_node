@@ -8,8 +8,11 @@ module.exports = function(sequelize, DataTypes) {
     imageURL: { type: Sequelize.STRING },
     container: { type: Sequelize.STRING },
     filename: { type: Sequelize.STRING },
+    select_name: { type: Sequelize.STRING },
     token: { type: Sequelize.STRING },
     expiration_date: { type: Sequelize.DATE },
+    created_by_User_id: { type: Sequelize.INTEGER },
+    modified_by_User_id: { type: Sequelize.INTEGER },
     createdAt: { type: Sequelize.DATE },
     updatedAt: { type: Sequelize.DATE }
   },
