@@ -16,9 +16,40 @@ config = require(__dirname + '/config.yaml');
  var dust = require('dustjs-linkedin'); //We use the dust templating engine that is now supported by linkedin
  dust.helper = require('dustjs-helpers'); //We use the dust templating engine that is now supported by linkedin
  var cons = require('consolidate'); //A standard way to work with templating languages https://github.com/visionmedia/consolidate.js
- var passport = require('passport');// An authentication engine that works with express
  var flash = require('connect-flash');//not really sure what this is for, but it handles passport errors... 
  var util = require('util'); //nodes native util functions http://nodejs.org/api/util.html
+
+ var passport = require('passport') // An authentication engine that works with express
+  , GoogleStrategy = require('passport-google').Strategy;
+
+passport.use(new GoogleStrategy({
+    returnURL: 'http://cred.ft1.us:8010/auth/google/return',
+    realm: 'http://cred.ft1.us:8010/'
+  },
+  function(identifier, profile, done) {
+
+	var email,Users;
+	prettyJSON(profile);
+
+	login_email = profile.emails[0].value;
+	prettyJSON(email);
+
+	Users = ORM['Users'];
+
+	Users.find({ where: {email: login_email}}).success( 
+			function(ThisUser){
+
+		prettyJSON('success I found this user.. now what?');
+		done(null,profile);
+	}); 
+
+	
+
+    //User.findOrCreate({ openId: identifier }, function(err, user) {
+     // done(err, user);
+    //});
+  }
+));
 
 
 //helps us with time calculations
@@ -116,9 +147,18 @@ app.configure('development', function(){
 });
 
 
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
+
 
 function ensureAuthenticated(req, res, next) {
-	return next(); // we always say yes for now...
+  if (req.isAuthenticated()) { return next(); }
+  res.redirect('/login')
 }
 
 
@@ -141,7 +181,7 @@ sequelize = new Sequelize(config.database,config.user,config.password);
 //now that sequelize exists, we can load the full orm...
 var ORM = require('./orm'); //will look for /orm/index.js
 
-prettyJSON(ORM.ModelCache);
+//prettyJSON(ORM.ModelCache);
 
 /////////////////////////////////////////////////////
 /////////////////// SECTION Routes /////////////////
@@ -152,7 +192,7 @@ function getORM(my_ORM,ORM_Type,req,res){
 
         var to_template = {};
 
-
+	to_template.user = req.user;
 
         if( typeof my_ORM['selectedValues'] != 'undefined'){
 		//then this a populated ORM
@@ -166,6 +206,9 @@ function getORM(my_ORM,ORM_Type,req,res){
                 if( typeof ORM.ModelCache[this_key] != 'undefined'){
                         //then this is a select box
                         //or something...
+                      	//lets rebuild the Cache for this key...
+                      	//may not work on this load... but it will for the next one!!
+                      	ORM.buildCache(this_key);	
                         this_contents = ORM.ModelCache[this_key];
                         to_template[this_key] = {
                                 is_array: true,
@@ -190,13 +233,16 @@ function getORM(my_ORM,ORM_Type,req,res){
                                         this_instance_name = this_instance_name + " " + this_value;
                                 }
                         });
+			//lets add (id) at the end of each display, since some dont have names...
+			//that might be all that shows sometimes..
+                        this_instance_name = this_instance_name + " (" + this_instance.id +")";
                         this_instance.instance_name = this_instance_name;
                         new_instances.push(this_instance);
                 });
                 to_template['instances'] = new_instances;
 
-		alwaysLoadDocs(to_template,req,res);
-                //res.render('html',to_template); //which loads views/{Type}.dust 
+		//alwaysLoadDocs(to_template,req,res);
+                res.render('html',to_template); //which loads views/{Type}.dust 
 
         });
 
@@ -215,6 +261,74 @@ function alwaysLoadDocs(to_template,req,res){
 
 	});
 }
+
+
+// Redirect the user to Google for authentication.  When complete, Google
+// // will redirect the user back to the application at
+// //     /auth/google/return
+ app.get('/auth/google', passport.authenticate('google'));
+
+app.get('/login', function(req, res){
+  res.render('login', { user: req.user });
+});
+
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/login');
+});
+
+
+
+// // Google will redirect the user to this URL after authentication.  Finish
+// // the process by verifying the assertion.  If valid, the user will be
+// // logged in.  Otherwise, authentication has failed.
+ app.get('/auth/google/return', 
+   passport.authenticate('google', { successRedirect: '/',
+                                       failureRedirect: '/login' }));
+
+app.get('/ProviderDash/', ensureAuthenticated, function(req, res){
+
+        getORM(ORM.Providers,'Providers',req,res);
+
+});
+
+app.get('/ProviderDash/:id/', ensureAuthenticated, function(req, res){
+
+        id = parseInt(req.params.id, 10);
+        ORM.Providers.find(id).success(function (ThisProvider){
+
+		//We need to load everything to do with particular providers here...
+		//lets use async to load... well everything...
+	
+		async.parallel([
+    			function(callback){
+		ThisProvider.getProviderCarriers().success(function(theseCarriers) {
+				callback(null,{carriers: theseCarriers});
+				});
+    			},
+    			function(callback){
+		ThisProvider.getProviderCoverages().success(function(theseCoverages) {
+				callback(null,{coverages: theseCoverages});
+		});
+    			},
+		],function(err, results){
+
+			prettyJSON(results);
+                	res.send("Well isnt that special??");
+		
+//     // the results array will equal ['one','two'] even though
+//         // the second function had a shorter timeout.
+         	});
+	
+
+        }); //this is the end of the function that loaded the provider...
+
+        //prettyJSON(ORM.ModelCache);
+        //
+}); //end of ProviderDash with an id...
+        //
+
+
 
 app.get('/API/:ORM_Type/', ensureAuthenticated, function(req, res){
 
@@ -239,7 +353,10 @@ app.get('/API/:ORM_Type/:id/', ensureAuthenticated, function(req, res){
 
 app.get('/', ensureAuthenticated, function(req, res){
         //Create a new object here...
-        res.render('html_list'); //which loads the index
+
+	
+
+        res.render('html_list', {user: req.user}); //which loads the index
 });
 
 app.post('/API/:ORM_Type/', ensureAuthenticated, function(req, res){
@@ -247,11 +364,30 @@ app.post('/API/:ORM_Type/', ensureAuthenticated, function(req, res){
 	My_ORM = ORM[ORM_Type];
 
 	var what_happened = JSON.stringify(req.body, null, "\t");
-	
 
-        //Save the object after getting the post from the form...
-        res.send(ORM_Type + " saved <a href='/'>home</a> <br> OBW here what happened: <br> <pre>"+what_happened+" </pre>");
+	if(req.body.id !== ""){ //then this is an update..
+
+		My_ORM.find({where: {id: req.body.id}}).success( function(gotThis){
+                	gotThis.updateAttributes(req.body).success(function(new_object){
+                //Save the object after getting the post from the form...
+                        	res.send(ORM_Type + " saved <a href='/API/"+ORM_Type+"/'>return to list</a> <br> OBW here is what happened: <br> <pre>"+what_happened+" </pre>");
+                });
+		});
+                
+		
+
+	}else{	
+		//we are creating from scratch!!
+
+		//we should override the UserId for both modify and create here!!
+
+		My_ORM.create(req.body).success(function(new_object){
+        	//Save the object after getting the post from the form...
+                	res.send(ORM_Type + " saved <a href='/API/"+ORM_Type+"/'>return to list</a> <br> OBW here is what happened: <br> <pre>"+what_happened+" </pre>");
+		});
+	}
 });
+
 
 app.post('/DocumentNotification/',ensureAuthenticated, function(req, res){
 	

@@ -47,7 +47,7 @@
 //TwilioAuthToken: 
  
 $capability = new Services_Twilio_Capability($config['TwilioAccountSid'],$config['TwilioAuthToken']);
-$capability->allowClientOutgoing('KnowingGrin');
+$capability->allowClientOutgoing($config['TwilioAppID']);
 
 $twilio_token = $capability->generateToken();
 
@@ -66,7 +66,7 @@ $twilio_token = $capability->generateToken();
 	$orm_index_js = "
 
 var ModelCache = {};
-
+var columnToObjectMap = {};
 
 //Javascript does not allow for default arguments into functions
 //this handles the problem for functions
@@ -76,46 +76,58 @@ function has_default(arg, def) {
 }
 
 
+//select_name is now required!!
+function buildCache(select_name){
 
-function buildCache(ORM,select_name){
-
+	var ORM;
         var object_type;
-        var select_html;
         var selected_col;
         var data_cache = [];
 //add code for auto-complete detection engine...
 
+	//we use the column name to figure out which of the ORMs
+	//we are going to use... this makes rebuilding trivial!!
+
+	ORM = columnToObjectMap[select_name];
+
         object_type = ORM.name;
         //if we passed in a select_name, use it, otherwise use the default
-        select_name = has_default(select_name, object_type + \"_id\");
-        select_html = \"<select name='\" + select_name + \"'>\\n\";
-
-        console.log(\"object_type: \" + object_type + \"\\n\");
-        console.log(\"select_name: \" + select_name + \"\\n\");
 
         ORM.findAll().success(function(things) {
 
                 __.each(things,function(a_thing){
-                        //lets determine what the variable
-                        //from the table should be the label for the
-                        //select box...
-                        if(selected_col === undefined){
-                                selected = a_thing.attributes;
-                                __.each(selected,function(key,value){
-                                if(key.indexOf(\"name\") !== -1){
-                                        //then this is my select variable..
-                                                selected_col = key;
-                //                              console.log(\"inside key\" + key);
+
+	 		if(selected_col === undefined){
+
+				//the default is just the id...
+				selected_col = 'id';	
+
+				selected = a_thing.attributes;
+				__.each(selected,function(key,value){
+					//choose which column to use as the select 
+					//value for connecting objects...
+					//any field with 'name' at the end... or not... you never know.. 
+					//then choose the last 'name' in the list...
+                                        if(key.indexOf(\"name\") !== -1){
+                                             selected_col = key;
                                         }
                                 });
-                        }
+				//now we should have the last colum with 
+				//'name' in it... but is that what we really want?
+				//sometimes we want to be able to specify
+				//so we look around for 'select_name'...
+                                __.each(selected,function(key,value){
+                                        //choose which column to use as the select 
+                                        //value for connecting objects...
+                                        //any field with 'name' at the end... or not... you never know.. 
+                                        //then choose the last 'name' in the list...
+                                        if(key.indexOf(\"select_name\") !== -1){
+                                             selected_col = key;
+                                        }
+                                });
+			}
 
-                        select_html = select_html               +
-                                        \"<option value='\"       +
-                                        a_thing.id              +
-                                        \"'>\"                    +
-                                a_thing[selected_col] + \"</option>\\n\";
-                        my_value = a_thing[selected_col];
+			my_value = a_thing[selected_col];
 
                         data_cache.push({
                                                 id: a_thing.id,
@@ -123,9 +135,9 @@ function buildCache(ORM,select_name){
                                         });
 
                 });
-                select_html = select_html + \"</select>\\n\";
-                //HTMLCache[select_name] = select_html;
+
                 ModelCache[select_name] = data_cache;
+		//console.log(data_cache);
         });
 }
 
@@ -228,7 +240,8 @@ $other_table"."s.hasMany(
 		}
 		);
 
-buildCache($other_table"."s,'$col_name');
+columnToObjectMap['$col_name'] = $other_table"."s;
+buildCache('$col_name');
 
 ";
 
@@ -472,6 +485,12 @@ $e
 $E
 </fieldset>
 </form>
+
+<script type='text/javascript'>
+
+	twilio_token = '$twilio_token';
+
+</script>
 
 <pre>
 {! @contextDump/ !}
