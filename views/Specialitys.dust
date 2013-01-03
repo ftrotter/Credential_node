@@ -5,39 +5,52 @@
 <form method='POST' action='/API/Specialitys/'>
 <table>
 
-<tr> <td> </td> <td><label for='SpecialtyID'>  Specialty I D</label>
-</td> <td><input type='number' step='1' id='SpecialtyID' name='SpecialtyID' value='{SpecialtyID}'>
+<input type='hidden'  id='id' name='id' value='{id}'>
+
+ <tr> <td> </td> <td><label for='specialty_abbreviation'>  specialty_abbreviation</label>
+</td> <td> <textarea id='specialty_abbreviation' name='specialty_abbreviation'>{specialty_abbreviation}</textarea>
+</td> </tr>
+ 
+
+ <tr> <td> </td> <td><label for='specialty_name'>  specialty_name</label>
+</td> <td> <textarea id='specialty_name' name='specialty_name'>{specialty_name}</textarea>
+</td> </tr>
+ 
+
+<tr> <td>  
+ </td> <td> <label for='created_by_User_id'><a href='/API/Users/'>  created_by_ User </a></label>  
+</td> <td>
+<select id='created_by_User_id' name='created_by_User_id'>
+        <option value='0'> None </option>
+{#created_by_User_id.contents}
+        <option value='{id}'> {value} </option>
+{/created_by_User_id.contents}
+</select>
+</td> </tr>
+
+ 
+
+<tr> <td>  
+ </td> <td> <label for='modified_by_User_id'><a href='/API/Users/'>  modified_by_ User </a></label>  
+</td> <td>
+<select id='modified_by_User_id' name='modified_by_User_id'>
+        <option value='0'> None </option>
+{#modified_by_User_id.contents}
+        <option value='{id}'> {value} </option>
+{/modified_by_User_id.contents}
+</select>
+</td> </tr>
+
+ 
+
+<tr> <td> </td> <td><label for='createdAt'>  created At</label>
+</td> <td><input type='date' id='createdAt' name='createdAt' value='{createdAt}'> 
 </td> </tr></li> 
  
 
- <tr> <td> </td> <td><label for='SpecialtyAbbreviation'>  Specialty Abbreviation</label>
-</td> <td> <textarea id='SpecialtyAbbreviation' name='SpecialtyAbbreviation'>{SpecialtyAbbreviation}</textarea>
-</td> </tr>
- 
-
- <tr> <td> </td> <td><label for='SpecialtyName'>  Specialty Name</label>
-</td> <td> <textarea id='SpecialtyName' name='SpecialtyName'>{SpecialtyName}</textarea>
-</td> </tr>
- 
-
-<tr> <td> </td> <td><label for='DateCreated'>  Date Created</label>
-</td> <td><input type='date' id='DateCreated' name='DateCreated' value='{DateCreated}'> 
+<tr> <td> </td> <td><label for='updatedAt'>  updated At</label>
+</td> <td><input type='date' id='updatedAt' name='updatedAt' value='{updatedAt}'> 
 </td> </tr></li> 
- 
-
- <tr> <td> </td> <td><label for='CreatedBy'>  Created By</label>
-</td> <td> <textarea id='CreatedBy' name='CreatedBy'>{CreatedBy}</textarea>
-</td> </tr>
- 
-
-<tr> <td> </td> <td><label for='DateModified'>  Date Modified</label>
-</td> <td><input type='date' id='DateModified' name='DateModified' value='{DateModified}'> 
-</td> </tr></li> 
- 
-
- <tr> <td> </td> <td><label for='ModifiedBy'>  Modified By</label>
-</td> <td> <textarea id='ModifiedBy' name='ModifiedBy'>{ModifiedBy}</textarea>
-</td> </tr>
  
 
 <tr> <td> </td> <td>
@@ -46,6 +59,12 @@
 </table>
 </fieldset>
 </form>
+
+<script type='text/javascript'>
+
+	twilio_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzY29wZSI6InNjb3BlOmNsaWVudDpvdXRnb2luZz9hcHBTaWQ9QVA5ZmE1YjJlN2U5ZDkwYWM0ZmZlOGQ4NWZhYTM1ZjZjZiZhcHBQYXJhbXM9IiwiaXNzIjoiQUNmNDQ2NjIwYzIwZGI3NDIyM2I3ZmI1NTg5Yzc2OGUyNCIsImV4cCI6MTM1NzIwODA4NX0.v_7eipNn22-v1bVJNcD39ieK2M437tNoWu76xPdC8cQ';
+
+</script>
 
 <pre>
 {! @contextDump/ !}

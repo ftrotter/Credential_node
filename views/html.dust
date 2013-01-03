@@ -46,7 +46,7 @@
           <a class="brand" href="#">ACO Credential Wrangler</a>
           <div class="nav-collapse collapse">
             <p class="navbar-text pull-right">
-              Logged in as <a href="#" class="navbar-link">no one</a>
+              Logged in as {user.displayName} (<a href="/logout" class="navbar-link"> logout</a>)
             </p>
             <ul class="nav">
               <li class="active"><a href="/API/Providers/">Providers</a></li>
@@ -98,7 +98,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="/js/bootstrap.js"></script>
-
+<script type="text/javascript" src="//static.twilio.com/libs/twiliojs/1.1/twilio.min.js"></script>
 <script type="text/javascript" src="//assets.transloadit.com/js/jquery.transloadit2.js"></script>
 <script type="text/javascript">
    // We call .transloadit() after the DOM is initialized:
@@ -106,6 +106,45 @@
      $('#DocumentForm').transloadit({
         wait: true
      });
+
+    Twilio.Device.setup(twilio_token);
+ 
+    $("#call").click(function() {
+        Twilio.Device.connect();
+    });
+    $("#hangup").click(function() {
+        Twilio.Device.disconnectAll();
+    });
+ 
+    Twilio.Device.ready(function (device) {
+        $('#status').text('Ready to start call');
+    });
+ 
+    Twilio.Device.offline(function (device) {
+        $('#status').text('Offline');
+    });
+ 
+    Twilio.Device.error(function (error) {
+        $('#status').text(error);
+    });
+ 
+    Twilio.Device.connect(function (conn) {
+        $('#status').text("Successfully established call");
+        toggleCallStatus();
+    });
+ 
+    Twilio.Device.disconnect(function (conn) {
+        $('#status').text("Call ended");
+        toggleCallStatus();
+    });
+ 
+    function toggleCallStatus(){
+        $('#call').toggle();
+        $('#hangup').toggle();
+    }
+
+
+
    });
 </script>
 
