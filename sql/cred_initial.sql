@@ -24,9 +24,9 @@ DROP TABLE IF EXISTS `Addresss`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Addresss` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `address_name` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
   `line1` varchar(255) DEFAULT NULL,
-  `line2` int(11) DEFAULT NULL,
+  `line2` varchar(255) DEFAULT NULL,
   `zip` int(11) DEFAULT NULL,
   `State_id` int(11) DEFAULT NULL,
   `County_id` int(11) DEFAULT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE `Addresss` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,6 +44,7 @@ CREATE TABLE `Addresss` (
 
 LOCK TABLES `Addresss` WRITE;
 /*!40000 ALTER TABLE `Addresss` DISABLE KEYS */;
+INSERT INTO `Addresss` VALUES (1,'name','12312 line1','0',43232,2,0,0,0,'0000-00-00 00:00:00','2013-01-02 17:05:32'),(2,'another one bites','12312 bites dust','line 2',43232,0,0,0,0,'0000-00-00 00:00:00','2013-01-02 17:29:22');
 /*!40000 ALTER TABLE `Addresss` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -95,7 +96,7 @@ CREATE TABLE `Carriers` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -104,7 +105,7 @@ CREATE TABLE `Carriers` (
 
 LOCK TABLES `Carriers` WRITE;
 /*!40000 ALTER TABLE `Carriers` DISABLE KEYS */;
-INSERT INTO `Carriers` VALUES (1,'Bravo Health',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'Molina (medicaid)',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'XL Health',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,'Beech Street',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,'CHC (STAR)',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,'Molina (CHIPS)',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,'Senior Patient Association',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(8,'New Life Era',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(9,'Physicians\' ACO',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(10,'Wellcare',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(11,'Multi-Plan',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(12,'CHC (CHIPS)',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(13,'Molina (STAR plus)',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(14,'United American',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(15,'Universal Health Care',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(16,'CHC',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(17,'Galaxy',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(18,'Prime',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(19,'Molina (Medicare Advantage)',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(20,'Molina (Star)',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(21,'Alavida',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(22,'Patient/Physician Cooperatives',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `Carriers` VALUES (1,'Bravo Health',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'Molina (medicaid)',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'XL Health',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,'Beech Street',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,'CHC (STAR)',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,'Molina (CHIPS)',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,'Senior Patient Association',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(8,'New Life Era',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(9,'Physicians\' ACO',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(10,'Wellcare',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(11,'Multi-Plan',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(12,'CHC (CHIPS)',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(13,'Molina (STAR plus)',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(14,'United American',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(15,'Universal Health Care',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(16,'CHC',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(17,'Galaxy',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(18,'Prime',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(19,'Molina (Medicare Advantage)',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(20,'Molina (Star)',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(21,'Alavida',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(22,'Patient/Physician Cooperatives',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(23,'A good Carrier',0,0,'0000-00-00 00:00:00','2013-01-03 08:43:48');
 /*!40000 ALTER TABLE `Carriers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -204,6 +205,7 @@ CREATE TABLE `Documents` (
   `imageURL` varchar(255) DEFAULT NULL,
   `container` varchar(255) DEFAULT NULL,
   `filename` varchar(255) DEFAULT NULL,
+  `select_name` varchar(255) NOT NULL,
   `token` varchar(255) DEFAULT NULL,
   `expiration_date` datetime DEFAULT NULL,
   `created_by_User_id` int(11) DEFAULT NULL,
@@ -264,7 +266,7 @@ DROP TABLE IF EXISTS `EducationLevels`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `EducationLevels` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `level_name` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
@@ -290,7 +292,7 @@ DROP TABLE IF EXISTS `Genders`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Genders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `gender_name` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
   `created_by_User_id` int(11) DEFAULT NULL,
   `modified_by_User_id` int(11) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
@@ -374,7 +376,7 @@ DROP TABLE IF EXISTS `Phones`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Phones` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `phone_name` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
   `phone` int(11) DEFAULT NULL,
   `created_by_User_id` int(11) DEFAULT NULL,
   `modified_by_User_id` int(11) DEFAULT NULL,
@@ -409,7 +411,7 @@ CREATE TABLE `ProviderCarriers` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -418,6 +420,7 @@ CREATE TABLE `ProviderCarriers` (
 
 LOCK TABLES `ProviderCarriers` WRITE;
 /*!40000 ALTER TABLE `ProviderCarriers` DISABLE KEYS */;
+INSERT INTO `ProviderCarriers` VALUES (1,1,1,0,0,'0000-00-00 00:00:00','2013-01-03 08:44:16');
 /*!40000 ALTER TABLE `ProviderCarriers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -450,7 +453,7 @@ CREATE TABLE `ProviderCoverages` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -459,6 +462,7 @@ CREATE TABLE `ProviderCoverages` (
 
 LOCK TABLES `ProviderCoverages` WRITE;
 /*!40000 ALTER TABLE `ProviderCoverages` DISABLE KEYS */;
+INSERT INTO `ProviderCoverages` VALUES (1,1,NULL,'coverage name','1010 coverage street','','houston',44,77003,1231231234,1111111,'2013-01-14 00:00:00','2013-01-17 00:00:00',1,10,'nice coverage',0,0,'0000-00-00 00:00:00','2013-01-03 08:53:07');
 /*!40000 ALTER TABLE `ProviderCoverages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -754,6 +758,7 @@ DROP TABLE IF EXISTS `Providers`;
 CREATE TABLE `Providers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ProviderStatus_id` int(11) DEFAULT NULL,
+  `select_name` varchar(255) NOT NULL,
   `last_name` varchar(255) DEFAULT NULL,
   `first_name` varchar(255) DEFAULT NULL,
   `middle_name` varchar(255) DEFAULT NULL,
@@ -802,7 +807,7 @@ CREATE TABLE `Providers` (
 
 LOCK TABLES `Providers` WRITE;
 /*!40000 ALTER TABLE `Providers` DISABLE KEYS */;
-INSERT INTO `Providers` VALUES (1,1,'Trotter','Fred','Clayton','suffix','','','1975-12-21 00:00:00',1,1,1,0,1,1,2,1,0,'fred.trotter@gmail.com','this is a comment','2012-12-17 00:00:00','1231412','2012-11-21 00:00:00','2012-12-05 00:00:00',2323423,'2012-12-12 00:00:00','2012-12-27 00:00:00',12312,1234567890,21312,12123,123123,1231231,123123,1231231,'2012-12-11 00:00:00',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,2,'Jones','Davey','','my suffix','','','1965-12-04 00:00:00',2,2,1,0,4,2,713245233,5,NULL,'bob@example.com','comment','2012-10-15 00:00:00','134123ASDFD','2012-12-18 00:00:00','2012-12-13 00:00:00',123412341,'2012-10-08 00:00:00','2013-02-14 00:00:00',1231231,123412342,12341234,1234123,1234123,12341234,12341234,12341234,'2012-11-12 00:00:00',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,1,'Trottery','Marvin','','suffix','','','1975-12-21 00:00:00',1,1,1,0,1,1,2,1,0,'fred.trotter@gmail.com','this is a comment','2012-12-17 00:00:00','1231412','2012-11-21 00:00:00','2012-12-05 00:00:00',2323423,'2012-12-12 00:00:00','2012-12-27 00:00:00',12312,1234567890,21312,12123,123123,1231231,123123,1231231,'2012-12-11 00:00:00',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,2,'Johnson','Joe','','my suffix','','','1965-12-04 00:00:00',2,2,1,0,4,2,713245233,5,NULL,'bob@example.com','comment','2012-10-15 00:00:00','134123ASDFD','2012-12-18 00:00:00','2012-12-13 00:00:00',123412341,'2012-10-08 00:00:00','2013-02-14 00:00:00',1231231,123412342,12341234,1234123,1234123,12341234,12341234,12341234,'2012-11-12 00:00:00',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,2,'Smth','John','Ned','my suffix','','','1965-12-04 00:00:00',2,2,1,0,4,2,713245233,5,NULL,'bob@example.com','comment','2012-10-15 00:00:00','134123ASDFD','2012-12-18 00:00:00','2012-12-13 00:00:00',123412341,'2012-10-08 00:00:00','2013-02-14 00:00:00',1231231,123412342,12341234,1234123,1234123,12341234,12341234,12341234,'2012-11-12 00:00:00',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,2,'Wicker','Sandy','Quincy','my suffix','','','1965-12-04 00:00:00',2,2,1,0,4,2,713245233,5,NULL,'bob@example.com','comment','2012-10-15 00:00:00','134123ASDFD','2012-12-18 00:00:00','2012-12-13 00:00:00',123412341,'2012-10-08 00:00:00','2013-02-14 00:00:00',1231231,123412342,12341234,1234123,1234123,12341234,12341234,12341234,'2012-11-12 00:00:00',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,2,'Wheeler','Wendy','Jones','my suffix','','','1965-12-04 00:00:00',2,2,1,0,4,2,713245233,5,NULL,'bob@example.com','comment','2012-10-15 00:00:00','134123ASDFD','2012-12-18 00:00:00','2012-12-13 00:00:00',123412341,'2012-10-08 00:00:00','2013-02-14 00:00:00',1231231,123412342,12341234,1234123,1234123,12341234,12341234,12341234,'2012-11-12 00:00:00',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `Providers` VALUES (1,1,'Dr Fred Trotter','Trotter','Fred','Clayton','suffix','','','1975-12-21 00:00:00',1,1,1,0,1,1,2,1,0,'fred.trotter@gmail.com','this is a comment','2012-12-17 00:00:00','1231412','2012-11-21 00:00:00','2012-12-05 00:00:00',2323423,'2012-12-12 00:00:00','2012-12-27 00:00:00',12312,1234567890,21312,12123,123123,1231231,123123,1231231,'2012-12-11 00:00:00',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,2,'Dr Davey Jones','Jones','Davey','','my suffix','','','1965-12-04 00:00:00',2,2,1,0,4,2,713245233,5,NULL,'bob@example.com','comment','2012-10-15 00:00:00','134123ASDFD','2012-12-18 00:00:00','2012-12-13 00:00:00',123412341,'2012-10-08 00:00:00','2013-02-14 00:00:00',1231231,123412342,12341234,1234123,1234123,12341234,12341234,12341234,'2012-11-12 00:00:00',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,1,'Dr. Marvin Trotter','Trottery','Marvin','','suffix','','','1975-12-21 00:00:00',1,1,1,0,1,1,2,1,0,'fred.trotter@gmail.com','this is a comment','2012-12-17 00:00:00','1231412','2012-11-21 00:00:00','2012-12-05 00:00:00',2323423,'2012-12-12 00:00:00','2012-12-27 00:00:00',12312,1234567890,21312,12123,123123,1231231,123123,1231231,'2012-12-11 00:00:00',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,2,'Dr. Joe Johnson','Johnson','Joe','','my suffix','','','1965-12-04 00:00:00',2,2,1,0,4,2,713245233,5,NULL,'bob@example.com','comment','2012-10-15 00:00:00','134123ASDFD','2012-12-18 00:00:00','2012-12-13 00:00:00',123412341,'2012-10-08 00:00:00','2013-02-14 00:00:00',1231231,123412342,12341234,1234123,1234123,12341234,12341234,12341234,'2012-11-12 00:00:00',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,2,'Dr. John Smith','Smith','John','Ned','my suffix','','','1965-12-04 00:00:00',2,2,1,0,4,2,713245233,5,NULL,'bob@example.com','comment','2012-10-15 00:00:00','134123ASDFD','2012-12-18 00:00:00','2012-12-13 00:00:00',123412341,'2012-10-08 00:00:00','2013-02-14 00:00:00',1231231,123412342,12341234,1234123,1234123,12341234,12341234,12341234,'2012-11-12 00:00:00',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,2,'Dr Sandy Wicker','Wicker','Sandy','Quincy','my suffix','','','1965-12-04 00:00:00',2,2,1,0,4,2,713245233,5,NULL,'bob@example.com','comment','2012-10-15 00:00:00','134123ASDFD','2012-12-18 00:00:00','2012-12-13 00:00:00',123412341,'2012-10-08 00:00:00','2013-02-14 00:00:00',1231231,123412342,12341234,1234123,1234123,12341234,12341234,12341234,'2012-11-12 00:00:00',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,2,'Dr Wendy Wheeler','Wheeler','Wendy','Jones','my suffix','','','1965-12-04 00:00:00',2,2,1,0,4,2,713245233,5,NULL,'bob@example.com','comment','2012-10-15 00:00:00','134123ASDFD','2012-12-18 00:00:00','2012-12-13 00:00:00',123412341,'2012-10-08 00:00:00','2013-02-14 00:00:00',1231231,123412342,12341234,1234123,1234123,12341234,12341234,12341234,'2012-11-12 00:00:00',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `Providers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -839,14 +844,14 @@ DROP TABLE IF EXISTS `Specialitys`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Specialitys` (
-  `SpecialtyID` int(11) NOT NULL DEFAULT '0',
-  `SpecialtyAbbreviation` varchar(255) DEFAULT NULL,
-  `SpecialtyName` varchar(255) DEFAULT NULL,
+  `id` int(11) NOT NULL DEFAULT '0',
+  `specialty_abbreviation` varchar(255) DEFAULT NULL,
+  `specialty_name` varchar(255) DEFAULT NULL,
   `created_by_User_id` int(11) DEFAULT NULL,
   `modified_by_User_id` int(11) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
-  PRIMARY KEY (`SpecialtyID`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -869,7 +874,7 @@ DROP TABLE IF EXISTS `States`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `States` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `state_name` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
   `state_abbr` varchar(255) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
@@ -924,7 +929,7 @@ DROP TABLE IF EXISTS `Tags`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Tags` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `tag` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
@@ -982,8 +987,7 @@ DROP TABLE IF EXISTS `Users`;
 CREATE TABLE `Users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) DEFAULT NULL,
-  `first_name` varchar(255) DEFAULT NULL,
-  `last_name` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
@@ -1058,4 +1062,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-01-02 16:54:54
+-- Dump completed on 2013-01-03  8:57:42
