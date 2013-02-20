@@ -248,13 +248,7 @@ buildCache('$col_name');
 
 				if(strcmp('phone',strtolower($other_table)) == 0){
 					//then we make special twilio pone magic...
-					$phone_html = '<br> <div align="center">
-    <input type="button" id="call" value="Start Call"/>
-    <input type="button" id="hangup" value="Disconnect Call" style="display:none;"/>
-    <div id="status">
-        Offline
-    </div>
-</div>';	
+					$phone_html = get_phone_html("{".$col_name."}");
 				}else{
 					$phone_html = '';
 				}
@@ -265,9 +259,10 @@ $s $phone_html
 $m
 <select id='$col_name' name='$col_name'>
         <option value='0'> None </option>
-{#$col_name.contents}
-        <option value='{id}'> {value} </option>
-{/$col_name.contents}
+{#$col_name"."_array.contents}
+        <option value='{id}' {#$col_name}{@if cond=\"{id} == {"."$col_name"."} \"} selected {/if} {/$col_name} 
+		> {value} </option>
+{/$col_name"."_array.contents}
 </select>
 $e
 
@@ -567,3 +562,78 @@ return($string);
 
 }
 
+function get_phone_html($data_tag){
+
+
+	$return_me = "
+<div class='btn-group'>
+    <a class='btn btn-primary' href='#'><i class='icon-bullhorn'></i> Contact $data_tag</a>
+    <a class='btn btn-primary dropdown-toggle' data-toggle='dropdown' href='#'><span class='icon-caret-down'></span></a>
+    <ul class='dropdown-menu'>
+        <li><a href='#phoneModal_$data_tag' role='button' data-toggle='modal'><i class='icon-phone'></i> Call from your cell phone</a></li>
+        <li><a href='#browserModal_$data_tag' role='button' data-toggle='modal'><i class='icon-desktop'></i> Call from this browser</a></li>
+        <li><a href='#textModal_$data_tag' role='button' data-toggle='modal'><i class='icon-comment'></i> Send a text message </a></li>
+        <li><a href='/Fax/$data_tag/' data-target='#faxModal_$data_tag' role='button' data-toggle='modal'><i class='icon-print'></i> Send a fax message </a></li>
+    </ul>
+</div>
+
+<!-- Modal -->
+<div id='phoneModal_$data_tag' class='modal hide fade' tabindex='-1' role='dialog' aria-labelledby='phoneModalLabel' aria-hidden='true'>
+  <div class='modal-header'>
+    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button>
+    <h3 id='phoneModalLabel'> Phone Call</h3>
+  </div>
+  <div class='modal-body'>
+    <p>not implemented yet</p>
+  </div>
+  <div class='modal-footer'>
+    <button class='btn' data-dismiss='modal' aria-hidden='true'>Close</button>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id='browserModal_$data_tag' class='modal hide fade' tabindex='-1' role='dialog' aria-labelledby='browserModalLabel' aria-hidden='true'>
+  <div class='modal-header'>
+    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button>
+    <h3 id='browserModalLabel'>Browser Call</h3>
+  </div>
+  <div class='modal-body'>
+    <p>not implemented yet</p>
+  </div>
+  <div class='modal-footer'>
+    <button class='btn' data-dismiss='modal' aria-hidden='true'>Close</button>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id='textModal_$data_tag' class='modal hide fade' tabindex='-1' role='dialog' aria-labelledby='textModalLabel' aria-hidden='true'>
+  <div class='modal-header'>
+    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button>
+    <h3 id='textModalLabel'>SMS interface</h3>
+  </div>
+  <div class='modal-body'>
+    <p>Not implemented</p>
+  </div>
+  <div class='modal-footer'>
+    <button class='btn' data-dismiss='modal' aria-hidden='true'>Close</button>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id='faxModal_$data_tag' class='modal hide fade' tabindex='-1' role='dialog' aria-labelledby='faxModalLabel' aria-hidden='true'>
+  <div class='modal-header'>
+    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button>
+    <h3 id='faxModalLabel'>Fax interface/h3>
+  </div>
+  <div class='modal-body'>
+    <p>Not implemented</p>
+  </div>
+  <div class='modal-footer'>
+    <button class='btn' data-dismiss='modal' aria-hidden='true'>Close</button>
+  </div>
+</div>
+
+";
+
+	return($return_me);
+}

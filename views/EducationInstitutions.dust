@@ -27,28 +27,92 @@
 </td> <td>
 <select id='Address_id' name='Address_id'>
         <option value='0'> None </option>
-{#Address_id.contents}
-        <option value='{id}'> {value} </option>
-{/Address_id.contents}
+{#Address_id_array.contents}
+        <option value='{id}' {#Address_id}{@if cond="{id} == {Address_id} "} selected {/if} {/Address_id} 
+		> {value} </option>
+{/Address_id_array.contents}
 </select>
 </td> </tr>
 
  
 
-<tr> <td> <br> <div align="center">
-    <input type="button" id="call" value="Start Call"/>
-    <input type="button" id="hangup" value="Disconnect Call" style="display:none;"/>
-    <div id="status">
-        Offline
-    </div>
-</div> 
+<tr> <td> 
+<div class='btn-group'>
+    <a class='btn btn-primary' href='#'><i class='icon-bullhorn'></i> Contact {Phone_id}</a>
+    <a class='btn btn-primary dropdown-toggle' data-toggle='dropdown' href='#'><span class='icon-caret-down'></span></a>
+    <ul class='dropdown-menu'>
+        <li><a href='#phoneModal_{Phone_id}' role='button' data-toggle='modal'><i class='icon-phone'></i> Call from your cell phone</a></li>
+        <li><a href='#browserModal_{Phone_id}' role='button' data-toggle='modal'><i class='icon-desktop'></i> Call from this browser</a></li>
+        <li><a href='#textModal_{Phone_id}' role='button' data-toggle='modal'><i class='icon-comment'></i> Send a text message </a></li>
+        <li><a href='/Fax/{Phone_id}/' data-target='#faxModal_{Phone_id}' role='button' data-toggle='modal'><i class='icon-print'></i> Send a fax message </a></li>
+    </ul>
+</div>
+
+<!-- Modal -->
+<div id='phoneModal_{Phone_id}' class='modal hide fade' tabindex='-1' role='dialog' aria-labelledby='phoneModalLabel' aria-hidden='true'>
+  <div class='modal-header'>
+    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button>
+    <h3 id='phoneModalLabel'> Phone Call</h3>
+  </div>
+  <div class='modal-body'>
+    <p>not implemented yet</p>
+  </div>
+  <div class='modal-footer'>
+    <button class='btn' data-dismiss='modal' aria-hidden='true'>Close</button>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id='browserModal_{Phone_id}' class='modal hide fade' tabindex='-1' role='dialog' aria-labelledby='browserModalLabel' aria-hidden='true'>
+  <div class='modal-header'>
+    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button>
+    <h3 id='browserModalLabel'>Browser Call</h3>
+  </div>
+  <div class='modal-body'>
+    <p>not implemented yet</p>
+  </div>
+  <div class='modal-footer'>
+    <button class='btn' data-dismiss='modal' aria-hidden='true'>Close</button>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id='textModal_{Phone_id}' class='modal hide fade' tabindex='-1' role='dialog' aria-labelledby='textModalLabel' aria-hidden='true'>
+  <div class='modal-header'>
+    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button>
+    <h3 id='textModalLabel'>SMS interface</h3>
+  </div>
+  <div class='modal-body'>
+    <p>Not implemented</p>
+  </div>
+  <div class='modal-footer'>
+    <button class='btn' data-dismiss='modal' aria-hidden='true'>Close</button>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id='faxModal_{Phone_id}' class='modal hide fade' tabindex='-1' role='dialog' aria-labelledby='faxModalLabel' aria-hidden='true'>
+  <div class='modal-header'>
+    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button>
+    <h3 id='faxModalLabel'>Fax interface/h3>
+  </div>
+  <div class='modal-body'>
+    <p>Not implemented</p>
+  </div>
+  <div class='modal-footer'>
+    <button class='btn' data-dismiss='modal' aria-hidden='true'>Close</button>
+  </div>
+</div>
+
+ 
  </td> <td> <label for='Phone_id'><a href='/API/Phones/'>  Phone </a></label>  
 </td> <td>
 <select id='Phone_id' name='Phone_id'>
         <option value='0'> None </option>
-{#Phone_id.contents}
-        <option value='{id}'> {value} </option>
-{/Phone_id.contents}
+{#Phone_id_array.contents}
+        <option value='{id}' {#Phone_id}{@if cond="{id} == {Phone_id} "} selected {/if} {/Phone_id} 
+		> {value} </option>
+{/Phone_id_array.contents}
 </select>
 </td> </tr>
 
@@ -59,9 +123,10 @@
 </td> <td>
 <select id='created_by_User_id' name='created_by_User_id'>
         <option value='0'> None </option>
-{#created_by_User_id.contents}
-        <option value='{id}'> {value} </option>
-{/created_by_User_id.contents}
+{#created_by_User_id_array.contents}
+        <option value='{id}' {#created_by_User_id}{@if cond="{id} == {created_by_User_id} "} selected {/if} {/created_by_User_id} 
+		> {value} </option>
+{/created_by_User_id_array.contents}
 </select>
 </td> </tr>
 
@@ -72,9 +137,10 @@
 </td> <td>
 <select id='modified_by_User_id' name='modified_by_User_id'>
         <option value='0'> None </option>
-{#modified_by_User_id.contents}
-        <option value='{id}'> {value} </option>
-{/modified_by_User_id.contents}
+{#modified_by_User_id_array.contents}
+        <option value='{id}' {#modified_by_User_id}{@if cond="{id} == {modified_by_User_id} "} selected {/if} {/modified_by_User_id} 
+		> {value} </option>
+{/modified_by_User_id_array.contents}
 </select>
 </td> </tr>
 
@@ -99,7 +165,7 @@
 
 <script type='text/javascript'>
 
-	twilio_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzY29wZSI6InNjb3BlOmNsaWVudDpvdXRnb2luZz9hcHBTaWQ9QVA5ZmE1YjJlN2U5ZDkwYWM0ZmZlOGQ4NWZhYTM1ZjZjZiZhcHBQYXJhbXM9IiwiaXNzIjoiQUNmNDQ2NjIwYzIwZGI3NDIyM2I3ZmI1NTg5Yzc2OGUyNCIsImV4cCI6MTM1NzIwODA4NX0.v_7eipNn22-v1bVJNcD39ieK2M437tNoWu76xPdC8cQ';
+	twilio_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzY29wZSI6InNjb3BlOmNsaWVudDpvdXRnb2luZz9hcHBTaWQ9QVA5ZmE1YjJlN2U5ZDkwYWM0ZmZlOGQ4NWZhYTM1ZjZjZiZhcHBQYXJhbXM9IiwiaXNzIjoiQUNmNDQ2NjIwYzIwZGI3NDIyM2I3ZmI1NTg5Yzc2OGUyNCIsImV4cCI6MTM1NzI1MDc0NX0.HyjrK-Elo7cZd1EI_kNYTTXFt_bi47o6W0B4tuwtQT0';
 
 </script>
 

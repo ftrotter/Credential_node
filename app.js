@@ -169,6 +169,10 @@ tc.allowClientOutgoing('someRandomString');
 var TwilioToken = tc.generate();
 
 
+var Phaxio = require('phaxio'),
+  phaxio = new Phaxio(config.PhaxioKey, config.PhaxioSecret),
+  phaxioCallback = function(err,data){console.log(data);};
+
 
 // change the dirname to where you keep your Sequelize files
 var orm_dir = __dirname + '/orm/';
@@ -210,7 +214,7 @@ function getORM(my_ORM,ORM_Type,req,res){
                       	//may not work on this load... but it will for the next one!!
                       	ORM.buildCache(this_key);	
                         this_contents = ORM.ModelCache[this_key];
-                        to_template[this_key] = {
+                        to_template[this_key + "_array"] = {
                                 is_array: true,
                                 contents: this_contents
                         };
@@ -285,6 +289,38 @@ app.get('/logout', function(req, res){
  app.get('/auth/google/return', 
    passport.authenticate('google', { successRedirect: '/',
                                        failureRedirect: '/login' }));
+
+app.post('/Fax/:phone_id/', ensureAuthenticated, function(req, res){
+
+	phone_id = parseInt(req.params.phone_id,10);
+
+	message_to_fax = req.body.fax_message;
+
+	ORM.Phones.find(phone_id).success(function (ThisPhone){
+
+// comment out until we can properly test with good numbers
+//		phaxio.sendFax({
+//			to: ThisPhone.phone,
+//			string_data: message_to_fax,
+//			string_data_type: 'text'	
+//		},phaxioCallback);
+
+		res.send('Real faxing disabled for testing... Fax sent to' + ThisPhone.phone + ' with message <br>' + message_to_fax);
+	});
+
+});
+
+app.get('/Fax/:phone_id/', ensureAuthenticated, function(req, res){
+
+	var to_template = {};
+	phone_id = parseInt(req.params.phone_id,10);
+	ORM.Phones.find(phone_id).success(function (ThisPhone){
+		to_template.Phone = ThisPhone;
+		res.render('fax_form',to_template); //which loads the html container...
+	});
+});
+
+
 
 app.get('/ProviderDash/', ensureAuthenticated, function(req, res){
 
@@ -367,10 +403,11 @@ app.post('/API/:ORM_Type/', ensureAuthenticated, function(req, res){
 
 	if(req.body.id !== ""){ //then this is an update..
 
-		My_ORM.find({where: {id: req.body.id}}).success( function(gotThis){
+		this_id = req.body.id;
+		My_ORM.find({where: {id: this_id}}).success( function(gotThis){
                 	gotThis.updateAttributes(req.body).success(function(new_object){
                 //Save the object after getting the post from the form...
-                        	res.send(ORM_Type + " saved <a href='/API/"+ORM_Type+"/'>return to list</a> <br> OBW here is what happened: <br> <pre>"+what_happened+" </pre>");
+                        	res.send(ORM_Type + " saved <a href='/API/"+ORM_Type+"/"+this_id+"/'>return</a> <br> OBW here is what happened: <br> <pre>"+what_happened+" </pre>");
                 });
 		});
                 
