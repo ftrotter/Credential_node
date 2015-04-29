@@ -1,3 +1,5 @@
+retired in favor of Laravel 4 implementation: https://github.com/ftrotter/Credential
+
 Clean Node
 ===
 
